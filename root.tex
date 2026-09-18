@@ -17,7 +17,7 @@
 \newcommand{\unit}[1]{\,\mathrm{#1}}
 
 \title{\LARGE \bf
-Bring the Leaf to the Light: Active Presentation with a Gripper-Mounted Reference for Illumination-Robust Leaf Colour Assessment}
+What Makes a Leaf Follow the Gripper: Design Rules for Leaf Presentation End-Effectors from Finite-Element Simulation}
 
 \author{Yogesh Chawla$^{1}$% <-this % stops a space
 \thanks{$^{1}$Y. Chawla is with \todo{affiliation}. {\tt\small yogeshchawla2850@gmail.com}}%
@@ -31,34 +31,27 @@ Bring the Leaf to the Light: Active Presentation with a Gripper-Mounted Referenc
 
 %% ---------------------------------------------------------------------------
 \begin{abstract}
-Leaf colour is a cheap proxy for crop nutrient status, but a camera in the field sees a
-leaf lit by a changing mixture of sun and sky, partly shadowed by the canopy, and a colour
-reference placed on the vehicle sees different light. We ask whether a robot that can grasp
-the leaf should \emph{present} it instead: pinch the blade, lift it out of the canopy, turn
-it toward a wrist camera, and hold a colour reference next to it. We build this loop for a
-mobile manipulator in a physics simulation of a finite-element maize plant in a planted
-field, with two very different end-effectors (a Robotiq 2F-85 and a Shadow Dexterous
-Hand), and evaluate it with a controlled study: 17 illumination conditions (sun elevation,
-azimuth and intensity, chromatic sun and sky, low sun, overcast) applied at run time to
-every leaf at six stages of the interaction, over plant instances that vary in orientation,
-leaf stiffness and colour assignment. We compare passive imaging (platform camera and a
-close-up wrist camera without contact) with active presentation, and a colour board on the
-platform with two reference chips mounted on the upper jaw. Over 24 plant
-instances and 6\,700 paired measurements, three results hold for both hands: calibrating
-with the platform board is worse than no calibration at all (it sees the open sky, the leaf
-sees the canopy); a reference on the jaw gives the most stable verdict (the fraction of
-leaves whose class changes with the light drops from 64--90\,\% to 13--44\,\%) wherever it
-is exposed like the leaf; and pinching, lifting and rolling change the same leaf's
-chromaticity by less than 0.005, so presentation buys a validated sample of the intended
-leaf and both blade faces, not a better colour. Generalisation over plant orientation is
-limited by targeting (ghost patches on neighbouring plants, filters rejecting every
-patch), not by either hand. A second matrix over pinch location, leaf stiffness, force and
-injected placement error shows that whether the blade follows the roll is set by leaf
-stiffness and pinch location, not by the hand: both hands turn a soft blade 7--17$^\circ$ per
-35$^\circ$ of roll at mid-blade and almost nothing at ten times the stiffness, the parallel
-jaw tolerates 3\,cm of placement error where the fingertip pinch loses a third of its leaves. All results are in simulation;
-the contribution is the closed loop, the study design and the design rule it supports: the
-reference must see the leaf's light, which only a gripper-mounted reference guarantees.
+Leaf colour is a cheap proxy for crop nutrient status, and a robot that can grasp a leaf can
+present it to its own camera: pinch the blade, lift it out of the canopy, turn it. Whether
+the blade actually follows the gripper is a question of contact mechanics on a thin,
+anisotropic shell attached to a compliant stalk, and it is the question this paper studies.
+We build the full loop for a mobile manipulator in a physics simulation of a finite-element
+maize plant in a planted field (RGB-D navigation and leaf targeting, canopy-aware transit
+planning with a global inverse kinematics, force-regulated pinch, lift and $\pm35^\circ$ roll
+with the camera decoupled from the roll) for two end-effectors, a Robotiq 2F-85 and a Shadow
+Dexterous Hand, and run controlled matrices over pinch location along the blade, leaf
+stiffness, pinch force and injected placement error, three to twelve leaves per cell, with
+the blade rotation measured both from the simulator and from the wrist depth camera. The
+results are design rules: whether the blade follows the roll is set by leaf stiffness and
+pinch location, not by the hand (7--17$^\circ$ per 35$^\circ$ of roll on a soft blade at
+mid-blade and outer pinches, almost nothing at ten times the stiffness, least near the
+sheath); force helps only weakly because the pads slip; and an 85\,mm parallel jaw absorbs
+3\,cm of placement error where a 61\,mm fingertip pinch loses a third of its leaves. A
+supporting illumination study (18 sun/sky conditions, six stages of the interaction, 6\,700
+paired measurements) shows that a colour reference on the platform calibrates worse than no
+calibration and that a reference on the jaw gives the most stable verdict, while presentation
+itself changes the measured chromaticity by less than 0.005. All results are in simulation;
+the contribution is the loop, the matrices and the rules they support.
 \end{abstract}
 
 %% ---------------------------------------------------------------------------
@@ -80,23 +73,24 @@ the robot \emph{presents} a leaf to its own camera under regulated contact while
 camera, or a co-located one, sees a colour reference under the same illuminant, so that the
 colour verdict is a relative measurement rather than an absolute one.
 
-This paper asks a specific question: \emph{if a robot can grasp a leaf, how much does
-presenting it improve colour assessment under field illumination, and where should the
-colour reference be?} We answer it in simulation with a controlled study rather than a demo.
-The contributions are:
+This paper asks a specific question: \emph{when a robot pinches a leaf blade and turns its
+gripper, what decides whether the blade follows, and which end-effector should do it?} We
+answer it in simulation with controlled matrices rather than a demo, and add a second
+question about where the colour reference should sit. The contributions are:
 \begin{itemize}
 \item a mobile manipulation loop (RGB-D navigation and leaf targeting, canopy-aware transit
 planning, force-regulated pinch, lift and $\pm35^\circ$ roll with the camera decoupled from
 the roll) that runs end to end with a parallel-jaw gripper and with a 24-DoF dexterous hand;
-\item a gripper-mounted colour reference: white and grey chips on the upper jaw, 1--2\,cm
-from the pinched blade, so that reference and leaf share one illuminant and one viewing
-geometry;
-\item an illumination study with paired measurements: the same leaf, at six stages of the
-interaction, under 17 sun/sky conditions applied at run time, over plant instances that vary
-in orientation, leaf stiffness and colour assignment; and
-\item quantitative evidence on which parts of the presentation matter (contact, lift, roll)
-and on the board-on-platform versus chip-on-gripper choice, plus a failure taxonomy over
-24 plant instances for both end-effectors.
+\item an interaction study over pinch location, leaf stiffness, pinch force and injected
+placement error for both end-effectors, with the blade rotation measured from the
+simulator and from the wrist depth camera, and the design rules it supports;
+\item a failure taxonomy over 24 plant instances (orientation, stiffness, colour
+assignment) that locates the generalisation limit in targeting rather than in either hand;
+and
+\item a supporting illumination study with a gripper-mounted colour reference (white and
+grey chips on the upper jaw): the same leaf at six stages of the interaction under 18 sun/sky
+conditions, which settles where the reference should sit and what presentation does and does
+not buy for colour.
 \end{itemize}
 
 All results are in simulation. We state this plainly because it shapes what can be
@@ -364,7 +358,59 @@ Robotiq 2F-85 & 23 & 10 & 6 & 4 & 3 & $4.04{\pm}0.2$ & 13.6 \\
 \end{tabular}
 \end{table}
 
-\subsection{Colour under illumination: what helps and what hurts}\label{sec:colour}
+\subsection{Interaction study: pinch location, stiffness, force and placement error}\label{sec:interaction}
+To separate the physics of the interaction from targeting, a second matrix fixes the plant
+orientation and varies what the hand does: the pinch fraction along the blade (0.35, 0.55,
+0.75, chosen among the camera's own patches), the leaf modulus ($3{\times}10^4$,
+$3{\times}10^5$, $3{\times}10^6$\,Pa), the pinch force (2, 4, 6\,N on the 2F-85) and an
+injected placement error of the pinch target ($\pm1.5$ and $\pm3$\,cm along the blade
+normal, $\pm2$\,cm across it), three leaves per cell. Table~\ref{tab:interaction} gives both
+hands. Four observations. (i) Pinching close to the
+sheath (0.35) fails most often at the approach (3 of 9 timeouts) because the corridor to a
+patch near the stalk is crowded, and turns the blade least (2.3$^\circ$ at $3{\times}10^4$\,Pa);
+mid-blade and outer pinches complete 7--8 of 9 and turn the blade $7$--$11^\circ$ per
+$35^\circ$ of roll at the soft modulus, $0.4$--$2.8^\circ$ at $3{\times}10^6$\,Pa. (ii) The
+turn scales with pinch force at the same location (3.0$^\circ$ at 2\,N, 7.4$^\circ$ at 4\,N,
+8.5$^\circ$ at 6\,N) with the blade deflection rising from 4.8 to 7.7\,mm, i.e.\ the pads
+slip on the blade at every force we allowed and the torque budget, not the hold, limits the
+presentation. (iii) The 85\,mm jaw is tolerant of placement error: 3\,cm of error along the
+blade normal in either direction still pinched 3 of 3 and completed 2--3 of 3, and 2\,cm
+across the blade completed 2 of 3; the centring admittance absorbs the offset before the
+fingers close. (iv) The Shadow fingertip pinch, at half the force (2\,N), turns the soft
+blade \emph{more} than the 2F-85 (15--17$^\circ$ vs 7--11$^\circ$ at mid-blade and outer
+pinches, $3{\times}10^4$\,Pa) because its two small pads grip the blade at a point and the
+thumb's own compliance keeps the load on the blade while the tool joint rolls; at
+$3{\times}10^5$\,Pa and above it turns nothing (0.1--0.6$^\circ$), where the 40\,mm rubber
+pads of the 2F-85 still transmit some torque (10$^\circ$ at $3{\times}10^5$\,Pa). The
+hand pays for its 61\,mm jaw under placement error: 2 of 3 leaves at $\pm1.5$ and $\pm3$\,cm
+along the normal, 1--2 of 3 across the blade, with the misses split between the thumb
+closing on nothing and holds without a visible sample. A note on measurement: the ground-truth turn is the rotation of a 20-node
+patch normal at the pinch; when the pads deform that patch the normal can flip, so turns are
+folded to $[0,90^\circ]$ and values above $60^\circ$ discarded.
+
+\begin{table}[t]
+\caption{Interaction study (three leaves per cell): leaves completed and mean blade turn
+during the $\pm35^\circ$ roll, for the 2F-85 (4\,N unless stated) and the Shadow Hand (2\,N).
+Leaf modulus columns: $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
+\label{tab:interaction}
+\centering\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Robotiq 2F-85} & \multicolumn{2}{c}{Shadow Hand} \\
+condition & complete & turn ($^\circ$) & complete & turn ($^\circ$) \\
+\midrule
+fraction 0.35 & 1/3, 2/3, 1/3 & 2.3, 10.3, 0.4 & 1/1, 3/3, 1/2 & 1.0, 0.3, 0.1 \\
+fraction 0.55 & 8/9, 1/1, 2/3 & 7.4, 19.9, 1.3 & 2/3, 3/3, 3/3 & 15.4, 0.1, 0.6 \\
+fraction 0.75 & 2/3, 2/3, 1/1 & 10.8, 10.0, 2.8 & 2/3, 3/3, 2/3 & 16.9, 0.6, 0.2 \\
+force 2 / 4 / 6\,N (0.55, soft) & 3/3, 8/9, 3/3 & 3.0, 7.4, 8.5 & -- & -- \\
+offset normal $-3/-1.5/+1.5/+3$\,cm & 2/3, 3/3, 2/3, 3/3 & 13, 5, 20, 14 & 2/3, 2/3, 2/3, 2/3 & 20, 29, 18, 16 \\
+offset across $-2/+2$\,cm & 2/3, 2/3 & 23, 12 & 1/3, 2/3 & 20, 28 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Supporting study: colour under illumination}\label{sec:colour}
 Fig.~\ref{fig:strip} shows the six measurement stages of one leaf, Fig.~\ref{fig:methods}
 and Table~\ref{tab:colour} the study over the Shadow matrix (340--433 samples per stage,
 15--23 leaves); the 2F-85 matrix (190--398 samples per stage, 10--21 leaves) reproduces every
@@ -435,58 +481,6 @@ pinched, no lift & 340 & .083 / .67 & .097 / .57 & .085 / .67 & .022 / .038 / .0
 lifted, roll 0 & 339 & .085 / .68 & .098 / .54 & .088 / .70 & .027 / .040 / .022 & .67 / .67 / .41 \\
 lifted, roll $+35^\circ$ & 340 & .089 / .65 & .101 / .54 & -- & .024 / .035 / -- & .67 / .50 / -- \\
 lifted, roll $-35^\circ$ & 225 & .090 / .64 & .104 / .50 & .105 / .65 & .027 / .033 / .020 & .60 / .47 / .33 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Interaction study: pinch location, stiffness, force and placement error}\label{sec:interaction}
-To separate the physics of the interaction from targeting, a second matrix fixes the plant
-orientation and varies what the hand does: the pinch fraction along the blade (0.35, 0.55,
-0.75, chosen among the camera's own patches), the leaf modulus ($3{\times}10^4$,
-$3{\times}10^5$, $3{\times}10^6$\,Pa), the pinch force (2, 4, 6\,N on the 2F-85) and an
-injected placement error of the pinch target ($\pm1.5$ and $\pm3$\,cm along the blade
-normal, $\pm2$\,cm across it), three leaves per cell. Table~\ref{tab:interaction} gives both
-hands. Four observations. (i) Pinching close to the
-sheath (0.35) fails most often at the approach (3 of 9 timeouts) because the corridor to a
-patch near the stalk is crowded, and turns the blade least (2.3$^\circ$ at $3{\times}10^4$\,Pa);
-mid-blade and outer pinches complete 7--8 of 9 and turn the blade $7$--$11^\circ$ per
-$35^\circ$ of roll at the soft modulus, $0.4$--$2.8^\circ$ at $3{\times}10^6$\,Pa. (ii) The
-turn scales with pinch force at the same location (3.0$^\circ$ at 2\,N, 7.4$^\circ$ at 4\,N,
-8.5$^\circ$ at 6\,N) with the blade deflection rising from 4.8 to 7.7\,mm, i.e.\ the pads
-slip on the blade at every force we allowed and the torque budget, not the hold, limits the
-presentation. (iii) The 85\,mm jaw is tolerant of placement error: 3\,cm of error along the
-blade normal in either direction still pinched 3 of 3 and completed 2--3 of 3, and 2\,cm
-across the blade completed 2 of 3; the centring admittance absorbs the offset before the
-fingers close. (iv) The Shadow fingertip pinch, at half the force (2\,N), turns the soft
-blade \emph{more} than the 2F-85 (15--17$^\circ$ vs 7--11$^\circ$ at mid-blade and outer
-pinches, $3{\times}10^4$\,Pa) because its two small pads grip the blade at a point and the
-thumb's own compliance keeps the load on the blade while the tool joint rolls; at
-$3{\times}10^5$\,Pa and above it turns nothing (0.1--0.6$^\circ$), where the 40\,mm rubber
-pads of the 2F-85 still transmit some torque (10$^\circ$ at $3{\times}10^5$\,Pa). The
-hand pays for its 61\,mm jaw under placement error: 2 of 3 leaves at $\pm1.5$ and $\pm3$\,cm
-along the normal, 1--2 of 3 across the blade, with the misses split between the thumb
-closing on nothing and holds without a visible sample. A note on measurement: the ground-truth turn is the rotation of a 20-node
-patch normal at the pinch; when the pads deform that patch the normal can flip, so turns are
-folded to $[0,90^\circ]$ and values above $60^\circ$ discarded.
-
-\begin{table}[t]
-\caption{Interaction study (three leaves per cell): leaves completed and mean blade turn
-during the $\pm35^\circ$ roll, for the 2F-85 (4\,N unless stated) and the Shadow Hand (2\,N).
-Leaf modulus columns: $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
-\label{tab:interaction}
-\centering\scriptsize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lcccc@{}}
-\toprule
- & \multicolumn{2}{c}{Robotiq 2F-85} & \multicolumn{2}{c}{Shadow Hand} \\
-condition & complete & turn ($^\circ$) & complete & turn ($^\circ$) \\
-\midrule
-fraction 0.35 & 1/3, 2/3, 1/3 & 2.3, 10.3, 0.4 & 1/1, 3/3, 1/2 & 1.0, 0.3, 0.1 \\
-fraction 0.55 & 8/9, 1/1, 2/3 & 7.4, 19.9, 1.3 & 2/3, 3/3, 3/3 & 15.4, 0.1, 0.6 \\
-fraction 0.75 & 2/3, 2/3, 1/1 & 10.8, 10.0, 2.8 & 2/3, 3/3, 2/3 & 16.9, 0.6, 0.2 \\
-force 2 / 4 / 6\,N (0.55, soft) & 3/3, 8/9, 3/3 & 3.0, 7.4, 8.5 & -- & -- \\
-offset normal $-3/-1.5/+1.5/+3$\,cm & 2/3, 3/3, 2/3, 3/3 & 13, 5, 20, 14 & 2/3, 2/3, 2/3, 2/3 & 20, 29, 18, 16 \\
-offset across $-2/+2$\,cm & 2/3, 2/3 & 23, 12 & 1/3, 2/3 & 20, 28 \\
 \bottomrule
 \end{tabular}
 \end{table}
