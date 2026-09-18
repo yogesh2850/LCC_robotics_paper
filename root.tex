@@ -43,9 +43,16 @@ azimuth and intensity, chromatic sun and sky, low sun, overcast) applied at run 
 every leaf at six stages of the interaction, over plant instances that vary in orientation,
 leaf stiffness and colour assignment. We compare passive imaging (platform camera and a
 close-up wrist camera without contact) with active presentation, and a colour board on the
-platform with two reference chips mounted on the upper jaw. \todo{Results: X leaves,
-N paired measurements; chromaticity error and 5-class accuracy per method; the co-located
-reference cuts the illumination-induced error spread by Y.} All results are in simulation;
+platform with two reference chips mounted on the upper jaw. Over 24 plant
+instances and 6\,700 paired measurements, three results hold for both hands: calibrating
+with the platform board is worse than no calibration at all (it sees the open sky, the leaf
+sees the canopy); a reference on the jaw gives the most stable verdict (the fraction of
+leaves whose class changes with the light drops from 64--90\,\% to 13--44\,\%) wherever it
+is exposed like the leaf; and pinching, lifting and rolling change the same leaf's
+chromaticity by less than 0.005, so presentation buys a validated sample of the intended
+leaf and both blade faces, not a better colour. Generalisation over plant orientation is
+limited by targeting (ghost patches on neighbouring plants, filters rejecting every
+patch), not by either hand. All results are in simulation;
 the contribution is the closed loop, the study design and the design rule it supports: the
 reference must see the leaf's light, which only a gripper-mounted reference guarantees.
 \end{abstract}
@@ -83,9 +90,9 @@ geometry;
 \item an illumination study with paired measurements: the same leaf, at six stages of the
 interaction, under 17 sun/sky conditions applied at run time, over plant instances that vary
 in orientation, leaf stiffness and colour assignment; and
-\item quantitative evidence \todo{summarise} on which parts of the presentation matter
-(contact, lift, roll) and on the board-on-platform versus chip-on-gripper choice, plus a
-failure taxonomy for both end-effectors.
+\item quantitative evidence on which parts of the presentation matter (contact, lift, roll)
+and on the board-on-platform versus chip-on-gripper choice, plus a failure taxonomy over
+24 plant instances for both end-effectors.
 \end{itemize}
 
 All results are in simulation. We state this plainly because it shapes what can be
@@ -320,7 +327,10 @@ reachable, 16 were pinched and presented. Leaf stiffness ($3{\times}10^4$ vs
 $3{\times}10^5$\,Pa) did not change the completion rate (8 vs 8) but did change the turn: the
 blade followed the $\pm35^\circ$ roll by up to $7^\circ$ at the softer modulus and by
 $0$--$2^\circ$ at the stiffer one, consistent with the torque budget of Sec.~\ref{sec:turn}.
-\todo{Robotiq column.}
+The 2F-85 shows the same structure at a higher pinch force (4\,N): 8/10 leaves at the tuned
+orientation, none at $120^\circ$ (four runs without a usable patch), 2 of 9 at $240^\circ$
+(six ghost targets), i.e.\ the generalisation limit is the targeting stage, common to both
+end-effectors, not the hand.
 
 \begin{table}[t]
 \caption{Manipulation outcomes over the study matrix (simulation, 12 plant instances per
@@ -333,7 +343,7 @@ leaf; none = no patch passed the targeting filters (run-level).}
 end-effector & leaves & complete & ghost & none & other & pinch (N) & hold (s) \\
 \midrule
 Shadow Hand & 27 & 16 & 5 & 3 & 3 & $1.95{\pm}0.3$ & 16.7 \\
-Robotiq 2F-85 & \todo{} & & & & & & \\
+Robotiq 2F-85 & 23 & 10 & 6 & 4 & 3 & $4.04{\pm}0.2$ & 13.6 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -341,8 +351,9 @@ Robotiq 2F-85 & \todo{} & & & & & & \\
 \subsection{Colour under illumination: what helps and what hurts}\label{sec:colour}
 Fig.~\ref{fig:strip} shows the six measurement stages of one leaf, Fig.~\ref{fig:methods}
 and Table~\ref{tab:colour} the study over the Shadow matrix (340--433 samples per stage,
-15--23 leaves). Three findings, all on paired samples of the same leaf under the same
-condition.
+15--23 leaves); the 2F-85 matrix (190--398 samples per stage, 10--21 leaves) reproduces every
+trend below and is reported in the supplementary tables. Three findings, all on paired
+samples of the same leaf under the same condition.
 
 \emph{The board on the platform is the worst estimator.} Calibrating with the platform
 board lowers five-class accuracy below the uncalibrated chromaticity at every stage
@@ -356,7 +367,10 @@ smallest spread (0.016--0.022), the fewest flips (33--44\,\% of leaves) and the 
 (0.62--0.70) wherever the chips are exposed like the leaf, which on the Shadow thumb is
 72\,\% of wrist samples at roll 0 and none at roll $+35^\circ$ (the thumb turns its back to
 the camera). On the paired subset chip and raw estimates are close in mean error
-(0.086 vs 0.077 at the pinch); the gain is in stability, not in the mean.
+(0.086 vs 0.077 at the pinch); the gain is in stability, not in the mean. With the 2F-85,
+whose chips face the camera at every roll, the chip flip rate falls to 13--44\,\% of leaves
+at the active stages against 64--90\,\% raw and 64--75\,\% board, with the smallest spread
+(0.014--0.023 vs 0.021--0.027 raw and 0.027--0.037 board).
 
 \emph{Presentation buys identity and access, not chromaticity.} For the same leaf and
 condition the chromaticity error after pinching, lifting or rolling differs from the
@@ -478,8 +492,8 @@ because in the field the same patch would be a real, pinchable leaf of the wrong
 is a targeting error of a different kind.
 
 \textbf{Where the reference sits.} The chips are exposed like the leaf only when the upper
-jaw faces the camera and the light: on the Shadow thumb they are valid in about \todo{X}\,\% of
-samples and never at roll $+35^\circ$, on the 2F-85 finger in \todo{Y}\,\%. A reference that
+jaw faces the camera and the light: on the Shadow thumb they are valid in about 70\,\% of
+samples at roll 0 and never at roll $+35^\circ$, on the 2F-85 finger in 55--95\,\%. A reference that
 is to be trusted must be placed, and rolled, with the same care as the leaf; the number
 that matters is not the calibration model but whether reference and sample share the light.
 
