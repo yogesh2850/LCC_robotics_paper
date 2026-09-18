@@ -332,6 +332,18 @@ orientation, none at $120^\circ$ (four runs without a usable patch), 2 of 9 at $
 (six ghost targets), i.e.\ the generalisation limit is the targeting stage, common to both
 end-effectors, not the hand.
 
+Two further iterations on the eight turned instances (Shadow Hand) locate the limit more
+precisely. Dropping the ``blade points away from the arm'' filter (obsolete once the heading
+is chosen per leaf) and tightening the root-at-plant radius produced targets at $120^\circ$
+but not fewer ghosts (6 of 16). Adding the planting grid as a prior, i.e.\ requiring the blade
+to root closer to the target than to any neighbour, removed ghosts entirely (0 of 10) at the
+price of fewer candidates. What remains is a hold that our own validity rule rejects: in 6 of
+10 leaves the thumb pressed the blade against the finger body rather than the instrumented
+index pad, so the lower load cell read under 0.08\,N while the summed load (1.2--1.8\,N),
+the lift (30\,mm) and 55--59 depth-validated colour frames were all present. The leaf was
+presented and measured; the pipeline did not believe it. Whether to count a one-sided hold
+is a design choice we leave explicit rather than hide in a threshold.
+
 \begin{table}[t]
 \caption{Manipulation outcomes over the study matrix (simulation, 12 plant instances per
 end-effector, autonomous drive and targeting). Ghost = target on a visual-only neighbour
@@ -501,7 +513,8 @@ that matters is not the calibration model but whether reference and sample share
 with the camera decoupled from the roll, the canopy-aware transit planning with a global IK,
 the depth- and semantics-validated sampling, and the co-located reference are
 hardware-agnostic and cheap. The failure taxonomy (unreachable posture, approach timeout,
-ghost target, hold without a visible sample) is the list a field system has to close.
+ghost target, no usable patch, one-sided hold) is the list a field system has to close; the
+planting-grid prior closes one of them.
 
 \textbf{Next.} A real-plant study with leaves of known SPAD values and a camera with noise and
 auto-exposure, a learned segmenter, and the pinch location chosen explicitly for compliance.
