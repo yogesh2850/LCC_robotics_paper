@@ -17,7 +17,7 @@
 \newcommand{\unit}[1]{\,\mathrm{#1}}
 
 \title{\LARGE \bf
-Grasp, Lift and Turn: Contact-Rich Leaf Presentation for Illumination-Robust Colour Inspection with a Mobile Manipulator}
+Bring the Leaf to the Light: Active Presentation with a Gripper-Mounted Reference for Illumination-Robust Leaf Colour Assessment}
 
 \author{Yogesh Chawla$^{1}$% <-this % stops a space
 \thanks{$^{1}$Y. Chawla is with \todo{affiliation}. {\tt\small yogeshchawla2850@gmail.com}}%
@@ -31,24 +31,23 @@ Grasp, Lift and Turn: Contact-Rich Leaf Presentation for Illumination-Robust Col
 
 %% ---------------------------------------------------------------------------
 \begin{abstract}
-Leaf colour is an inexpensive proxy for crop nutrient status, but field measurements from
-cameras are confounded by illumination, viewing angle and occlusion. We present a mobile
-manipulation pipeline that makes the measurement physical: the robot drives to a plant,
-pinches a leaf blade under force regulation with a two-finger gripper, lifts and rolls it in
-front of a wrist camera that does not move with the gripper, and compares the presented
-blade against a colour-reference board mounted on the platform and observed under the same
-illuminant. Navigation and leaf targeting use only an RGB-D camera on the platform: the
-nearest plant in the row is located by back-projected leaf-coloured points, and pinch
-patches are found by plane fits on the leaf point cloud with reachability and clearance
-scoring. A rotary tool joint between the flange bracket, which carries the camera, and the
-gripper realises the turn while the camera stays still. We evaluate the pipeline in a
-physics simulation of a finite-element maize plant in a planted field. Over the reported
-runs the platform parks within 1.5\,cm of its goal, all selected leaves are pinched and held
-for the required time at a regulated 3--4\,N with no force-safety trips, and the
-chromaticity verdict matches the true leaf class for every green/dark-green leaf; adjacent
-shades remain ambiguous. We also report a negative result: a two-finger pinch cannot twist a
-stiff blade unless pad width, pinch force, leaf stiffness and pinch location along the
-blade satisfy a torque budget, which we quantify.
+Leaf colour is a cheap proxy for crop nutrient status, but a camera in the field sees a
+leaf lit by a changing mixture of sun and sky, partly shadowed by the canopy, and a colour
+reference placed on the vehicle sees different light. We ask whether a robot that can grasp
+the leaf should \emph{present} it instead: pinch the blade, lift it out of the canopy, turn
+it toward a wrist camera, and hold a colour reference next to it. We build this loop for a
+mobile manipulator in a physics simulation of a finite-element maize plant in a planted
+field, with two very different end-effectors (a Robotiq 2F-85 and a Shadow Dexterous
+Hand), and evaluate it with a controlled study: 17 illumination conditions (sun elevation,
+azimuth and intensity, chromatic sun and sky, low sun, overcast) applied at run time to
+every leaf at six stages of the interaction, over plant instances that vary in orientation,
+leaf stiffness and colour assignment. We compare passive imaging (platform camera and a
+close-up wrist camera without contact) with active presentation, and a colour board on the
+platform with two reference chips mounted on the upper jaw. \todo{Results: X leaves,
+N paired measurements; chromaticity error and 5-class accuracy per method; the co-located
+reference cuts the illumination-induced error spread by Y.} All results are in simulation;
+the contribution is the closed loop, the study design and the design rule it supports: the
+reference must see the leaf's light, which only a gripper-mounted reference guarantees.
 \end{abstract}
 
 %% ---------------------------------------------------------------------------
@@ -70,23 +69,27 @@ the robot \emph{presents} a leaf to its own camera under regulated contact while
 camera, or a co-located one, sees a colour reference under the same illuminant, so that the
 colour verdict is a relative measurement rather than an absolute one.
 
-This paper describes such a system and the design decisions that made it work in a
-contact-rich simulation (Fig.~\ref{fig:overview}):
+This paper asks a specific question: \emph{if a robot can grasp a leaf, how much does
+presenting it improve colour assessment under field illumination, and where should the
+colour reference be?} We answer it in simulation with a controlled study rather than a demo.
+The contributions are:
 \begin{itemize}
-\item a mobile platform with a single 7-DoF arm and a two-finger gripper on a rotary tool
-joint, a colour board fixed to the platform, and three RGB-D cameras (navigation, scene,
-wrist);
-\item navigation and leaf targeting from the RGB-D data alone, with simulator ground truth
-used only to grade results;
-\item a pinch controller that closes on force, re-centres the gripper on the blade, then
-lifts and rolls it through $\pm35^\circ$ under a force limit while colour is sampled and
-validated by depth; and
-\item an analysis of when a pinched blade actually follows the gripper, which turned out to
-be the hardest part of the problem.
+\item a mobile manipulation loop (RGB-D navigation and leaf targeting, canopy-aware transit
+planning, force-regulated pinch, lift and $\pm35^\circ$ roll with the camera decoupled from
+the roll) that runs end to end with a parallel-jaw gripper and with a 24-DoF dexterous hand;
+\item a gripper-mounted colour reference: white and grey chips on the upper jaw, 1--2\,cm
+from the pinched blade, so that reference and leaf share one illuminant and one viewing
+geometry;
+\item an illumination study with paired measurements: the same leaf, at six stages of the
+interaction, under 17 sun/sky conditions applied at run time, over plant instances that vary
+in orientation, leaf stiffness and colour assignment; and
+\item quantitative evidence \todo{summarise} on which parts of the presentation matter
+(contact, lift, roll) and on the board-on-platform versus chip-on-gripper choice, plus a
+failure taxonomy for both end-effectors.
 \end{itemize}
 
 All results are in simulation. We state this plainly because it shapes what can be
-claimed: the contribution is the closed loop and its failure analysis, not field
+claimed: the contribution is the loop, the study and the design rule, not field
 performance.
 
 \begin{figure}[t]
@@ -147,6 +150,26 @@ null-space bias could carry only a third of the roll because the arm's natural w
 differs by $105^\circ$ between leaves at different heights. A forward-looking navigation
 camera (10.5\,mm, pitched $30^\circ$ down) and a scene camera (16\,mm) sit on the mast.
 
+\subsection{Two end-effectors}
+The same bracket, tool joint and controller carry either a Robotiq 2F-85 parallel-jaw
+gripper or a Shadow Dexterous Hand (24 joints, 20 actuated). The hand cannot reproduce the
+gripper's motion: its thumb tip only reaches the region near the knuckles, never a straight
+finger, so it forms a \emph{fingertip jaw} instead: the index is curled (MCP $1.1$, PIP
+$0.5$\,rad), the other fingers curl into the palm, and the thumb closes onto the index
+distal pad by first swinging its base in and then flexing its two distal joints, giving a
+6.1\,cm opening that the controller treats as a virtual gripper frame (closing axis from
+the index pad to the open thumb pad, mouth from the wrist toward the jaw). Its forearm puts
+the flange bracket 38\,cm behind the pinch point, which the platform absorbs by parking
+25\,cm further from the plant and the planner by choosing an approach heading per leaf
+(Sec.~\ref{sec:method}).
+
+\subsection{Gripper-mounted colour reference}\label{sec:chips}
+Two matte chips, white (0.90) and grey (0.45) in nominal sRGB like the board's neutral
+patches, $11{\times}11$\,mm, sit on the dorsal side of the upper jaw (thumb tip on the hand,
+outer face of the upper finger on the gripper), 1--2\,cm from the pinched blade and facing
+the wrist camera. Their only purpose is calibration: they see the light the presented blade
+sees, from the same camera, in the same frame.
+
 \subsection{Fingertips}
 Each inner finger carries a 2\,g load-cell pad ($40{\times}3{\times}26$\,mm) on a fixed joint
 whose incoming joint force is the contact load, faced with a rubber physics material
@@ -164,7 +187,7 @@ visual-only copies in agronomic rows (0.75\,m between rows, 0.35\,m within a row
 is the first-row plant and the robot approaches across the open headland.
 
 %% ---------------------------------------------------------------------------
-\section{Method}
+\section{Method}\label{sec:method}
 
 \subsection{Navigation}
 While driving, the navigation camera is read at 3\,Hz. Leaf-coloured pixels
@@ -196,6 +219,20 @@ hues at least $10^\circ$ apart. At the pre-pinch point the wrist camera re-fits 
 from close up (typical shift 8\,mm). Simulator nodes are used afterwards only to identify
 the nearest true leaf and grade colour and deflection.
 
+\subsection{Reach and canopy-aware transit}
+Each leaf gets its own approach heading: the 24 horizontal headings that do not run over the
+stalk end of the blade are ranked by how much foliage (from the RGB-D cloud, own blade
+excluded) lies in the descent column and the diagonal advance slab, then by how far the
+heading points away from the arm base, and the first heading for which a global inverse
+kinematics of the arm (a product-of-exponentials model identified from the simulator's
+articulation to 0.05\,mm) finds joint configurations inside the joint limits for both the
+pinch pose and the transit pose is taken. Transits between leaves are chains of IK
+waypoints: rise vertically to 14\,cm above the highest leaf point seen within 25\,cm of the
+path (all plants, not only the target), traverse in 15\,cm steps, descend; each waypoint is
+seeded from the previous one so the joint-space moves stay near the straight segments.
+Before this, the hand swept through the target's own canopy (9\,N on the pad in transit)
+and through the visual-only neighbours.
+
 \subsection{Pinch, centring and presentation}
 The gripper transits above the pre-pinch point (10\,cm from the patch on the approach side,
 12\,cm up), descends, and slides across the blade with the pads open until they straddle
@@ -218,6 +255,27 @@ depth and, for the leaf, by the hue gate. A two-point white/grey calibration is 
 the residual on the colour patches, and the verdict is the swatch nearest in chromaticity,
 reported with a separation margin; margins below 0.15 are flagged ambiguous. Only frames
 from the current uninterrupted hold count.
+
+\subsection{Illumination study protocol}\label{sec:protocol}
+The study asks how the colour estimate of one leaf changes with illumination at each stage
+of the interaction. Eighteen conditions are applied at run time to the sun (a distant light) and the sky (a
+dome light), with illuminant chromaticities spanning field daylight (linear RGB
+multipliers relative to D65): clear sky, sun elevation $20/40/60^\circ$ $\times$ azimuth
+$0/90/180/270^\circ$, sun $(1.00,0.93,0.85)$ and blue sky $(0.62,0.78,1.00)$; low sun
+$15^\circ$ at two azimuths, golden $(1.00,0.62,0.32)$ against a bluer sky at half
+intensity; overcast, sky only, cool $(0.82,0.90,1.00)$; bright, $1.6\times$ sun; an
+under-canopy condition with a green ambient $(0.72,1.00,0.55)$ standing in for light
+transmitted through the leaves above; and one neutral white sun/sky; plus the neutral
+condition the pipeline is tuned in. At
+six stages, physics is paused, each condition is rendered and the leaf is sampled:
+\emph{passive-scene} (platform RGB-D camera, after targeting), \emph{passive-wrist} (wrist
+camera at the pre-pinch pose, no contact), \emph{active-pinch} (pinched, no lift, roll 0),
+and \emph{active-roll} at $0$, $+35$ and $-35^\circ$ after the lift. Every sample yields
+three estimates: raw chromaticity, board-calibrated (two-point white/grey from the platform
+board seen by its own camera) and chip-calibrated (two-point from the jaw chips in the wrist
+image). Ground truth is the material of the leaf under the sampled pixel (semantic
+segmentation), so the error is the chromaticity distance to the true shade and the class
+verdict is the nearest of the five shades.
 
 %% ---------------------------------------------------------------------------
 \section{Experiments}
@@ -247,49 +305,109 @@ segmentation; the scan works in the point cloud instead.}
 \label{fig:detect}
 \end{figure}
 
-\subsection{Pinch, hold and colour}
-Table~\ref{tab:runs} summarises representative runs. Every selected leaf was pinched,
-centred and held for the required time; no force-safety trip occurred in these runs, and the
-regulated load tracked its target within 0.1\,N. The chromaticity verdict matched the true
-class for every green and dark-green leaf. Two failure modes are visible: the
-\emph{yellow} leaf ties with \emph{yellow-green} (margin 0.03), and \emph{light green},
-which lies between two swatches, lands on either neighbour. Sampling near the tip of a blade
-also lowered the margin on one green leaf (0.09--0.13) compared with mid-blade sampling
-(0.9). With the pads the rendered blade is visibly held (Fig.~\ref{fig:pads}).
+\subsection{Manipulation across plant instances and end-effectors}\label{sec:manip}
+Table~\ref{tab:manip} reports the outcomes of the study matrix: 12 plant instances (yaw
+$0/120/240^\circ$, leaf modulus $3{\times}10^4$ and $3{\times}10^5$\,Pa, two shade
+assignments), up to three hue-distinct leaves each, for both end-effectors, all with
+autonomous drive-in, RGB-D targeting and canopy-aware transits. With the Shadow Hand every
+leaf of the four instances at the tuned orientation completed (12/12, pinch
+$2.0{\pm}0.2$\,N, hold 20\,s, sweep $\pm35^\circ$, no force trip), whereas the eight instances
+turned by $120^\circ$ and $240^\circ$ exposed the targeting rather than the manipulation:
+three runs found no patch that passed the reach and clearance filters, five targets were
+\emph{ghost} patches on visual-only neighbour leaves (the jaw closed on nothing), two holds
+never had a visible sample point, one approach stalled. Of the 19 leaves that were real and
+reachable, 16 were pinched and presented. Leaf stiffness ($3{\times}10^4$ vs
+$3{\times}10^5$\,Pa) did not change the completion rate (8 vs 8) but did change the turn: the
+blade followed the $\pm35^\circ$ roll by up to $7^\circ$ at the softer modulus and by
+$0$--$2^\circ$ at the stiffer one, consistent with the torque budget of Sec.~\ref{sec:turn}.
+\todo{Robotiq column.}
 
 \begin{table}[t]
-\caption{Representative runs (simulation, camera-based targeting, autonomous drive). Pinch
-is the mean summed pad load over the hold; ``turn'' is the rotation of the true blade normal
-at the pinch during the $\pm35^\circ$ sweep.}
-\label{tab:runs}
-\centering
-\footnotesize
-\begin{tabular}{@{}lllcccl@{}}
+\caption{Manipulation outcomes over the study matrix (simulation, 12 plant instances per
+end-effector, autonomous drive and targeting). Ghost = target on a visual-only neighbour
+leaf; none = no patch passed the targeting filters (run-level).}
+\label{tab:manip}
+\centering\footnotesize
+\begin{tabular}{@{}lccccccc@{}}
 \toprule
-run & leaf (true class) & verdict & pinch & margin & turn & note \\
+end-effector & leaves & complete & ghost & none & other & pinch (N) & hold (s) \\
 \midrule
-rq22 & leaf\_2\_3 (green) & green & 3.0\,N & 0.11 & $21^\circ$ & 1e7\,Pa leaves \\
-     & leaf\_4\_9 (dark green) & dark green & 3.1\,N & 0.98 & $0^\circ$ & \\
-rq30 & leaf\_2\_3 (green) & green & 3.0\,N & 0.13 & $2^\circ$ & \\
-     & leaf\_4\_9 (dark green) & dark green & 3.0\,N & 1.00 & $0^\circ$ & \\
-     & leaf\_3\_9 (yellow) & yellow-green & 3.0\,N & 0.03 & $0^\circ$ & tie \\
-rq33 & leaf\_2\_3 (green) & green & 4.1\,N & 0.11 & $7^\circ$ & 3e4\,Pa leaves, \\
-     & leaf\_4\_3 (light green) & yellow-green & 4.0\,N & 0.41 & $43^\circ$ & 40\,mm pads \\
-     & leaf\_4\_9 (dark green) & dark green & 4.3\,N & 0.99 & $0^\circ$ & \\
-rq35 & leaf\_4\_3 (light green) & green & 4.0\,N & 0.09 & $3^\circ$ & field, canopy cam \\
-     & leaf\_1\_3 (dark green) & dark green & 4.0\,N & 1.00 & $15^\circ$ & \\
-     & leaf\_2\_3 (green) & green & 4.0\,N & 0.13 & $3^\circ$ & \\
+Shadow Hand & 27 & 16 & 5 & 3 & 3 & $1.95{\pm}0.3$ & 16.7 \\
+Robotiq 2F-85 & \todo{} & & & & & & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{Colour under illumination: what helps and what hurts}\label{sec:colour}
+Fig.~\ref{fig:strip} shows the six measurement stages of one leaf, Fig.~\ref{fig:methods}
+and Table~\ref{tab:colour} the study over the Shadow matrix (340--433 samples per stage,
+15--23 leaves). Three findings, all on paired samples of the same leaf under the same
+condition.
+
+\emph{The board on the platform is the worst estimator.} Calibrating with the platform
+board lowers five-class accuracy below the uncalibrated chromaticity at every stage
+(0.46--0.57 vs 0.55--0.68) and makes the verdict the most illumination-sensitive: the error
+spread over the 18 conditions of one leaf is 0.033--0.040 for the board against 0.022--0.027
+raw, and 44--70\,\% of leaves change class with the light. The board sees the open sky while
+the leaf sits in the canopy; a two-point calibration then moves the leaf colour the wrong way.
+
+\emph{A reference next to the leaf gives the most stable verdict.} Chip calibration has the
+smallest spread (0.016--0.022), the fewest flips (33--44\,\% of leaves) and the best accuracy
+(0.62--0.70) wherever the chips are exposed like the leaf, which on the Shadow thumb is
+72\,\% of wrist samples at roll 0 and none at roll $+35^\circ$ (the thumb turns its back to
+the camera). On the paired subset chip and raw estimates are close in mean error
+(0.086 vs 0.077 at the pinch); the gain is in stability, not in the mean.
+
+\emph{Presentation buys identity and access, not chromaticity.} For the same leaf and
+condition the chromaticity error after pinching, lifting or rolling differs from the
+close-up passive view by less than 0.005. The higher accuracy of the active stages in
+Table~\ref{tab:colour} (0.65--0.68 vs 0.57) is selection: the leaves that could be pinched
+are the ones that were well exposed. What the contact does guarantee is that every sample
+is validated by depth and semantics on the intended leaf (100\,\% at all stages) and that
+both faces of the blade are seen; a proxy view selection over the four active presentations
+(the best-exposed chip) did not beat the average view.
+
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figs/pads_crop.png}
-\caption{Wrist camera during a hold at 3\,N: the rubber pad faces on the rendered blade
-while the gripper rolls. The load-cell faces stop on the plant's 4\,cm collision envelope.}
-\label{fig:pads}
+\includegraphics[width=\columnwidth]{figs/study_methods.png}
+\caption{Colour study over the Shadow matrix: chromaticity error to the true shade (left,
+mean $\pm$ std) and five-class accuracy (right) per measurement stage for the raw,
+board-calibrated and chip-calibrated estimates.}
+\label{fig:methods}
 \end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/study_strip.png}
+\caption{The measurement stages of the study on one dark-green leaf (Shadow Hand). Top:
+scene camera after targeting; wrist camera at the pre-pinch pose without contact; pinched.
+Bottom: lifted and rolled $-35^\circ$; lifted at roll 0 under low sun from behind (the blade
+is in the hand's shadow, the chips are not); overcast. The cyan boxes are the validated
+samples: leaf, and the white and grey chips on the thumb.}
+\label{fig:strip}
+\end{figure}
+
+\begin{table}[t]
+\caption{Colour study, Shadow matrix: mean chromaticity error / five-class accuracy of the
+raw, board- and chip-calibrated estimates per stage; ``sens.'' is the std of the error over
+the 18 illumination conditions of one leaf (mean over leaves); ``flip'' the fraction of
+leaves whose class changes with the light (raw / board / chip).}
+\label{tab:colour}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+stage & $n$ & raw & board & chip & sens. raw/board/chip & flip raw/board/chip \\
+\midrule
+passive, scene cam & 378 & .110 / .55 & .125 / .46 & -- & .024 / .033 / -- & .70 / .70 / -- \\
+passive, wrist cam & 433 & .102 / .57 & .115 / .49 & .105 / .62 & .023 / .034 / .016 & .70 / .61 / .44 \\
+pinched, no lift & 340 & .083 / .67 & .097 / .57 & .085 / .67 & .022 / .038 / .017 & .67 / .44 / .44 \\
+lifted, roll 0 & 339 & .085 / .68 & .098 / .54 & .088 / .70 & .027 / .040 / .022 & .67 / .67 / .41 \\
+lifted, roll $+35^\circ$ & 340 & .089 / .65 & .101 / .54 & -- & .024 / .035 / -- & .67 / .50 / -- \\
+lifted, roll $-35^\circ$ & 225 & .090 / .64 & .104 / .50 & .105 / .65 & .027 / .033 / .020 & .60 / .47 / .33 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{When does the blade follow the gripper?}\label{sec:turn}
 The roll is meant to show the camera both faces of the blade, and the ``turn'' column of
@@ -340,20 +458,40 @@ and its far end swings across the view.}
 %% ---------------------------------------------------------------------------
 \section{Discussion and Limitations}
 
-\textbf{Simulation only.} Every number above comes from one plant model in one simulator.
-The FEM plant's collision envelope is far thicker than a real blade, which both hides the
-pads' true closure and exaggerates torsional stiffness; real maize blades twist easily near
-the tip. The leaf segmentation is a hue gate that a real camera would not enjoy. The
-colour ground truth is five painted shades, not chlorophyll or SPAD readings.
+\textbf{Simulation only, and what the renderer can and cannot say.} Every number comes from one
+plant model in one simulator, with painted shades as ground truth rather than chlorophyll.
+Two rendering facts shaped the study and are worth stating for anyone repeating it. First,
+the real-time path tracer adds a neutral ambient fill by default; with it, illuminant
+colour barely reaches the image (a red sun and sky rendered a white card almost white), so
+every illumination result would have been an artefact. We keep the fill at the level the
+perception was tuned for but scale and tint it with the sky in every condition, which makes it
+a crude stand-in for diffuse sky light in the canopy. Second, the leaf material is nearly
+Lambertian and the camera has neither noise, limited dynamic range nor automatic white
+balance; the benefits a real camera would draw from lifting a leaf out of deep shade
+(signal-to-noise, exposure) are therefore not captured here, and the reported gains of
+presentation are, if anything, conservative on those counts and optimistic on none.
 
-\textbf{What we believe transfers.} The force-then-centre pinch, the force-limited
-presentation with the camera decoupled from the roll, the co-observed reference board and
-the depth-validated sampling are hardware-agnostic and cheap; the torque budget of
-Sec.~\ref{sec:turn} is a design rule for any leaf-handling end effector.
+\textbf{Ghost targets.} The field around the target is populated with visual-only plants.
+The RGB-D targeting occasionally chooses a patch on a neighbour's leaf that has no physics;
+the jaw then closes on nothing. We report these separately (ground-truth gap above 30\,mm)
+because in the field the same patch would be a real, pinchable leaf of the wrong plant, which
+is a targeting error of a different kind.
 
-\textbf{Next.} A real-plant study with leaves of known SPAD values, a learned segmenter,
-and the pinch location chosen explicitly for compliance. \todo{Real-robot experiments
-before submission.}
+\textbf{Where the reference sits.} The chips are exposed like the leaf only when the upper
+jaw faces the camera and the light: on the Shadow thumb they are valid in about \todo{X}\,\% of
+samples and never at roll $+35^\circ$, on the 2F-85 finger in \todo{Y}\,\%. A reference that
+is to be trusted must be placed, and rolled, with the same care as the leaf; the number
+that matters is not the calibration model but whether reference and sample share the light.
+
+\textbf{What we believe transfers.} The force-then-centre pinch, the force-limited presentation
+with the camera decoupled from the roll, the canopy-aware transit planning with a global IK,
+the depth- and semantics-validated sampling, and the co-located reference are
+hardware-agnostic and cheap. The failure taxonomy (unreachable posture, approach timeout,
+ghost target, hold without a visible sample) is the list a field system has to close.
+
+\textbf{Next.} A real-plant study with leaves of known SPAD values and a camera with noise and
+auto-exposure, a learned segmenter, and the pinch location chosen explicitly for compliance.
+\todo{Real-robot experiments before submission.}
 
 %% ---------------------------------------------------------------------------
 \section{Conclusion}
