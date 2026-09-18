@@ -1,0 +1,36 @@
+             run gripper   yaw        E  seed    leaf        class gt_gap_mm                                                       outcome  pinch_N  max_N  hold_s turn_deg         sweep      verdict     expected  sim_s
+  stR_y0_e3e4_s0 robotiq   0.0  30000.0     0 patch_1  light_green       3.2                                                      complete    3.998  4.653   20.40      2.7 [35.0, -35.0] yellow_green        green 118.07
+  stR_y0_e3e4_s0 robotiq   0.0  30000.0     0 patch_8   dark_green       3.3                                                      complete    3.993  5.481    9.80     63.1 [35.0, -35.0]   dark_green   dark_green 118.07
+  stR_y0_e3e4_s0 robotiq   0.0  30000.0     0 patch_3        green       3.2                                                      complete    3.977  5.481    6.03      2.1 [35.0, -35.0]        green   dark_green 118.07
+  stR_y0_e3e4_s1 robotiq   0.0  30000.0     1 patch_1 yellow_green       3.6                                                      complete    3.997  4.615   20.40      2.7 [35.0, -35.0] yellow_green yellow_green 149.03
+  stR_y0_e3e4_s1 robotiq   0.0  30000.0     1 patch_3  light_green       2.9                                                      complete    3.986  5.126   20.40      6.7 [35.0, -35.0] yellow_green        green 149.03
+  stR_y0_e3e4_s1 robotiq   0.0  30000.0     1 patch_8        green       3.3                                              approach timeout    0.000  0.000    0.00             [0.0, 0.0]                dark_green 149.03
+  stR_y0_e3e5_s0 robotiq   0.0 300000.0     0 patch_1  light_green       4.8                                                      complete    3.999  5.142   20.40     24.1 [35.0, -35.0] yellow_green        green  47.03
+  stR_y0_e3e5_s1 robotiq   0.0 300000.0     1 patch_1 yellow_green       1.0                                                      complete    3.999  4.685   20.40     20.7 [35.0, -35.0] yellow_green yellow_green 140.53
+  stR_y0_e3e5_s1 robotiq   0.0 300000.0     1 patch_3  light_green       4.9                                                      complete    3.965  4.866    6.03      0.1 [35.0, -35.0] yellow_green        green 140.53
+  stR_y0_e3e5_s1 robotiq   0.0 300000.0     1 patch_9        green       3.8                                              approach timeout    0.000  0.000    0.00             [0.0, 0.0]                dark_green 140.53
+stR_y120_e3e4_s0 robotiq 120.0  30000.0     0       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    8.17
+stR_y120_e3e4_s1 robotiq 120.0  30000.0     1       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    8.17
+stR_y120_e3e5_s0 robotiq 120.0 300000.0     0       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    8.17
+stR_y120_e3e5_s1 robotiq 120.0 300000.0     1       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    8.17
+stR_y240_e3e4_s0 robotiq 240.0  30000.0     0 patch_1       yellow      51.0 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.004    0.00      0.0    [0.0, 0.0]                    yellow  78.37
+stR_y240_e3e4_s0 robotiq 240.0  30000.0     0 patch_6       yellow       6.6                                                      complete    4.165  5.654    6.03      0.1 [35.0, -35.0]       yellow       yellow  78.37
+stR_y240_e3e4_s0 robotiq 240.0  30000.0     0 patch_2  light_green     131.5 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.004    0.00      0.0    [0.0, 0.0]                     green  78.37
+stR_y240_e3e4_s1 robotiq 240.0  30000.0     1 patch_1   dark_green      51.1 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.004    0.00      0.0    [0.0, 0.0]                dark_green  40.57
+stR_y240_e3e5_s0 robotiq 240.0 300000.0     0 patch_1       yellow      54.9 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.004    0.00      0.0    [0.0, 0.0]                    yellow  78.87
+stR_y240_e3e5_s0 robotiq 240.0 300000.0     0 patch_6       yellow       6.4                                                      complete    4.347  5.761    6.03      0.0 [35.0, -35.0]       yellow       yellow  78.87
+stR_y240_e3e5_s0 robotiq 240.0 300000.0     0 patch_2  light_green     131.0 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.004    0.00      0.0    [0.0, 0.0]                     green  78.87
+stR_y240_e3e5_s1 robotiq 240.0 300000.0     1 patch_1   dark_green      54.8 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.004    0.00      0.0    [0.0, 0.0]                dark_green 260.00
+stR_y240_e3e5_s1 robotiq 240.0 300000.0     1 patch_3 yellow_green       6.7                       probe timeout (contact 0.0 s, frames 0)    2.780  3.351    0.00      0.0 [35.0, -35.0]              yellow_green 260.00
+
+complete: 10 / 23 leaves (43%)
+pinch N mean 4.04  hold s mean 13.6  max N mean 5.15
+verdict == expected: 50%
+
+by outcome:
+outcome
+complete                                                         10
+ghost target (perception picked a visual-only neighbour leaf)     6
+no usable target (targeting filters rejected every patch)         4
+approach timeout                                                  2
+probe timeout (contact 0.0 s, frames 0)                           1

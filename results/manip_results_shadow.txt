@@ -1,0 +1,40 @@
+             run gripper   yaw        E  seed    leaf        class gt_gap_mm                                                       outcome  pinch_N  max_N  hold_s turn_deg         sweep      verdict     expected  sim_s
+  stS_y0_e3e4_s0  shadow   0.0  30000.0     0 patch_1   dark_green      11.8                                                      complete    1.957  2.757   20.40      1.8 [35.0, -35.0]   dark_green   dark_green 134.73
+  stS_y0_e3e4_s0  shadow   0.0  30000.0     0 patch_4  light_green       1.6                                                      complete    2.318  3.295   20.40      6.8 [35.0, -35.0] yellow_green        green 134.73
+  stS_y0_e3e4_s0  shadow   0.0  30000.0     0 patch_9 yellow_green       8.7                                                      complete    2.001  3.165   20.40      0.0 [35.0, -35.0] yellow_green yellow_green 134.73
+  stS_y0_e3e4_s1  shadow   0.0  30000.0     1 patch_1        green       5.9                                                      complete    2.215  3.847   20.73      0.8 [35.0, -35.0]        green   dark_green 128.50
+  stS_y0_e3e4_s1  shadow   0.0  30000.0     1 patch_4 yellow_green       1.9                                                      complete    2.332  3.439   20.40      6.4 [35.0, -35.0] yellow_green yellow_green 128.50
+  stS_y0_e3e4_s1  shadow   0.0  30000.0     1 patch_5  light_green       8.3                                                      complete    2.001  2.725   20.40      0.0 [35.0, -35.0] yellow_green        green 128.50
+  stS_y0_e3e5_s0  shadow   0.0 300000.0     0 patch_2   dark_green       5.0                                                      complete    2.486  4.205   20.10      0.1 [35.0, -17.3]   dark_green   dark_green 137.43
+  stS_y0_e3e5_s0  shadow   0.0 300000.0     0 patch_5  light_green       4.8                                                      complete    2.226  3.849   20.03      1.7 [35.0, -35.0] yellow_green        green 137.43
+  stS_y0_e3e5_s0  shadow   0.0 300000.0     0 patch_6 yellow_green       7.8                                                      complete    2.029  3.261   19.57      0.0 [35.0, -35.0] yellow_green yellow_green 137.43
+  stS_y0_e3e5_s1  shadow   0.0 300000.0     1 patch_2        green       5.4                                                      complete    2.470  3.853   20.50      0.1 [35.0, -17.3]        green   dark_green 132.57
+  stS_y0_e3e5_s1  shadow   0.0 300000.0     1 patch_5 yellow_green       4.9                                                      complete    2.230  3.782   20.03      1.7 [35.0, -35.0] yellow_green yellow_green 132.57
+  stS_y0_e3e5_s1  shadow   0.0 300000.0     1 patch_6       yellow       7.7                                                      complete    2.027  3.301   19.57      0.0 [35.0, -35.0] yellow_green       yellow 132.57
+stS_y120_e3e4_s0  shadow 120.0  30000.0     0 patch_6  light_green       3.0                        approach stalled (unreachable posture)    0.000  0.000    0.00             [0.0, 0.0]                     green  32.13
+stS_y120_e3e4_s1  shadow 120.0  30000.0     1       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    7.67
+stS_y120_e3e5_s0  shadow 120.0 300000.0     0       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    7.67
+stS_y120_e3e5_s1  shadow 120.0 300000.0     1       -                            no usable target (targeting filters rejected every patch)    0.000  0.000    0.00                                                    7.67
+stS_y240_e3e4_s0  shadow 240.0  30000.0     0 patch_1  light_green     114.4 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.001    0.00      4.8    [0.0, 0.0]                     green 100.70
+stS_y240_e3e4_s0  shadow 240.0  30000.0     0 patch_2  light_green      13.5                                                      complete    1.058  1.911    6.03      0.0 [35.0, -35.0]        green        green 100.70
+stS_y240_e3e4_s1  shadow 240.0  30000.0     1 patch_1 yellow_green     114.4 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.001    0.00      3.1    [0.0, 0.0]              yellow_green 119.03
+stS_y240_e3e4_s1  shadow 240.0  30000.0     1 patch_2 yellow_green      13.5                                                      complete    1.117  1.893    6.03      0.0 [35.0, -35.0] yellow_green yellow_green 119.03
+stS_y240_e3e4_s1  shadow 240.0  30000.0     1 patch_4   dark_green      99.0 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.002    0.00      0.1    [0.0, 0.0]                dark_green 119.03
+stS_y240_e3e5_s0  shadow 240.0 300000.0     0 patch_1  light_green     136.9 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.001    0.00      0.8    [0.0, 0.0]                     green 154.33
+stS_y240_e3e5_s0  shadow 240.0 300000.0     0 patch_2  light_green      13.7                       probe timeout (contact 0.0 s, frames 0)    1.214  1.722    0.00      0.0 [35.0, -35.0]                     green 154.33
+stS_y240_e3e5_s0  shadow 240.0 300000.0     0 patch_5  light_green       8.7                                                      complete    1.368  2.400    6.10      0.0 [35.0, -35.0] yellow_green        green 154.33
+stS_y240_e3e5_s1  shadow 240.0 300000.0     1 patch_1 yellow_green     136.8 ghost target (perception picked a visual-only neighbour leaf)    0.000  0.001    0.00      1.5    [0.0, 0.0]              yellow_green 154.23
+stS_y240_e3e5_s1  shadow 240.0 300000.0     1 patch_2 yellow_green      13.7                       probe timeout (contact 0.0 s, frames 0)    1.262  1.757    0.00      0.0 [35.0, -35.0]              yellow_green 154.23
+stS_y240_e3e5_s1  shadow 240.0 300000.0     1 patch_4 yellow_green       8.7                                                      complete    1.373  2.315    6.07      0.0 [35.0, -35.0] yellow_green yellow_green 154.23
+
+complete: 16 / 27 leaves (59%)
+pinch N mean 1.95  hold s mean 16.7  max N mean 3.12
+verdict == expected: 56%
+
+by outcome:
+outcome
+complete                                                         16
+ghost target (perception picked a visual-only neighbour leaf)     5
+no usable target (targeting filters rejected every patch)         3
+probe timeout (contact 0.0 s, frames 0)                           2
+approach stalled (unreachable posture)                            1

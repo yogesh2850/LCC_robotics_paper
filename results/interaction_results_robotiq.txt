@@ -1,0 +1,77 @@
+            run     leaf                      outcome  pinch_N  max_N  hold_s  turn_deg  turn_ratio  defl_mm
+ iaR_f0.35_e3e4  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.12
+ iaR_f0.35_e3e4  patch_9             approach timeout     0.00   0.00    0.00       NaN         NaN     0.14
+ iaR_f0.35_e3e4  patch_1                     complete     4.00   4.57   20.40      2.30        0.07    10.83
+ iaR_f0.35_e3e5  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.30
+ iaR_f0.35_e3e5 patch_10                     complete     3.87   4.56   18.63     20.60        0.59     7.35
+ iaR_f0.35_e3e5  patch_6                     complete     4.32   5.62    6.03      0.00        0.00     0.51
+ iaR_f0.35_e3e6  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.37
+ iaR_f0.35_e3e6  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.37
+ iaR_f0.35_e3e6  patch_2                     complete     4.00   5.16   20.40      0.40        0.01    10.13
+ iaR_f0.55_e3e4  patch_1                     complete     3.99   4.73   20.40      2.70        0.08    11.20
+ iaR_f0.55_e3e4  patch_8                     complete     3.99   5.70    9.80     28.90        0.83    11.16
+ iaR_f0.55_e3e4  patch_6 probe timeout (contact 46.7      5.22   5.91   46.70      0.00        0.00     0.13
+ iaR_f0.55_e3e5  patch_1                     complete     4.00   4.59   20.40     19.90        0.57    10.15
+ iaR_f0.55_e3e6  patch_1                     complete     4.00   4.96   20.40      0.40        0.01    10.06
+ iaR_f0.55_e3e6  patch_3                     complete     3.96   4.89   20.40      2.20        0.06     3.89
+ iaR_f0.55_e3e6  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     3.89
+ iaR_f0.75_e3e4  patch_3                     complete     3.99   5.36   20.40      2.50        0.07     3.41
+ iaR_f0.75_e3e4  patch_8 probe timeout (contact 0.0 s     4.44   5.64    0.00     25.90        0.96     4.41
+ iaR_f0.75_e3e4  patch_1                     complete     4.00   4.84   20.40      4.10        0.12    14.72
+ iaR_f0.75_e3e5  patch_3                     complete     3.96   5.01    6.03      1.10        0.03     4.58
+ iaR_f0.75_e3e5 patch_11                     complete     3.96   4.55   20.40     18.80        0.54     9.01
+ iaR_f0.75_e3e5  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     9.01
+ iaR_f0.75_e3e6  patch_3                     complete     3.95   4.65   20.17      2.80        0.08     4.24
+     iaR_force2  patch_1                     complete     2.00   2.54   20.40      1.80        0.05     9.16
+     iaR_force2  patch_8                     complete     1.99   2.48   14.50      7.20        0.21     4.85
+     iaR_force2  patch_6                     complete     2.50   2.92   12.77      0.10        0.00     0.31
+     iaR_force6  patch_1                     complete     5.99   6.88   20.40      3.00        0.09    12.09
+     iaR_force6  patch_9                     complete     6.00   7.02   20.40     22.60        0.65    10.74
+     iaR_force6  patch_6                     complete     5.89   7.19    6.03      0.00        0.00     0.12
+iaR_off_n-0.015  patch_1                     complete     4.00   4.71   20.40      4.50        0.13    11.02
+iaR_off_n-0.015  patch_9                     complete     4.00   4.41   20.40     10.40        0.30     5.52
+iaR_off_n-0.015  patch_6                     complete     4.31   5.79    6.03      0.00        0.00     0.09
+ iaR_off_n0.015  patch_1                     complete     3.99   4.69   20.40      2.80        0.08    10.64
+ iaR_off_n0.015  patch_8                     complete     3.97   4.75    6.03     37.60        1.07     4.58
+ iaR_off_n0.015  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     4.58
+ iaR_off_n-0.03  patch_1                     complete     4.00   5.22   20.40     26.70        0.76    27.78
+ iaR_off_n-0.03  patch_8 probe timeout (contact 53.2      4.00   5.82   53.17       NaN         NaN    17.09
+ iaR_off_n-0.03  patch_6                     complete     4.26   5.87    6.03      0.00        0.00     0.09
+  iaR_off_n0.03  patch_1                     complete     3.97   5.14   13.13     12.90        0.37    17.17
+  iaR_off_n0.03  patch_8                     complete     3.98   4.98   20.40     30.30        0.87     9.19
+  iaR_off_n0.03  patch_6                     complete     4.27   6.24    6.03      0.00        0.00     0.12
+ iaR_off_x-0.02  patch_1                     complete     3.97   4.65   20.40     12.80        0.37    20.86
+ iaR_off_x-0.02  patch_8                     complete     3.98   4.49   20.40     55.90        1.60     5.66
+ iaR_off_x-0.02  patch_6 probe timeout (contact 57.3      5.37   6.50   57.30      0.10        0.00     0.51
+  iaR_off_x0.02  patch_1                     complete     4.00   4.74   20.40     12.20        0.35    14.59
+  iaR_off_x0.02  patch_9                     complete     4.00   4.90   20.40     23.60        0.67     8.27
+  iaR_off_x0.02  patch_6 probe timeout (contact 48.1      5.11   5.72   48.10      0.00        0.00     0.10
+
+## E1 pinch fraction x stiffness (complete rate, mean turn deg, mean turn ratio, n)
+                         n  complete  pinched  turn  ratio  maxN
+gripper frac E                                                  
+robotiq 0.35 30000.00    3      0.33     0.33  2.30   0.07  1.52
+             300000.00   3      0.67     0.67 10.30   0.29  3.39
+             3000000.00  3      0.33     0.33  0.40   0.01  1.72
+        0.55 30000.00    9      0.89     1.00  7.37   0.21  5.04
+             300000.00   1      1.00     1.00 19.90   0.57  4.59
+             3000000.00  3      0.67     0.67  1.30   0.04  3.28
+        0.75 30000.00    3      0.67     1.00 10.83   0.38  5.28
+             300000.00   3      0.67     0.67  9.95   0.28  3.19
+             3000000.00  1      1.00     1.00  2.80   0.08  4.65
+
+## E3 placement offsets (frac 0.55, E 3e4)
+                     n  complete  pinched  turn
+gripper off_n off_x                            
+robotiq -0.03 0.00   3      0.67     1.00 13.35
+        -0.01 0.00   3      1.00     1.00  4.97
+        0.00  -0.02  3      0.67     1.00 22.93
+              0.02   3      0.67     1.00 11.93
+        0.01  0.00   3      0.67     0.67 20.20
+        0.03  0.00   3      1.00     1.00 14.40
+
+## E2 force (Robotiq)
+               n  complete  turn  ratio  maxN  defl
+gripper force                                      
+robotiq 2.00   3      1.00  3.03   0.09  2.65  4.77
+        6.00   3      1.00  8.53   0.24  7.03  7.65
