@@ -46,7 +46,12 @@ not as causal design rules. A supporting illumination study finds that calibrati
 remote platform reference can worsen colour estimation, while a nearby reference can
 reduce variation when visible. These observations motivate response-aware presentation:
 estimate the local action-to-leaf response before choosing to continue, regrasp, or release.
-The adaptive extension is specified separately and has not yet been evaluated. All
+A replicated interaction matrix run after the audit (63 runs, 13--16 distinct leaf-geometry
+pairs per condition, camera-measured swing at every dwell) finds that the pinched blade does
+not follow the roll on this plant at any tested stiffness, pinch location or force (median
+$0.1^\circ$ per $35^\circ$), that lifting is reliable, and that completion is governed by
+whether the blade faces the arm. The adaptive extension is specified separately and has
+not yet been evaluated. All
 reported results are simulation-only; no tissue-safety or field-performance claim is made.
 \end{abstract}
 
@@ -452,6 +457,63 @@ fraction 0.75 & 2/3, 2/3, 1/1 & 10.8, 10.0, 2.8 & 2/3, 3/3, 2/3 & 16.9, 0.6, 0.2
 force 2 / 4 / 6\,N (0.55, soft) & 3/3, 2/3, 3/3 & 3.0, 10.5, 8.5 & -- & -- \\
 offset normal $-3/-1.5/+1.5/+3$\,cm & 2/3, 3/3, 2/3, 3/3 & 13, 5, 20, 14 & 2/3, 2/3, 2/3, 2/3 & 20, 29, 18, 16 \\
 offset across $-2/+2$\,cm & 2/3, 2/3 & 23, 12 & 1/3, 2/3 & 20, 28 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Replicated interaction study}\label{sec:replicated}
+The audit above asks for independent replicates and a stored, sensor-based response
+measurement. Both are provided by a prospective matrix run after the audit
+(\texttt{icR\_*}, 63 runs, 214 attempted leaves; Shadow Hand set in progress\todo{fill}).
+Replication is geometric: the plant is turned by $0$, $\pm15^\circ$ and $\pm30^\circ$ so
+that different leaves at different heights and angles face the arm; each cell then holds
+13--16 distinct leaf-geometry pairs. (A first attempt at replication by re-running with
+different leaf colour assignments replayed the same three leaves in a deterministic
+simulator and was discarded.) The response is measured twice: the terminal patch-normal
+change of the audit, and a new camera estimate stored at every dwell of the sweep, the tilt
+of the chord between the two edges of the target blade 2--9\,cm beyond the pads in a frame
+fixed at the pinch reference (edge bands frozen at the reference, blade identified by its
+label). It samples the free blade rather than the clamped nodes and is recorded at $+35$,
+$-35$ and $0^\circ$, so it is a swing, not a terminal state.
+
+Table~\ref{tab:replicated} gives the 2F-85 cells. Over 89 completed holds the median
+terminal change is $0.1^\circ$ per $35^\circ$ of roll and the 90th percentile $4.5^\circ$;
+six holds exceed $10^\circ$ and all belong to one leaf, which does so at every stiffness and
+pinch location. The camera swing agrees: 2--4$^\circ$ half-swing per cell, 5--17$^\circ$ at
+most. Leaf modulus over two decades, pinch fraction from sheath to tip and force from 2 to
+6\,N move the median by nothing and the mean by a few degrees, while peak pad load follows
+the force target (2.0, 3.5, 4.3\,N). On this plant, at these forces, the blade does not
+follow the roll; the $7$--$17^\circ$ of the exploratory set were properties of the leaves
+it happened to select. Lifting is reliable: every completed hold carried the blade the
+commanded 30\,mm at every stiffness with 2--4\,mm of residual deflection at the pinch.
+
+Completion depends on where the leaf is more than on how it is pinched: 0.67--0.81 at
+$0$ to $+30^\circ$ of plant yaw and 0.30--0.38 at $-15$ and $-30^\circ$, where the selected
+blades point away from the arm and the approach times out short of the pad target (67 of
+214 leaves; 19 holds without a visible sample, 3 force trips). Within a yaw, sheath pinches
+complete least (0.44--0.56 at 0.35) and outer pinches most (0.57--0.87 at 0.75). Placement
+error of $+3$\,cm along the blade normal is absorbed by the centring admittance (0.67) but
+$-3$\,cm is not (0.40: the lower pad drives into the blade); $\pm2$\,cm across the blade
+costs little (0.50--0.64). A 2\,N target halves completion (0.33) because the hold window
+is rarely met; 6\,N gives 0.55.
+
+\begin{table}[t]
+\caption{Replicated interaction study, Robotiq 2F-85: distinct leaf-geometry pairs per
+cell, completion, median / mean terminal turn (camera half-swing in parentheses), peak
+summed pad load. Modulus columns $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
+\label{tab:replicated}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+condition & & leaves & complete & turn med. / mean ($^\circ$) & peak (N) \\
+\midrule
+fraction 0.35 & $E$ columns & 15 / 16 / 13 & .44 / .72 / .56 & 0.1 / 0.4, 3.3, 0.5 (4.3, 2.3, 3.4) & 2.9, 4.2, 3.8 \\
+fraction 0.55 & & 14 / 13 / 14 & .53 / .69 / .56 & 0.1 / 2.1, 2.8, 0.5 (2.6, 2.9, 3.3) & 3.5, 3.7, 3.4 \\
+fraction 0.75 & & 13 / 13 / 14 & .59 / .87 / .57 & 0.1 / 1.4, 5.5, 0.6 (4.0, 4.4, 2.8) & 3.9, 4.5, 4.0 \\
+force 2 / 6\,N & 0.55, soft & 8 / 8 & .33 / .55 & 3.1, 5.1 (2.1, 2.0) & 2.0, 4.3 \\
+offset normal $-3$ / $+3$\,cm & & 8 / 9 & .40 / .67 & 13.2, 5.0 & 4.4, 3.7 \\
+offset across $-2$ / $+2$\,cm & & 7 / 8 & .64 / .50 & 6.2, 6.0 & 3.3, 3.4 \\
 \bottomrule
 \end{tabular}
 \end{table}
