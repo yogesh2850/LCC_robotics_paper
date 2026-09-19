@@ -136,3 +136,18 @@ target), `--force-target` (scales the force window); `run_meta.json` per run;
   free blade the camera sees), both reported; (3) paper reframed: title "What Makes a Leaf Follow
   the Gripper", interaction study first, colour study supporting (committed); (4) real-plant check
   impossible here (sim only) - left as the TODO in the paper.
+- 2026-09-20 01:20 expanded matrix (ibR_*, 45 runs) analysed and found to be pseudo-replication:
+  shade seeds change colour only, every cell targets the same 3 leaves (deterministic sim,
+  replays within 0.4 deg). Also the sensor reset sat in __init__ (only the first leaf per run was
+  sensed) and the plane-fit normal on the V-curled blade swung 53 deg while the frames show
+  little twist. Fixes: chord-tilt sensor (edge-to-edge tilt of the free blade 2-9 cm beyond the
+  pads, world frame fixed at the pinch), reset in start_leaf, replication by plant yaw
+  {0, +-15, +-30} (run_interaction3.sh, icR_*/icS_*), analysis reports n_leaves = unique
+  (gt leaf, yaw). Shadow ib set stopped (would have inherited both bugs). ib*/ia* kept as data
+  for the seed-0 cells only.
+- 2026-09-20 12:00 Robotiq yaw matrix done (icR_*, 63 runs, 13-16 distinct leaves per cell): with
+  geometric replication the blade turn is SMALL everywhere (GT 0.4-5.5 deg mean, camera chord
+  2-4 deg, the two agree); the 7-17 deg turns of the first sets were properties of the three
+  original leaves. Completion 0.44-0.87, lowest at the sheath pinch (0.35), highest at 0.75/3e5;
+  force 2/6 N: 0.33/0.55 complete, turn 3/5 deg; -3 cm normal offset: 0.40 complete. The paper's
+  "stiffness and location set the turn" rule must be weakened to a leaf-specific effect.

@@ -17,7 +17,7 @@
 \newcommand{\unit}[1]{\,\mathrm{#1}}
 
 \title{\LARGE \bf
-What Makes a Leaf Follow the Gripper: Design Rules for Leaf Presentation End-Effectors from Finite-Element Simulation}
+Holding Is Not Presenting: Evaluating Contact and Deformation in Robotic Leaf Inspection}
 
 \author{Yogesh Chawla$^{1}$% <-this % stops a space
 \thanks{$^{1}$Y. Chawla is with \todo{affiliation}. {\tt\small yogeshchawla2850@gmail.com}}%
@@ -31,27 +31,23 @@ What Makes a Leaf Follow the Gripper: Design Rules for Leaf Presentation End-Eff
 
 %% ---------------------------------------------------------------------------
 \begin{abstract}
-Leaf colour is a cheap proxy for crop nutrient status, and a robot that can grasp a leaf can
-present it to its own camera: pinch the blade, lift it out of the canopy, turn it. Whether
-the blade actually follows the gripper is a question of contact mechanics on a thin,
-anisotropic shell attached to a compliant stalk, and it is the question this paper studies.
-We build the full loop for a mobile manipulator in a physics simulation of a finite-element
-maize plant in a planted field (RGB-D navigation and leaf targeting, canopy-aware transit
-planning with a global inverse kinematics, force-regulated pinch, lift and $\pm35^\circ$ roll
-with the camera decoupled from the roll) for two end-effectors, a Robotiq 2F-85 and a Shadow
-Dexterous Hand, and run controlled matrices over pinch location along the blade, leaf
-stiffness, pinch force and injected placement error, three to twelve leaves per cell, with
-the blade rotation measured both from the simulator and from the wrist depth camera. The
-results are design rules: whether the blade follows the roll is set by leaf stiffness and
-pinch location, not by the hand (7--17$^\circ$ per 35$^\circ$ of roll on a soft blade at
-mid-blade and outer pinches, almost nothing at ten times the stiffness, least near the
-sheath); force helps only weakly because the pads slip; and an 85\,mm parallel jaw absorbs
-3\,cm of placement error where a 61\,mm fingertip pinch loses a third of its leaves. A
-supporting illumination study (18 sun/sky conditions, six stages of the interaction, 6\,700
-paired measurements) shows that a colour reference on the platform calibrates worse than no
-calibration and that a reference on the jaw gives the most stable verdict, while presentation
-itself changes the measured chromaticity by less than 0.005. All results are in simulation;
-the contribution is the loop, the matrices and the rules they support.
+Robotic inspection of an attached leaf requires more than a stable grasp: contact must
+produce a useful and measurable change in the blade's pose. We study this distinction in
+a volumetric finite-element maize simulation using a mobile Kinova Gen3 with either a
+Robotiq 2F-85 or a Shadow Dexterous Hand. Both systems navigate, select RGB-D leaf
+patches, establish force-regulated contact, and execute lift-and-roll presentations.
+We distinguish controller completion, leaf response, and measurement availability rather
+than treating a completed gripper sweep as successful leaf presentation. An audit of 32
+archived interaction runs covers 89 attempted leaves and 65 controller completions; the
+saved terminal patch-normal changes do not establish peak response or closed-loop pose
+tracking, and no wrist-normal swing measurements are stored in those runs. We correct a
+mixed-force aggregation and report the historical interaction matrix as exploratory,
+not as causal design rules. A supporting illumination study finds that calibration with a
+remote platform reference can worsen colour estimation, while a nearby reference can
+reduce variation when visible. These observations motivate response-aware presentation:
+estimate the local action-to-leaf response before choosing to continue, regrasp, or release.
+The adaptive extension is specified separately and has not yet been evaluated. All
+reported results are simulation-only; no tissue-safety or field-performance claim is made.
 \end{abstract}
 
 %% ---------------------------------------------------------------------------
@@ -65,37 +61,39 @@ often occluded by its neighbours. Image-based chlorophyll estimation therefore r
 careful radiometric calibration~\cite{wang2014} and still degrades away from the
 conditions it was fitted for.
 
-Ground robots that touch the plant can remove these confounds instead of modelling
-them. Sensorised leaf grippers have been used to clamp a blade for contact
-measurements~\cite{atefi2019}, and manipulators have picked leaves under visual
-servoing~\cite{ahlin2016}. What has not been shown, to our knowledge, is the loop in which
-the robot \emph{presents} a leaf to its own camera under regulated contact while the same
-camera, or a co-located one, sees a colour reference under the same illuminant, so that the
-colour verdict is a relative measurement rather than an absolute one.
+Contact can change the geometry available to a sensor, but this is not itself a new
+capability. Prior systems clamp leaves for phenotyping~\cite{atefi2019}, actively choose
+views for leaf probing~\cite{foix2018}, grasp leaves for proximal hyperspectral
+sensing~\cite{mortazavi2026}, and manipulate occluding leaves to reveal
+fruit~\cite{yao2025}. The specific issue here is the difference between holding an
+attached blade and controlling the presentation of a selected region on that blade.
+A loaded jaw and completed tool rotation do not establish the region's orientation,
+visibility, or contact mode. Conversely, a small terminal rotation after a return sweep
+does not establish that the leaf failed to rotate earlier.
 
 This paper asks a specific question: \emph{when a robot pinches a leaf blade and turns its
 gripper, what decides whether the blade follows, and which end-effector should do it?} We
-answer it in simulation with controlled matrices rather than a demo, and add a second
-question about where the colour reference should sit. The contributions are:
+investigate it through archived simulations and separate existing evidence from the
+adaptive controller needed to answer it causally. The present contributions are:
 \begin{itemize}
 \item a mobile manipulation loop (RGB-D navigation and leaf targeting, canopy-aware transit
 planning, force-regulated pinch, lift and $\pm35^\circ$ roll with the camera decoupled from
 the roll) that runs end to end with a parallel-jaw gripper and with a 24-DoF dexterous hand;
-\item an interaction study over pinch location, leaf stiffness, pinch force and injected
-placement error for both end-effectors, with the blade rotation measured from the
-simulator and from the wrist depth camera, and the design rules it supports;
+\item a formulation separating contact, actual leaf presentation, and measurement success,
+with an audit of interaction outcomes, force-setting confounds, and rotation observability;
 \item a failure taxonomy over 24 plant instances (orientation, stiffness, colour
-assignment) that locates the generalisation limit in targeting rather than in either hand;
+assignment) that distinguishes targeting failures from contact and measurement failures;
 and
 \item a supporting illumination study with a gripper-mounted colour reference (white and
-grey chips on the upper jaw): the same leaf at six stages of the interaction under 18 sun/sky
-conditions, which settles where the reference should sit and what presentation does and does
-not buy for colour.
+grey chips on the upper jaw): the same leaf at six stages of the interaction under 19 recorded sun/sky
+conditions, reporting calibration error together with measurement availability rather than
+assuming that presentation improves colour accuracy.
 \end{itemize}
 
 All results are in simulation. We state this plainly because it shapes what can be
-claimed: the contribution is the loop, the study and the design rule, not field
-performance.
+claimed: these are observations on one plant asset, not universal end-effector rankings
+or field performance. A proposed response-aware extension and its falsifiable evaluation
+protocol accompany this working draft; no adaptive-controller improvement is claimed yet.
 
 \begin{figure}[t]
 \centering
@@ -114,26 +112,62 @@ the wrist RGB-D camera on the flange bracket, looking at the pads.}
 pattern of a row-following ground platform with a manipulator for contact measurements in
 sorghum. Atefi et al.~\cite{atefi2019} clamp maize and sorghum leaves with a sensorised
 gripper to read chlorophyll and temperature in vivo. Ahlin et al.~\cite{ahlin2016} pick
-leaves with a manipulator using learned detection and visual servoing. These systems either
-measure at the point of contact or remove the leaf; none use the contact to control what
-a camera sees.
+leaves with a manipulator using learned detection and visual servoing. Foix et
+al.~\cite{foix2018} select informative views for leaf probing. RoMu4o~\cite{mortazavi2026}
+combines leaf grasping with proximal hyperspectral sensing and local illumination.
+These precedents rule out claiming leaf grasping for sensing as the novelty.
+
+\textbf{Interaction for visibility.} Yao et al.~\cite{yao2025} plan leaf manipulation
+using a perception-driven deformation graph to expose occluded fruits while accounting
+for deformation. Our task concerns the pose and measurability of the grasped leaf itself.
+This task difference alone is not an algorithmic contribution: a stronger method must
+demonstrate that online response measurements improve presentation beyond an open-loop
+sweep and a conventional visual-feedback baseline.
 
 \textbf{Colour references.} Reference charts~\cite{mccamy1976} are standard in imaging
 phenotyping, but they are usually placed in the scene by hand and imaged separately from
 the plant. Mounting the board on the platform and observing it continuously with its own
-camera turns it into a live illuminant estimate.
+camera supplies a reference measurement, but not necessarily the illuminant incident on
+a shaded leaf. We evaluate rather than assume the benefit of co-location.
 
-\textbf{Deformable manipulation.} Leaves are thin, anisotropic shells attached to a
-compliant stalk; grasping them is a deformable-object problem~\cite{sanchez2018} for
-which simulation with finite-element bodies is now practical in GPU physics
-engines~\cite{physx}. We build on Isaac Lab~\cite{mittal2023} and a maize plant cooked as a
-volumetric FEM~\cite{plantrepo}.
+\textbf{Deformable manipulation and response estimation.} Online mappings between tool
+motion and observed deformation are established, including Gaussian-process visual
+servoing~\cite{hu2017}. Agricultural slip feedback also predates this
+work~\cite{zhou2022}; low leaf response alone must not be labelled slip. Recent workshop
+research estimates relative plant compliance from wind-excited video~\cite{bhowmik2026}.
+Our candidate extension concerns whether a particular attached-leaf grasp can achieve a
+sensing pose under a force budget, not the first deformation estimator. Real leaves have
+directional tissue structure; this volumetric FEM with a scalar modulus is not a validated
+anisotropic shell model. We use Isaac Lab~\cite{mittal2023} and the existing maize
+FEM~\cite{plantrepo,physx} without modifying the plant for the proposed comparison.
 
 \textbf{Row navigation.} Camera-based row following is well studied~\cite{bakker2011}; our
 navigation is deliberately simple (nearest leaf cluster in the lane) because the
 contribution lies elsewhere.
 
 %% ---------------------------------------------------------------------------
+\section{Problem: Contact, Presentation, and Measurement}
+Let $q_g$ be tool roll and $\mathbf n_t$ the normal of a tracked free-blade region,
+expressed in a fixed world frame. This region must lie outside the jaw contact and retain
+its identity over time. For an unoriented plane normal, define
+\begin{equation}
+ e_n(t)=\cos^{-1}\!\left(\left|\mathbf n_t^\top\mathbf n^\star\right|\right).
+\end{equation}
+This metric cannot distinguish the two leaf faces; doing so requires additional temporal
+or appearance evidence. We separate (i) bilateral contact within a predefined force
+budget, (ii) a requested leaf pose held within an angular tolerance, and (iii) an
+unoccluded, valid sensing region. Operational presentation success requires all three
+simultaneously for a specified dwell. A commanded roll, stable force, or terminal
+deformation alone is insufficient. Force limits are operational constraints, not
+validated bounds on tissue damage.
+
+The existing sweep controller does not implement this pose-based termination criterion.
+Its archived complete outcome is called \emph{controller completion} throughout.
+Future comparisons must log synchronized tool motion, regional leaf normals,
+normal-estimation validity, and pad loads. Missing normals are unavailable measurements,
+not zero deformation. The accompanying response-aware method proposal builds on this
+formulation but is not included among the measured results.
+
 \section{System}
 
 \subsection{Platform and arm}
@@ -263,7 +297,7 @@ from the current uninterrupted hold count.
 
 \subsection{Illumination study protocol}\label{sec:protocol}
 The study asks how the colour estimate of one leaf changes with illumination at each stage
-of the interaction. Eighteen conditions are applied at run time to the sun (a distant light) and the sky (a
+of the interaction. Nineteen recorded conditions (18 alternatives plus the default) are applied at run time to the sun (a distant light) and the sky (a
 dome light), with illuminant chromaticities spanning field daylight (linear RGB
 multipliers relative to D65): clear sky, sun elevation $20/40/60^\circ$ $\times$ azimuth
 $0/90/180/270^\circ$, sun $(1.00,0.93,0.85)$ and blue sky $(0.62,0.78,1.00)$; low sun
@@ -277,10 +311,12 @@ six stages, physics is paused, each condition is rendered and the leaf is sample
 camera at the pre-pinch pose, no contact), \emph{active-pinch} (pinched, no lift, roll 0),
 and \emph{active-roll} at $0$, $+35$ and $-35^\circ$ after the lift. Every sample yields
 three estimates: raw chromaticity, board-calibrated (two-point white/grey from the platform
-board seen by its own camera) and chip-calibrated (two-point from the jaw chips in the wrist
-image). Ground truth is the material of the leaf under the sampled pixel (semantic
+board seen by its own camera) and chip-calibrated (illuminant gain from the white chip
+when usable, otherwise grey; archived samples are recomputed with a common calibration
+in the analysis). Ground truth is the material of the leaf under the sampled pixel (semantic
 segmentation), so the error is the chromaticity distance to the true shade and the class
-verdict is the nearest of the five shades.
+verdict is the nearest of four non-neutral chart swatches. Five material shades are
+mapped to those four swatch classes; this is not five-class shade recognition.
 
 %% ---------------------------------------------------------------------------
 \section{Experiments}
@@ -299,7 +335,8 @@ updates). The same numbers reproduced across all later runs
 On the scene frame after arrival the scan produced 12 patch candidates of which 4 were
 usable; the two chosen landed 3\,mm from the FEM leaves that the ground-truth targeting had
 picked in earlier runs (Fig.~\ref{fig:detect}). With in-row neighbours 0.35\,m away and the
-root-at-plant filter, all selected patches belonged to the target plant in every run.
+root-at-plant filter, this nominal example selected the target plant. This does not
+establish cross-orientation identity accuracy: the broader matrix includes neighbour targets.
 
 \begin{figure}[t]
 \centering
@@ -358,39 +395,48 @@ Robotiq 2F-85 & 23 & 10 & 6 & 4 & 3 & $4.04{\pm}0.2$ & 13.6 \\
 \end{tabular}
 \end{table}
 
-\subsection{Interaction study: pinch location, stiffness, force and placement error}\label{sec:interaction}
-To separate the physics of the interaction from targeting, a second matrix fixes the plant
-orientation and varies what the hand does: the pinch fraction along the blade (0.35, 0.55,
-0.75, chosen among the camera's own patches), the leaf modulus ($3{\times}10^4$,
-$3{\times}10^5$, $3{\times}10^6$\,Pa), the pinch force (2, 4, 6\,N on the 2F-85) and an
-injected placement error of the pinch target ($\pm1.5$ and $\pm3$\,cm along the blade
-normal, $\pm2$\,cm across it), three leaves per cell. Table~\ref{tab:interaction} gives both
-hands. Four observations. (i) Pinching close to the
-sheath (0.35) fails most often at the approach (3 of 9 timeouts) because the corridor to a
-patch near the stalk is crowded, and turns the blade least (2.3$^\circ$ at $3{\times}10^4$\,Pa);
-mid-blade and outer pinches complete 7--8 of 9 and turn the blade $7$--$11^\circ$ per
-$35^\circ$ of roll at the soft modulus, $0.4$--$2.8^\circ$ at $3{\times}10^6$\,Pa. (ii) The
-turn scales with pinch force at the same location (3.0$^\circ$ at 2\,N, 7.4$^\circ$ at 4\,N,
-8.5$^\circ$ at 6\,N) with the blade deflection rising from 4.8 to 7.7\,mm, i.e.\ the pads
-slip on the blade at every force we allowed and the torque budget, not the hold, limits the
-presentation. (iii) The 85\,mm jaw is tolerant of placement error: 3\,cm of error along the
-blade normal in either direction still pinched 3 of 3 and completed 2--3 of 3, and 2\,cm
-across the blade completed 2 of 3; the centring admittance absorbs the offset before the
-fingers close. (iv) The Shadow fingertip pinch, at half the force (2\,N), turns the soft
-blade \emph{more} than the 2F-85 (15--17$^\circ$ vs 7--11$^\circ$ at mid-blade and outer
-pinches, $3{\times}10^4$\,Pa) because its two small pads grip the blade at a point and the
-thumb's own compliance keeps the load on the blade while the tool joint rolls; at
-$3{\times}10^5$\,Pa and above it turns nothing (0.1--0.6$^\circ$), where the 40\,mm rubber
-pads of the 2F-85 still transmit some torque (10$^\circ$ at $3{\times}10^5$\,Pa). The
-hand pays for its 61\,mm jaw under placement error: 2 of 3 leaves at $\pm1.5$ and $\pm3$\,cm
-along the normal, 1--2 of 3 across the blade, with the misses split between the thumb
-closing on nothing and holds without a visible sample. A note on measurement: the ground-truth turn is the rotation of a 20-node
-patch normal at the pinch; when the pads deform that patch the normal can flip, so turns are
-folded to $[0,90^\circ]$ and values above $60^\circ$ discarded.
+\subsection{Exploratory interaction study and evidence audit}\label{sec:interaction}
+The archived interaction set contains 17 Robotiq runs (47 attempted leaves, 34 controller
+completions) and 15 Shadow runs (42 attempts, 31 completions). These attempts share one
+plant geometry and are not independent biological replicates. Current code supports
+wrist-normal measurements, but none of these 89 archived attempts contains a stored
+\texttt{sensor\_swing\_deg} measurement. The logged \texttt{blade\_turn\_deg} is the
+patch-normal difference at leaf completion or timeout, potentially after returning tool
+roll to zero. It is not peak turn or synchronized roll tracking. The matrix is therefore
+descriptive evidence of configuration-dependent outcomes, not proof that the leaf
+followed, slipped, or failed to move during the sweep.
+
+The original aggregation pooled the 2 and 6\,N force runs into the 4\,N, fraction-0.55,
+soft-leaf cell. Separating force settings changes its completion count from 8/9 to 2/3
+and its mean terminal angle from $7.4^\circ$ to $10.5^\circ$. The paper-side audit script
+records source hashes, per-attempt metadata, missing observations, and strict cell
+denominators without changing simulator code or the plant.
+
+The historical matrix varies camera-selected pinch fraction (0.35, 0.55, 0.75),
+leaf modulus ($3{\times}10^4$, $3{\times}10^5$, $3{\times}10^6$\,Pa), Robotiq target force
+(2, 4, 6\,N), and placement offset ($\pm1.5/\pm3$\,cm normal to the blade and $\pm2$\,cm
+across it). These settings have already been run; no new plant modifications are proposed.
+Table~\ref{tab:interaction} reports the archived outcomes with the force pooling corrected.
+At the soft modulus, the nominal-force Robotiq mid-blade and outer cells each complete
+2/3 attempts. At fraction 0.55 the mean terminal angles at 2, 4 and 6\,N are
+$3.0^\circ$, $10.5^\circ$ and $8.5^\circ$: not a monotonic force-response relation.
+Selected leaf identities also differ across cells, precluding a matched causal estimate.
+The Shadow mid-blade and outer cells show larger soft-leaf terminal changes, but different
+force budgets, selected leaves and hand geometry prevent attributing this to thumb
+compliance or ranking the hands universally.
+
+Placement-error runs demonstrate recovery on some tested targets, not a guaranteed
+capture range. Camera-selected patches and reachable leaves must be paired before
+comparing sensitivity. The legacy normal metric also folds to $[0,90^\circ]$ and removes
+values above $60^\circ$ (one attempt per hand). Such values may reflect normal flips,
+buckling, or correspondence errors; being larger than tool roll is not itself a valid
+reason to reject them. Our audit retains raw and folded values and flags these exclusions.
+A prospective estimator must gate on fit and tracking quality instead.
 
 \begin{table}[t]
-\caption{Interaction study (three leaves per cell): leaves completed and mean blade turn
-during the $\pm35^\circ$ roll, for the 2F-85 (4\,N unless stated) and the Shadow Hand (2\,N).
+\caption{Historical exploratory interaction study: controller completions and mean terminal
+patch-normal change (not peak turn or tracking), for the 2F-85 (4\,N unless stated) and
+Shadow Hand (2\,N). Cell sizes vary; means retain the legacy angle-exclusion rule.
 Leaf modulus columns: $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
 \label{tab:interaction}
 \centering\scriptsize
@@ -401,9 +447,9 @@ Leaf modulus columns: $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
 condition & complete & turn ($^\circ$) & complete & turn ($^\circ$) \\
 \midrule
 fraction 0.35 & 1/3, 2/3, 1/3 & 2.3, 10.3, 0.4 & 1/1, 3/3, 1/2 & 1.0, 0.3, 0.1 \\
-fraction 0.55 & 8/9, 1/1, 2/3 & 7.4, 19.9, 1.3 & 2/3, 3/3, 3/3 & 15.4, 0.1, 0.6 \\
+fraction 0.55 & 2/3, 1/1, 2/3 & 10.5, 19.9, 1.3 & 2/3, 3/3, 3/3 & 15.4, 0.1, 0.6 \\
 fraction 0.75 & 2/3, 2/3, 1/1 & 10.8, 10.0, 2.8 & 2/3, 3/3, 2/3 & 16.9, 0.6, 0.2 \\
-force 2 / 4 / 6\,N (0.55, soft) & 3/3, 8/9, 3/3 & 3.0, 7.4, 8.5 & -- & -- \\
+force 2 / 4 / 6\,N (0.55, soft) & 3/3, 2/3, 3/3 & 3.0, 10.5, 8.5 & -- & -- \\
 offset normal $-3/-1.5/+1.5/+3$\,cm & 2/3, 3/3, 2/3, 3/3 & 13, 5, 20, 14 & 2/3, 2/3, 2/3, 2/3 & 20, 29, 18, 16 \\
 offset across $-2/+2$\,cm & 2/3, 2/3 & 23, 12 & 1/3, 2/3 & 20, 28 \\
 \bottomrule
@@ -412,22 +458,23 @@ offset across $-2/+2$\,cm & 2/3, 2/3 & 23, 12 & 1/3, 2/3 & 20, 28 \\
 
 \subsection{Supporting study: colour under illumination}\label{sec:colour}
 Fig.~\ref{fig:strip} shows the six measurement stages of one leaf, Fig.~\ref{fig:methods}
-and Table~\ref{tab:colour} the study over the Shadow matrix (340--433 samples per stage,
-15--23 leaves); the 2F-85 matrix (190--398 samples per stage, 10--21 leaves) reproduces every
-trend below and is reported in the supplementary tables. Three findings, all on paired
-samples of the same leaf under the same condition.
+and Table~\ref{tab:colour} the study over the Shadow matrix (225--433 valid samples per stage,
+15--23 leaves); the 2F-85 matrix (190--398 samples per stage, 10--21 leaves) is reported in the supplementary tables. Together the two matrices contain 3,800
+recorded rows, of which 3,555 are valid leaf samples. Calibration availability differs
+between methods, so aggregate accuracies below are descriptive rather than paired causal
+comparisons. Paired comparisons must intersect valid samples by run, leaf, stage and condition.
 
 \emph{The board on the platform is the worst estimator.} Calibrating with the platform
-board lowers five-class accuracy below the uncalibrated chromaticity at every stage
+board lowers four-swatch accuracy below the uncalibrated chromaticity at every stage
 (0.46--0.57 vs 0.55--0.68) and makes the verdict the most illumination-sensitive: the error
-spread over the 18 conditions of one leaf is 0.033--0.040 for the board against 0.022--0.027
+spread over the recorded conditions of one leaf is 0.033--0.040 for the board against 0.022--0.027
 raw, and 44--70\,\% of leaves change class with the light. The board sees the open sky while
 the leaf sits in the canopy; a two-point calibration then moves the leaf colour the wrong way.
 
 \emph{A reference next to the leaf gives the most stable verdict.} Chip calibration has the
 smallest spread (0.016--0.022), the fewest flips (33--44\,\% of leaves) and the best accuracy
 (0.62--0.70) wherever the chips are exposed like the leaf, which on the Shadow thumb is
-72\,\% of wrist samples at roll 0 and none at roll $+35^\circ$ (the thumb turns its back to
+66\,\% of valid leaf samples at roll 0 and none at roll $+35^\circ$ (the thumb turns its back to
 the camera). On the paired subset chip and raw estimates are close in mean error
 (0.086 vs 0.077 at the pinch); the gain is in stability, not in the mean. With the 2F-85,
 whose chips face the camera at every roll, the chip flip rate falls to 13--44\,\% of leaves
@@ -438,16 +485,17 @@ at the active stages against 64--90\,\% raw and 64--75\,\% board, with the small
 condition the chromaticity error after pinching, lifting or rolling differs from the
 close-up passive view by less than 0.005. The higher accuracy of the active stages in
 Table~\ref{tab:colour} (0.65--0.68 vs 0.57) is selection: the leaves that could be pinched
-are the ones that were well exposed. What the contact does guarantee is that every sample
-is validated by depth and semantics on the intended leaf (100\,\% at all stages) and that
-both faces of the blade are seen; a proxy view selection over the four active presentations
-(the best-exposed chip) did not beat the average view.
+are the ones that were well exposed. Depth validation and evaluation-time semantic lookup establish what was sampled, not
+that it belongs to the intended target; the study can grade the material under a different
+leaf pixel. Nor does unsigned normal change establish that both faces were seen.
+These require separate identity and face-visibility checks. A proxy view selection over
+the four active presentations (the best-exposed chip) did not beat the average view.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figs/study_methods.png}
 \caption{Colour study over the Shadow matrix: chromaticity error to the true shade (left,
-mean $\pm$ std) and five-class accuracy (right) per measurement stage for the raw,
+mean $\pm$ std) and four-swatch accuracy (right) per measurement stage for the raw,
 board-calibrated and chip-calibrated estimates.}
 \label{fig:methods}
 \end{figure}
@@ -464,7 +512,7 @@ samples: leaf, and the white and grey chips on the thumb.}
 \end{figure}
 
 \begin{table}[t]
-\caption{Colour study, Shadow matrix: mean chromaticity error / five-class accuracy of the
+\caption{Colour study, Shadow matrix: mean chromaticity error / four-swatch accuracy of the
 raw, board- and chip-calibrated estimates per stage; ``sens.'' is the std of the error over
 the 18 illumination conditions of one leaf (mean over leaves); ``flip'' the fraction of
 leaves whose class changes with the light (raw / board / chip).}
@@ -485,24 +533,25 @@ lifted, roll $-35^\circ$ & 225 & .090 / .64 & .104 / .50 & .105 / .65 & .027 / .
 \end{tabular}
 \end{table}
 
-\subsection{When does the blade follow the gripper?}\label{sec:turn}
-The roll is meant to show the camera both faces of the blade, and the ``turn'' column of
-Table~\ref{tab:runs} is the honest measure of whether it does. With the original leaf
-material (Young's modulus $10^7$\,Pa) the blade rotated $0$--$3^\circ$ regardless of pinch
-force (0.7--3\,N), pad friction, pinch location (mid-blade or at 70--80\,\% toward the tip)
-and roll axis (across the blade, or along it by approaching from the tip with the platform
-driven in from the far end of the row). The reason is a torque budget. The pads transmit at
-most $F\mu w/2\approx 3\times1.6\times0.011\approx0.05$\,N\,m with 22\,mm pads, whereas
-twisting a $40{\times}14$\,mm section by $35^\circ$ over the 26\,mm pad length at
-$10^7$\,Pa needs of order 2\,N\,m; torsional stiffness scales with the fourth power of the
-section, so even 100$\times$ softer leaves ($10^5$\,Pa, stable in the plant-only settling
-check, Table~\ref{tab:soft}) were still short by about $6\times$. Softening the leaves to
-$3\times10^4$\,Pa (330$\times$), widening the pads to 40\,mm and raising the pinch to 4\,N
-brought the budget to a margin of about 1.5 and produced the first visible turn: $42.8^\circ$
-with 21\,mm of deflection on a light-green leaf pinched at 53\,\% of its length
-(Fig.~\ref{fig:sweep}). Leaves pinched close to the sheath, where the section is thick,
-still do not follow ($0$--$7^\circ$), which makes pinch location along the blade the
-dominant variable.
+\subsection{Mechanical interpretation and its limits}\label{sec:turn}
+The visible deformation in the development videos motivates investigating action transfer,
+but Table~\ref{tab:interaction} measures a terminal state rather than tracking through the
+sweep. An engineering friction-torque estimate is
+\begin{equation}
+ |\tau_{\mathrm{contact}}| \lesssim \mu F_{\mathrm{sum}}r_{\mathrm{eff}},
+\end{equation}
+where $F_{\mathrm{sum}}$ sums opposing normal loads and $r_{\mathrm{eff}}$ depends on the
+pressure distribution. It is not generally equal to half the pad width. Tissue geometry,
+anchoring, local deformation and finger compliance also affect the response. A comparison
+with the torsional rigidity of a coarse collision envelope is therefore only a heuristic,
+not identification of tissue stiffness or proof of sliding.
+
+Development run rq33 showed visible deformation of a light-green leaf, with a logged
+terminal normal change of $42.8^\circ$ and 21\,mm patch displacement
+(Fig.~\ref{fig:sweep}). That observation supports studying deformation-aware presentation,
+not a universal torque margin or dominant pinch location. We retain the historical
+plant-settling checks below as provenance. The plant asset, attachments, masses, materials,
+collision resolution and damping remain fixed for the proposed future controller study.
 
 \begin{table}[t]
 \caption{Plant-only settling check with softened leaves (stalk unchanged): all nodes finite,
@@ -545,7 +594,8 @@ a crude stand-in for diffuse sky light in the canopy. Second, the leaf material 
 Lambertian and the camera has neither noise, limited dynamic range nor automatic white
 balance; the benefits a real camera would draw from lifting a leaf out of deep shade
 (signal-to-noise, exposure) are therefore not captured here, and the reported gains of
-presentation are, if anything, conservative on those counts and optimistic on none.
+presentation cannot be assumed conservative: idealized sensing, contact geometry and
+illumination can bias different metrics in either direction.
 
 \textbf{Ghost targets.} The field around the target is populated with visual-only plants.
 The RGB-D targeting occasionally chooses a patch on a neighbour's leaf that has no physics;
@@ -554,17 +604,17 @@ because in the field the same patch would be a real, pinchable leaf of the wrong
 is a targeting error of a different kind.
 
 \textbf{Where the reference sits.} The chips are exposed like the leaf only when the upper
-jaw faces the camera and the light: on the Shadow thumb they are valid in about 70\,\% of
-samples at roll 0 and never at roll $+35^\circ$, on the 2F-85 finger in 55--95\,\%. A reference that
+jaw faces the camera and the light: on the Shadow thumb they are valid in about 66\,\% of valid leaf
+samples at roll 0 and never at roll $+35^\circ$, on the 2F-85 finger in about 23--95\,\% across wrist stages. A reference that
 is to be trusted must be placed, and rolled, with the same care as the leaf; the number
 that matters is not the calibration model but whether reference and sample share the light.
 
 \textbf{What we believe transfers.} The force-then-centre pinch, the force-limited presentation
 with the camera decoupled from the roll, the canopy-aware transit planning with a global IK,
 the depth- and semantics-validated sampling, and the co-located reference are
-hardware-agnostic and cheap. The failure taxonomy (unreachable posture, approach timeout,
+implemented for both tools, but their hardware transfer remains untested. The failure taxonomy (unreachable posture, approach timeout,
 ghost target, no usable patch, one-sided hold) is the list a field system has to close; the
-planting-grid prior closes one of them.
+planting-grid prior removed ghost targets in the tested refinement subset.
 
 \textbf{Next.} A real-plant study with leaves of known SPAD values and a camera with noise and
 auto-exposure, a learned segmenter, and the pinch location chosen explicitly for compliance.
@@ -575,8 +625,12 @@ auto-exposure, a learned segmenter, and the pinch location chosen explicitly for
 We built and evaluated, in simulation, a mobile manipulator that navigates to a maize plant,
 finds and pinches leaves from RGB-D data alone, presents them to a stationary wrist camera
 under regulated force, and grades their colour against a reference board under the same
-light. The loop closes reliably; making the blade actually turn with the gripper is a
-matter of torque budget and pinch location, which we quantified.
+light. The nominal loop completes useful inspection sequences, but broader matrices expose
+targeting, contact-observability and measurement failures. The archived rotation metric
+cannot establish how faithfully a blade follows its gripper. A stronger contribution is
+a response-aware presentation policy evaluated with synchronized leaf-pose feedback and
+matched baselines, rather than an unsupported universal design rule. That policy remains
+proposed; the existing plant is held fixed for its future evaluation.
 
 %% ---------------------------------------------------------------------------
 \bibliographystyle{IEEEtran}

@@ -1,77 +1,242 @@
-            run     leaf                      outcome  pinch_N  max_N  hold_s  turn_deg  turn_ratio  defl_mm
- iaR_f0.35_e3e4  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.12
- iaR_f0.35_e3e4  patch_9             approach timeout     0.00   0.00    0.00       NaN         NaN     0.14
- iaR_f0.35_e3e4  patch_1                     complete     4.00   4.57   20.40      2.30        0.07    10.83
- iaR_f0.35_e3e5  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.30
- iaR_f0.35_e3e5 patch_10                     complete     3.87   4.56   18.63     20.60        0.59     7.35
- iaR_f0.35_e3e5  patch_6                     complete     4.32   5.62    6.03      0.00        0.00     0.51
- iaR_f0.35_e3e6  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.37
- iaR_f0.35_e3e6  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.37
- iaR_f0.35_e3e6  patch_2                     complete     4.00   5.16   20.40      0.40        0.01    10.13
- iaR_f0.55_e3e4  patch_1                     complete     3.99   4.73   20.40      2.70        0.08    11.20
- iaR_f0.55_e3e4  patch_8                     complete     3.99   5.70    9.80     28.90        0.83    11.16
- iaR_f0.55_e3e4  patch_6 probe timeout (contact 46.7      5.22   5.91   46.70      0.00        0.00     0.13
- iaR_f0.55_e3e5  patch_1                     complete     4.00   4.59   20.40     19.90        0.57    10.15
- iaR_f0.55_e3e6  patch_1                     complete     4.00   4.96   20.40      0.40        0.01    10.06
- iaR_f0.55_e3e6  patch_3                     complete     3.96   4.89   20.40      2.20        0.06     3.89
- iaR_f0.55_e3e6  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     3.89
- iaR_f0.75_e3e4  patch_3                     complete     3.99   5.36   20.40      2.50        0.07     3.41
- iaR_f0.75_e3e4  patch_8 probe timeout (contact 0.0 s     4.44   5.64    0.00     25.90        0.96     4.41
- iaR_f0.75_e3e4  patch_1                     complete     4.00   4.84   20.40      4.10        0.12    14.72
- iaR_f0.75_e3e5  patch_3                     complete     3.96   5.01    6.03      1.10        0.03     4.58
- iaR_f0.75_e3e5 patch_11                     complete     3.96   4.55   20.40     18.80        0.54     9.01
- iaR_f0.75_e3e5  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     9.01
- iaR_f0.75_e3e6  patch_3                     complete     3.95   4.65   20.17      2.80        0.08     4.24
-     iaR_force2  patch_1                     complete     2.00   2.54   20.40      1.80        0.05     9.16
-     iaR_force2  patch_8                     complete     1.99   2.48   14.50      7.20        0.21     4.85
-     iaR_force2  patch_6                     complete     2.50   2.92   12.77      0.10        0.00     0.31
-     iaR_force6  patch_1                     complete     5.99   6.88   20.40      3.00        0.09    12.09
-     iaR_force6  patch_9                     complete     6.00   7.02   20.40     22.60        0.65    10.74
-     iaR_force6  patch_6                     complete     5.89   7.19    6.03      0.00        0.00     0.12
-iaR_off_n-0.015  patch_1                     complete     4.00   4.71   20.40      4.50        0.13    11.02
-iaR_off_n-0.015  patch_9                     complete     4.00   4.41   20.40     10.40        0.30     5.52
-iaR_off_n-0.015  patch_6                     complete     4.31   5.79    6.03      0.00        0.00     0.09
- iaR_off_n0.015  patch_1                     complete     3.99   4.69   20.40      2.80        0.08    10.64
- iaR_off_n0.015  patch_8                     complete     3.97   4.75    6.03     37.60        1.07     4.58
- iaR_off_n0.015  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     4.58
- iaR_off_n-0.03  patch_1                     complete     4.00   5.22   20.40     26.70        0.76    27.78
- iaR_off_n-0.03  patch_8 probe timeout (contact 53.2      4.00   5.82   53.17       NaN         NaN    17.09
- iaR_off_n-0.03  patch_6                     complete     4.26   5.87    6.03      0.00        0.00     0.09
-  iaR_off_n0.03  patch_1                     complete     3.97   5.14   13.13     12.90        0.37    17.17
-  iaR_off_n0.03  patch_8                     complete     3.98   4.98   20.40     30.30        0.87     9.19
-  iaR_off_n0.03  patch_6                     complete     4.27   6.24    6.03      0.00        0.00     0.12
- iaR_off_x-0.02  patch_1                     complete     3.97   4.65   20.40     12.80        0.37    20.86
- iaR_off_x-0.02  patch_8                     complete     3.98   4.49   20.40     55.90        1.60     5.66
- iaR_off_x-0.02  patch_6 probe timeout (contact 57.3      5.37   6.50   57.30      0.10        0.00     0.51
-  iaR_off_x0.02  patch_1                     complete     4.00   4.74   20.40     12.20        0.35    14.59
-  iaR_off_x0.02  patch_9                     complete     4.00   4.90   20.40     23.60        0.67     8.27
-  iaR_off_x0.02  patch_6 probe timeout (contact 48.1      5.11   5.72   48.10      0.00        0.00     0.10
+                run     leaf                      outcome  pinch_N  max_N  hold_s  turn_deg  turn_ratio  defl_mm
+  icR_f0.35_e3e4_y0  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.16
+  icR_f0.35_e3e4_y0  patch_8             approach timeout     0.00   0.00    0.00       NaN         NaN     0.17
+  icR_f0.35_e3e4_y0  patch_1                     complete     4.00   4.62   20.40      2.50        0.07    10.85
+icR_f0.35_e3e4_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.15
+icR_f0.35_e3e4_y-15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.22
+icR_f0.35_e3e4_y-15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     0.22
+icR_f0.35_e3e4_y-15  patch_6                     complete     4.16   5.59    6.03      0.00        0.00     0.09
+ icR_f0.35_e3e4_y15  patch_5                     complete     4.18   5.81    6.03      0.00        0.00     1.21
+ icR_f0.35_e3e4_y15  patch_2                     complete     3.63   5.60    6.03      0.00        0.00     0.22
+ icR_f0.35_e3e4_y15  patch_8 probe timeout (contact 0.0 s     0.00   1.34    0.00      0.00         NaN     0.31
+ icR_f0.35_e3e4_y15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.31
+icR_f0.35_e3e4_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.11
+icR_f0.35_e3e4_y-30  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN    10.17
+icR_f0.35_e3e4_y-30  patch_1                     complete     4.21   5.56    6.03      0.00        0.00     0.39
+ icR_f0.35_e3e4_y30  patch_2                     complete     3.12   5.13   13.10      0.10        0.00     0.17
+ icR_f0.35_e3e4_y30  patch_8 force safety trip (pads 8.18     4.33   8.18    0.00      1.60        0.05    12.25
+ icR_f0.35_e3e4_y30  patch_6                     complete     3.94   5.07   11.53      0.00        0.00     0.18
+ icR_f0.35_e3e4_y30  patch_5                     complete     4.13   5.25    6.03      0.10        0.00     0.10
+  icR_f0.35_e3e5_y0  patch_7                     complete     4.28   5.55    6.03      0.00        0.00     0.11
+  icR_f0.35_e3e5_y0 patch_10                     complete     3.97   4.45   20.40     27.10        0.77     9.23
+  icR_f0.35_e3e5_y0  patch_1                     complete     4.00   5.04   20.40      6.40        0.18    11.65
+  icR_f0.35_e3e5_y0  patch_3                     complete     3.98   4.66   20.27     14.50        0.41     4.38
+icR_f0.35_e3e5_y-15  patch_4                     complete     4.24   5.78    6.03      0.10        0.00     0.11
+icR_f0.35_e3e5_y-15  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     1.04
+ icR_f0.35_e3e5_y15  patch_6                     complete     4.28   5.63    6.03      0.00        0.00     0.76
+ icR_f0.35_e3e5_y15  patch_2 probe timeout (contact 0.0 s     3.24   4.96    0.00      0.00        0.00     0.21
+ icR_f0.35_e3e5_y15  patch_8                     complete     4.27   5.59    6.03      0.10        0.00     0.49
+ icR_f0.35_e3e5_y15  patch_7 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.39
+icR_f0.35_e3e5_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.19
+icR_f0.35_e3e5_y-30  patch_9             approach timeout     0.00   0.00    0.00       NaN         NaN    23.10
+icR_f0.35_e3e5_y-30  patch_7                     complete     4.05   5.41   10.57      0.00        0.00     0.62
+icR_f0.35_e3e5_y-30  patch_1                     complete     4.24   5.53    6.03      0.00        0.00     0.19
+ icR_f0.35_e3e5_y30  patch_3                     complete     5.09   5.86   14.90      0.00        0.00     0.27
+ icR_f0.35_e3e5_y30  patch_9                     complete     4.38   5.72    6.03      0.00        0.00     0.48
+ icR_f0.35_e3e5_y30  patch_5                     complete     4.04   5.13    6.03      0.40        0.01     0.12
+ icR_f0.35_e3e5_y30  patch_7                     complete     4.23   5.49    6.03      0.10        0.00     0.10
+  icR_f0.35_e3e6_y0  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.33
+  icR_f0.35_e3e6_y0  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.33
+  icR_f0.35_e3e6_y0  patch_2                     complete     4.00   5.03   20.40      0.40        0.01    10.13
+  icR_f0.35_e3e6_y0  patch_3                     complete     3.91   5.14   20.40      1.40        0.04     3.99
+icR_f0.35_e3e6_y-15  patch_4                     complete     4.34   5.63    6.03      0.10        0.00     0.10
+icR_f0.35_e3e6_y-15  patch_3             approach timeout     0.00   0.00    0.00       NaN         NaN     0.27
+ icR_f0.35_e3e6_y15  patch_3 probe timeout (contact 57.5      5.30   5.92   57.53      0.00        0.00     0.43
+ icR_f0.35_e3e6_y15  patch_6                     complete     4.32   5.47    6.03      0.00        0.00     0.28
+ icR_f0.35_e3e6_y15  patch_8                     complete     4.25   5.75    6.03      0.10        0.00     0.61
+ icR_f0.35_e3e6_y15  patch_1                     complete     4.00   4.82   20.40      3.70        0.11     6.30
+icR_f0.35_e3e6_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.19
+icR_f0.35_e3e6_y-30  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN    18.00
+ icR_f0.35_e3e6_y30  patch_3 probe timeout (contact 57.6      5.27   5.96   57.60      0.00        0.00     0.25
+ icR_f0.35_e3e6_y30 patch_10                     complete     4.64   5.52    7.93      0.00        0.00     0.51
+ icR_f0.35_e3e6_y30  patch_7                     complete     4.13   5.33    6.03      0.00        0.00     0.13
+ icR_f0.35_e3e6_y30  patch_5                     complete     4.27   5.65    6.03      0.10        0.00     0.08
+  icR_f0.55_e3e4_y0  patch_1                     complete     4.00   4.72   20.40      3.00        0.09    11.22
+  icR_f0.55_e3e4_y0  patch_8                     complete     3.98   5.54   10.03     14.00        0.40    10.68
+  icR_f0.55_e3e4_y0  patch_6 probe timeout (contact 46.7      5.22   5.80   46.70      0.00        0.00     0.13
+  icR_f0.55_e3e4_y0  patch_3                     complete     3.99   5.53   20.47      2.90        0.08     3.33
+icR_f0.55_e3e4_y-15  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.57
+icR_f0.55_e3e4_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.57
+icR_f0.55_e3e4_y-15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN    42.59
+icR_f0.55_e3e4_y-15  patch_8                     complete     4.08   5.49    6.03      0.00        0.00     0.09
+ icR_f0.55_e3e4_y15  patch_1                     complete     4.00   4.75   20.40      4.20        0.12    10.91
+ icR_f0.55_e3e4_y15 patch_10                     complete     4.12   5.25    9.97      0.20        0.01     2.00
+ icR_f0.55_e3e4_y15  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     2.00
+ icR_f0.55_e3e4_y15  patch_2                     complete     3.67   5.57    6.03      0.10        0.00     0.27
+icR_f0.55_e3e4_y-30  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN    58.38
+icR_f0.55_e3e4_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN    58.38
+icR_f0.55_e3e4_y-30  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN    58.38
+ icR_f0.55_e3e4_y30  patch_6                     complete     4.00   4.99   10.93      0.00        0.00     0.14
+ icR_f0.55_e3e4_y30  patch_8 force safety trip (pads 8.03     4.32   8.03    0.00      0.70        0.02    12.73
+ icR_f0.55_e3e4_y30  patch_5                     complete     4.14   5.45    6.03      0.10        0.00     0.09
+ icR_f0.55_e3e4_y30  patch_2                     complete     3.20   5.00   13.73      0.10        0.00     0.21
+  icR_f0.55_e3e5_y0  patch_1                     complete     4.00   4.55   20.40     21.50        0.61    10.19
+icR_f0.55_e3e5_y-15  patch_4                     complete     4.23   5.80    6.03      0.10        0.00     0.10
+icR_f0.55_e3e5_y-15  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.66
+ icR_f0.55_e3e5_y15  patch_1                     complete     4.00   4.83   20.40      1.60        0.05     7.15
+ icR_f0.55_e3e5_y15  patch_9                     complete     4.27   5.66    6.03      1.50        0.04    25.95
+ icR_f0.55_e3e5_y15  patch_6                     complete     4.23   5.59    6.03      0.00        0.00     0.47
+ icR_f0.55_e3e5_y15 patch_10             approach timeout     0.00   0.00    0.00       NaN         NaN     0.47
+icR_f0.55_e3e5_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.15
+icR_f0.55_e3e5_y-30  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN    17.46
+ icR_f0.55_e3e5_y30  patch_5                     complete     4.05   5.11    6.03      0.20        0.01     0.13
+ icR_f0.55_e3e5_y30  patch_9                     complete     4.34   5.61    6.03      0.00        0.00     0.51
+ icR_f0.55_e3e5_y30  patch_7                     complete     4.23   5.53    6.03      0.10        0.00     0.08
+ icR_f0.55_e3e5_y30  patch_3                     complete     4.66   5.67    6.03      0.00        0.00     0.25
+  icR_f0.55_e3e6_y0  patch_1                     complete     4.00   4.86   20.40      0.50        0.01    10.28
+  icR_f0.55_e3e6_y0  patch_3                     complete     3.97   4.86   20.40      3.50        0.10     4.28
+  icR_f0.55_e3e6_y0  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     4.28
+  icR_f0.55_e3e6_y0  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     4.28
+icR_f0.55_e3e6_y-15  patch_4                     complete     4.34   5.51    6.03      0.10        0.00     0.10
+icR_f0.55_e3e6_y-15  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.24
+ icR_f0.55_e3e6_y15  patch_1                     complete     4.00   5.02   20.40      0.70        0.02     5.91
+ icR_f0.55_e3e6_y15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     5.91
+ icR_f0.55_e3e6_y15  patch_6                     complete     4.32   5.45    6.03      0.00        0.00     0.33
+ icR_f0.55_e3e6_y15  patch_8                     complete     4.25   5.89    6.03      0.10        0.00     0.51
+icR_f0.55_e3e6_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.14
+icR_f0.55_e3e6_y-30  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN    17.92
+ icR_f0.55_e3e6_y30  patch_7                     complete     4.09   5.33    6.03      0.00        0.00     0.19
+ icR_f0.55_e3e6_y30 patch_10                     complete     4.72   5.53    7.60      0.00        0.00     0.43
+ icR_f0.55_e3e6_y30  patch_5                     complete     4.29   5.72    6.03      0.00        0.00     0.08
+ icR_f0.55_e3e6_y30  patch_3 probe timeout (contact 57.7      5.36   6.28   57.70      0.00        0.00     0.32
+  icR_f0.75_e3e4_y0  patch_3                     complete     3.99   5.49   20.40      2.50        0.07     3.39
+  icR_f0.75_e3e4_y0  patch_8 probe timeout (contact 0.0 s     4.44   5.67    0.00      4.60        0.17     1.99
+  icR_f0.75_e3e4_y0  patch_1                     complete     4.00   4.89   20.40      3.60        0.10    14.76
+  icR_f0.75_e3e4_y0  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN    14.76
+icR_f0.75_e3e4_y-15  patch_6                     complete     4.18   5.53    6.03      0.00        0.00     0.16
+icR_f0.75_e3e4_y-15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     0.18
+icR_f0.75_e3e4_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN    49.73
+icR_f0.75_e3e4_y-15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN    61.86
+ icR_f0.75_e3e4_y15  patch_1                     complete     4.00   4.75   20.40      4.50        0.13    10.95
+ icR_f0.75_e3e4_y15 patch_10                     complete     4.12   5.37   10.00      0.20        0.01     2.59
+ icR_f0.75_e3e4_y15  patch_8             approach timeout     0.00   0.00    0.00       NaN         NaN     2.59
+ icR_f0.75_e3e4_y15  patch_2                     complete     3.67   5.54    6.03      0.00        0.00     0.23
+icR_f0.75_e3e4_y-30  patch_1                     complete     4.21   5.78    6.03      0.00        0.00     0.40
+ icR_f0.75_e3e4_y30  patch_5                     complete     4.14   5.44    6.03      0.10        0.00     0.13
+ icR_f0.75_e3e4_y30  patch_6                     complete     3.95   4.95   11.53      0.00        0.00     0.12
+ icR_f0.75_e3e4_y30  patch_8 force safety trip (pads 8.35     4.30   8.35    0.00      1.60        0.05    12.01
+ icR_f0.75_e3e4_y30  patch_2                     complete     3.19   5.06   13.37      0.00        0.00     0.15
+  icR_f0.75_e3e5_y0 patch_11                     complete     3.96   4.44   20.40     29.80        0.85     9.57
+  icR_f0.75_e3e5_y0  patch_3                     complete     3.96   4.72    6.03      4.50        0.13     5.03
+  icR_f0.75_e3e5_y0  patch_1                     complete     4.00   4.94   20.40     30.00        0.86    13.58
+  icR_f0.75_e3e5_y0  patch_6                     complete     4.34   5.62    6.03      0.00        0.00     0.49
+icR_f0.75_e3e5_y-15  patch_5                     complete     4.19   5.54    6.03      0.00        0.00     0.11
+icR_f0.75_e3e5_y-15  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.63
+ icR_f0.75_e3e5_y15 patch_10             approach timeout     0.00   0.00    0.00       NaN         NaN     0.06
+ icR_f0.75_e3e5_y15  patch_1                     complete     4.00   4.96   20.40      1.40        0.04     6.95
+ icR_f0.75_e3e5_y15  patch_6                     complete     4.28   5.75    6.03      0.00        0.00     1.01
+ icR_f0.75_e3e5_y15  patch_8                     complete     4.27   5.73    6.03      0.10        0.00     0.36
+icR_f0.75_e3e5_y-30  patch_1                     complete     4.24   5.62    6.03      0.00        0.00     0.18
+ icR_f0.75_e3e5_y30  patch_7                     complete     4.25   5.44    6.03      0.10        0.00     0.13
+ icR_f0.75_e3e5_y30  patch_6                     complete     4.04   5.12    6.03      0.40        0.01     0.13
+ icR_f0.75_e3e5_y30  patch_1                     complete     3.95   4.58   20.40      4.60        0.13    32.83
+ icR_f0.75_e3e5_y30  patch_9                     complete     4.35   5.66    6.03      0.10        0.00     0.54
+  icR_f0.75_e3e6_y0  patch_3                     complete     3.94   4.81   20.40      4.00        0.11     4.23
+  icR_f0.75_e3e6_y0  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     4.23
+icR_f0.75_e3e6_y-15  patch_4                     complete     4.33   5.59    6.03      0.10        0.00     0.10
+icR_f0.75_e3e6_y-15  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN     0.28
+ icR_f0.75_e3e6_y15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.08
+ icR_f0.75_e3e6_y15  patch_1                     complete     4.00   4.78   20.40      0.70        0.02     5.83
+ icR_f0.75_e3e6_y15  patch_6                     complete     4.32   5.47    6.03      0.00        0.00     0.20
+ icR_f0.75_e3e6_y15  patch_8                     complete     4.25   5.90    6.03      0.10        0.00     0.57
+icR_f0.75_e3e6_y-30  patch_1                     complete     4.77   6.08    8.90      0.90        0.03     0.15
+icR_f0.75_e3e6_y-30  patch_2             approach timeout     0.00   0.00    0.00       NaN         NaN    91.94
+ icR_f0.75_e3e6_y30  patch_5                     complete     4.25   5.59    6.03      0.10        0.00     0.08
+ icR_f0.75_e3e6_y30  patch_6                     complete     4.14   5.52    6.03      0.00        0.00     0.18
+ icR_f0.75_e3e6_y30  patch_9 probe timeout (contact 1.0 s     4.95   5.73    1.03      0.00        0.00     0.52
+ icR_f0.75_e3e6_y30  patch_2 probe timeout (contact 57.6      5.21   5.80   57.57      0.00        0.00     0.36
+      icR_force2_y0  patch_1                     complete     2.00   2.56   20.40      1.80        0.05     9.06
+      icR_force2_y0  patch_8                     complete     2.00   2.47   14.53     17.00        0.49     5.47
+      icR_force2_y0  patch_6 probe timeout (contact 57.4      2.59   3.00   57.43      0.00        0.00     0.15
+      icR_force2_y0  patch_3                     complete     2.22   2.97    6.03      0.80        0.02     2.39
+    icR_force2_y-15  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.68
+    icR_force2_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.68
+    icR_force2_y-15  patch_8 probe timeout (contact 57.8      2.64   3.13   57.77      0.00        0.00     0.09
+    icR_force2_y-15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     0.20
+     icR_force2_y15  patch_1                     complete     2.00   2.55   20.40      4.90        0.14     9.01
+     icR_force2_y15 patch_10 probe timeout (contact 57.7      2.60   3.26   57.73      0.40        0.01     4.29
+     icR_force2_y15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     4.29
+     icR_force2_y15  patch_2 probe timeout (contact 5.1 s     2.49   3.43    5.10      0.10        0.00     0.26
+      icR_force6_y0  patch_1                     complete     5.99   6.89   20.40      2.70        0.08    12.07
+      icR_force6_y0  patch_8                     complete     6.00   7.10   20.40     22.60        0.65    10.86
+      icR_force6_y0  patch_6                     complete     5.92   7.28    6.03      0.00        0.00     0.11
+      icR_force6_y0  patch_3                     complete     5.99   7.14   20.40      5.80        0.17     4.29
+    icR_force6_y-15  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.70
+    icR_force6_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.70
+    icR_force6_y-15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN    24.16
+     icR_force6_y15  patch_1                     complete     5.99   6.99   20.40      4.70        0.13    11.79
+     icR_force6_y15 patch_10                     complete     5.25   7.04    6.03      0.10        0.00     0.38
+     icR_force6_y15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     0.38
+     icR_force6_y15  patch_2 probe timeout (contact 0.0 s     4.45   5.27    0.00      0.00        0.00     0.31
+  icR_off_n-0.03_y0  patch_1                     complete     4.00   5.25   20.40     26.30        0.75    27.73
+  icR_off_n-0.03_y0  patch_8                     complete     3.95   6.90   20.40       NaN         NaN    13.04
+  icR_off_n-0.03_y0  patch_6                     complete     4.27   5.72    6.03      0.00        0.00     0.09
+  icR_off_n-0.03_y0  patch_3 probe timeout (contact 52.8      4.00   6.42   52.77     28.60        0.82     5.57
+   icR_off_n0.03_y0  patch_1                     complete     3.97   5.14   13.13     12.70        0.36    17.33
+   icR_off_n0.03_y0  patch_8                     complete     3.99   4.91   20.40       NaN         NaN     9.17
+   icR_off_n0.03_y0  patch_6                     complete     4.30   5.91    6.03      0.00        0.00     0.10
+   icR_off_n0.03_y0  patch_3                     complete     3.98   5.11   20.40      1.80        0.05     3.75
+icR_off_n-0.03_y-15  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.50
+icR_off_n-0.03_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.50
+icR_off_n-0.03_y-15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN    31.75
+ icR_off_n-0.03_y15  patch_1                     complete     4.00   5.10   20.40     22.20        0.63    20.43
+ icR_off_n-0.03_y15 patch_10 probe timeout (contact 47.5      4.05   7.36   47.50      0.10        0.00     0.32
+ icR_off_n-0.03_y15  patch_6 probe timeout (contact 53.5      3.99   7.58   53.47      2.20        0.06     0.35
+ icR_off_n0.03_y-15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.23
+ icR_off_n0.03_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.51
+ icR_off_n0.03_y-15  patch_5             approach timeout     0.00   0.00    0.00       NaN         NaN    19.23
+ icR_off_n0.03_y-15  patch_2                     complete     4.18   5.59    6.03      0.00        0.00     0.11
+  icR_off_n0.03_y15  patch_1                     complete     3.94   5.10   12.17     20.60        0.59    15.94
+  icR_off_n0.03_y15 patch_10                     complete     4.14   5.33    9.77      0.10        0.00     0.42
+  icR_off_n0.03_y15  patch_8             approach timeout     0.00   0.00    0.00       NaN         NaN     0.42
+  icR_off_n0.03_y15  patch_5                     complete     4.26   6.92    6.03      0.00        0.00     0.17
+  icR_off_x-0.02_y0  patch_1                     complete     3.98   4.66   20.40     12.60        0.36    20.80
+  icR_off_x-0.02_y0  patch_8                     complete     3.98   4.54   20.40     16.30        0.47     5.40
+  icR_off_x-0.02_y0  patch_6                     complete     4.22   5.65    6.03      0.00        0.00     0.50
+  icR_off_x-0.02_y0  patch_3                     complete     3.90   5.38    6.03      9.40        0.27     3.42
+   icR_off_x0.02_y0  patch_1                     complete     4.00   4.74   20.40      9.90        0.28    14.41
+   icR_off_x0.02_y0  patch_9                     complete     4.00   4.90   20.40     23.60        0.67     8.17
+   icR_off_x0.02_y0  patch_6 probe timeout (contact 48.1      5.09   5.69   48.10      0.00        0.00     0.13
+   icR_off_x0.02_y0  patch_3                     complete     4.00   5.07   20.40      1.40        0.04     4.29
+icR_off_x-0.02_y-15  patch_6             approach timeout     0.00   0.00    0.00       NaN         NaN     0.32
+icR_off_x-0.02_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.32
+icR_off_x-0.02_y-15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN    46.43
+ icR_off_x-0.02_y15  patch_1                     complete     3.99   4.71   20.40      4.60        0.13    13.10
+ icR_off_x-0.02_y15 patch_10                     complete     3.80   4.80   17.33      0.10        0.00     0.53
+ icR_off_x-0.02_y15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     0.53
+ icR_off_x-0.02_y15  patch_2                     complete     4.31   6.21    6.03      0.10        0.00     0.26
+ icR_off_x0.02_y-15  patch_7             approach timeout     0.00   0.00    0.00       NaN         NaN     0.57
+ icR_off_x0.02_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.57
+ icR_off_x0.02_y-15  patch_5             approach timeout     0.00   0.00    0.00       NaN         NaN    48.07
+ icR_off_x0.02_y-15  patch_2                     complete     4.11   5.27    6.03      0.00        0.00     0.10
+  icR_off_x0.02_y15  patch_1                     complete     3.99   4.49   20.40     13.10        0.37    10.87
+  icR_off_x0.02_y15 patch_10                     complete     4.12   5.34    9.83      0.00        0.00     0.56
+  icR_off_x0.02_y15  patch_4             approach timeout     0.00   0.00    0.00       NaN         NaN     0.56
+  icR_off_x0.02_y15  patch_2 probe timeout (contact 0.0 s     3.60   4.92    0.00      0.00        0.00     0.34
 
-## E1 pinch fraction x stiffness (complete rate, mean turn deg, mean turn ratio, n)
-                         n  complete  pinched  turn  ratio  maxN
-gripper frac E                                                  
-robotiq 0.35 30000.00    3      0.33     0.33  2.30   0.07  1.52
-             300000.00   3      0.67     0.67 10.30   0.29  3.39
-             3000000.00  3      0.33     0.33  0.40   0.01  1.72
-        0.55 30000.00    9      0.89     1.00  7.37   0.21  5.04
-             300000.00   1      1.00     1.00 19.90   0.57  4.59
-             3000000.00  3      0.67     0.67  1.30   0.04  3.28
-        0.75 30000.00    3      0.67     1.00 10.83   0.38  5.28
-             300000.00   3      0.67     0.67  9.95   0.28  3.19
-             3000000.00  1      1.00     1.00  2.80   0.08  4.65
+## E1 pinch fraction x stiffness (turn = FEM patch normal; s_turn = wrist-camera blade normal, half swing)
+                          n  n_leaves  complete  pinched  turn  turn_sd  s_turn  s_sd  s_n  s_max  maxN
+gripper frac E                                                                                         
+robotiq 0.35 30000.00    18        15      0.44     0.50  0.43     0.88    4.31  5.92    7  17.15  2.90
+             300000.00   18        16      0.72     0.78  3.25     7.69    2.34  2.30    9   7.35  4.16
+             3000000.00  16        13      0.56     0.69  0.53     1.13    3.40  3.40    6   8.80  3.76
+        0.55 30000.00    19        14      0.53     0.63  2.11     4.03    2.60  2.14    7   5.50  3.48
+             300000.00   13        13      0.69     0.69  2.78     7.05    2.87  3.01    6   8.50  3.72
+             3000000.00  16        14      0.56     0.62  0.49     1.09    3.32  3.12    6   8.60  3.40
+        0.75 30000.00    17        13      0.59     0.71  1.42     1.88    4.04  5.95    7  16.85  3.93
+             300000.00   15        13      0.87     0.87  5.46    10.97    4.44  3.13    8   9.35  4.54
+             3000000.00  14        14      0.57     0.71  0.59     1.24    2.76  2.26    6   5.80  3.95
 
 ## E3 placement offsets (frac 0.55, E 3e4)
-                     n  complete  pinched  turn
-gripper off_n off_x                            
-robotiq -0.03 0.00   3      0.67     1.00 13.35
-        -0.01 0.00   3      1.00     1.00  4.97
-        0.00  -0.02  3      0.67     1.00 22.93
-              0.02   3      0.67     1.00 11.93
-        0.01  0.00   3      0.67     0.67 20.20
-        0.03  0.00   3      1.00     1.00 14.40
+                      n  n_leaves  complete  pinched  turn  turn_sd  s_turn  s_sd  s_n  s_max  maxN
+gripper off_n off_x                                                                                
+robotiq -0.03 0.00   10         8      0.40     0.70 13.23    13.83    4.25   NaN    1   4.25  4.43
+        0.00  -0.02  11         7      0.64     0.64  6.16     6.69    3.50  2.57    3   5.25  3.27
+              0.02   12         8      0.50     0.67  6.00     8.79    2.01  2.45    4   5.10  3.37
+        0.03  0.00   12         9      0.67     0.67  5.03     8.29    5.26  4.60    5  12.40  3.67
 
 ## E2 force (Robotiq)
-               n  complete  turn  ratio  maxN  defl
-gripper force                                      
-robotiq 2.00   3      1.00  3.03   0.09  2.65  4.77
-        6.00   3      1.00  8.53   0.24  7.03  7.65
+                n  n_leaves  complete  pinched  turn  turn_sd  s_turn  s_sd  s_n  s_max  maxN  defl
+gripper force                                                                                      
+robotiq 2.00   12         8      0.33     0.67  3.12     5.84    2.08  2.57    3   5.05  1.95  3.05
+        6.00   11         8      0.55     0.64  5.13     8.06    1.98  2.15    6   6.05  4.34  5.98

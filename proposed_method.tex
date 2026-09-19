@@ -1,0 +1,148 @@
+%% Research proposal only. No implementation or performance claim.
+%% Compile separately from root.tex; keep out of a results submission until validated.
+\documentclass[letterpaper,10pt,conference]{ieeeconf}
+\IEEEoverridecommandlockouts
+\overrideIEEEmargins
+\usepackage{amsmath,amssymb,booktabs,url}
+\title{Response-Aware Leaf Presentation through Bounded Probing and Regrasping}
+\author{Research-method specification --- not an evaluated system}
+\begin{document}
+\maketitle
+\begin{abstract}
+This document specifies an unimplemented extension to an existing robotic leaf-inspection
+system. Its candidate contribution is task-directed estimation and use of the local
+motion response of an attached leaf, including an explicit option to abandon a poorly
+coupled grasp without increasing the force budget. No performance results are claimed.
+The plant model and both working robot pipelines remain unchanged.
+\end{abstract}
+
+\section{Scope and distinction}
+Moving leaves to improve visibility is established~\cite{yao2025}, as are leaf grasping
+for sensing~\cite{mortazavi2026} and online deformation mappings~\cite{hu2017}. The
+candidate contribution is narrower: estimate whether a particular grasp transfers motion
+to a selected sensing region, and use that estimate to choose bounded presentation,
+regrasp, or release. An adaptive Jacobian by itself is not the novelty. This claim must
+survive comparison with a standard adaptive visual servo and a simple low-response
+regrasp rule. We estimate effective response, not Young's modulus or tissue health.
+
+\section{Observation and identification}
+Track two free-blade regions outside the contact envelope: one near the jaw and one
+containing the desired sensing region. Estimate their positions and normals from RGB-D,
+transform them to a common world frame, and retain correspondence across frames. Fit
+quality, point count, occlusion and association consistency define a validity flag. Do
+not predict the region by assuming it follows the gripper: that would assume the very
+coupling being tested. A local tracker may use robot motion as a broad search proposal,
+but must also admit a stationary leaf and reject uncertain associations.
+
+Choose a fixed tangent basis $B\in\mathbb R^{3\times2}$ at each reference normal. For
+small excursions, the regional normal feature is $z=B^\top(\mathbf n-\mathbf n_0)$.
+Sign-align normals with the previous valid estimate; when identity or face orientation
+is uncertain, abstain. Stack the two regional features in $y\in\mathbb R^4$ and use
+the measured action increment $u=[\Delta h/\ell_0,\Delta q_g/\theta_0]^\top$, where
+$h$ is lift and $q_g$ is actual tool roll. Fixed scales $\ell_0,\theta_0$ avoid mixed
+units. Normal motion about its own axis is unobservable from normals alone; this
+representation is not a full six-degree-of-freedom leaf pose.
+
+After bilateral contact, execute a short sequence of small lift and reverse-roll probes
+within the existing force and workspace limits. Probe amplitudes and dwell times are
+selected on development trials and frozen before testing. Initial engineering candidates
+are 2\,mm lift increments and $3^\circ$ roll increments, not biologically safe bounds.
+Use separate lift and roll increments so the input matrix is sufficiently excited; wait
+for a predefined settling criterion and subtract measured no-action drift. For valid
+increments, fit the local response
+\begin{equation}
+ \Delta y_i = J u_i + b\Delta t_i + \epsilon_i,
+\end{equation}
+where $b$ captures residual drift. One regularized estimate is
+\begin{equation}
+ (\widehat J,\widehat b)=\arg\min_{J,b}
+ \sum_i w_i\|\Delta y_i-Ju_i-b\Delta t_i\|^2
+ +\lambda\|J\|_F^2.
+\end{equation}
+Compute prediction intervals from held-out development residuals, accounting for temporal
+correlation; do not interpret a least-squares residual as a calibrated confidence bound.
+Require adequate excitation and observation coverage before using the estimate. Force
+is separately regulated by the existing inner loop and is not inferred from $J$.
+
+\section{Response-aware action selection}
+For a small candidate action set $\mathcal U$, predict the desired region's feature
+change and its uncertainty. Let $e=y-y^\star$ and $W$ prioritize the sensing region.
+Define the conservative predicted benefit
+\begin{equation}
+ L(u)=\|e\|_W^2-\|e+\widehat Ju\|_W^2
+       -\beta\sigma_{\mathrm{pred}}(u)-\lambda_u\|u\|^2.
+\end{equation}
+Here $\sigma_{\mathrm{pred}}$ bounds uncertainty in the predicted cost reduction, in
+the same cost units, and $\beta$ is fixed on development data. Reject actions outside
+joint, corridor, roll, lift and force-monitor limits. Positive $L$ is a local prediction,
+not a formal safety certificate; retain the raw-force stop and abort on unobserved contact.
+
+If a valid action has positive conservative benefit, execute only one small increment,
+observe the actual response, and update the model. Repeated prediction failures trigger
+re-identification or release. If observations are invalid, first pause and reacquire the
+region; do not equate missing data with a rigid or slipping leaf. If observations are
+valid but no useful action remains, open, withdraw through the existing planner, and
+regrasp at a different visible patch on the same leaf, subject to a fixed attempt budget.
+Candidate patches must pass the existing reach and canopy checks. Their response is
+unknown until probed; a measured response at one patch must not be assumed valid elsewhere.
+Compare this decision with a matched random or distal regrasp baseline so that extra
+attempts alone cannot explain an improvement.
+
+A low regional response may reflect anchoring, bending, local buckling, finger
+compliance, sliding or tracking error. Classify it as \emph{low transfer}, not slip.
+Sliding requires an additional relative tangential displacement observation at the
+contact or another independently validated sensor; force and normal change do not
+uniquely identify the mode~\cite{zhou2022}.
+
+\section{Termination and evaluation contract}
+Terminate on measured leaf orientation error below a fixed tolerance, sufficient visible
+region area, bilateral contact within the force window, and a continuous dwell. Example
+development targets are a $15^\circ$ regional reorientation with $5^\circ$ tolerance and
+2\,s dwell; register these before test runs and report achievable-goal coverage. Report
+unreachable and unobserved goals in the denominator, not only completed grasps.
+
+Keep the plant geometry, materials, FEM settings, attachments, damping and initialization
+fixed. Compare on the same leaf, initial grasp patch, sensing region, goal, force cap and
+time/attempt budget. The two hands form separate strata unless common contact geometry
+and a common reachable subset support a paired comparison. Historical modulus sweeps are
+context only, not part of the new experiment.
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Required baselines and ablations; all are proposed, not measured.}
+\begin{tabular}{@{}ll@{}}
+\toprule
+condition & question isolated \\
+\midrule
+Fixed lift/roll & current system \\
+Camera-only active view & is contact needed for the sensing goal? \\
+Fixed-gain visual servo & does leaf feedback suffice? \\
+Adaptive visual servo, no regrasp & does grasp change matter? \\
+Low-response heuristic regrasp & is the response model needed? \\
+Response-aware, fixed grasp & separates adaptation from regrasp \\
+Response-aware, no uncertainty gate & does abstention help? \\
+Full method & combined task-directed policy \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Primary outcomes are paired presentation success and time to the first valid pose, with
+timeouts included. Secondary outcomes include angular tracking error, sensing-region
+availability, force exceedance duration, regrasp count and force exposure
+$\int F_{\mathrm{sum}}\,dt$ (N\,s, not mechanical work). After release, measure residual
+regional deformation and recovery time; neither proves absence of biological damage.
+Report camera-estimator error against evaluation-only FEM trajectories without using
+ground truth for control. Log both peak and terminal deformation and all invalid samples.
+Use run/leaf-pair clustered analysis, not camera frames as independent trials. With only
+one plant asset, uncertainty intervals concern that tested geometry, not a plant population.
+
+\section{What would falsify the contribution?}
+If fixed-gain feedback matches the full policy, the model is unnecessary. If heuristic
+regrasp matches it, the candidate selection/estimation contribution is unsupported. If
+camera-only viewing achieves equivalent sensing coverage without contact, manipulation
+is not justified for that task subset. If the policy benefits only from a larger force or
+attempt budget, the proposed claim fails. None of these comparisons has yet been run.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}

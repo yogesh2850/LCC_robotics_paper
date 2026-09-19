@@ -1,0 +1,90 @@
+hand,run,attempt,leaf,gt_leaf,outcome,complete,fraction,modulus,force_target,offset_normal,offset_across,terminal_turn_raw,terminal_turn_folded,legacy_turn_excluded,sensor_swing,sensor_turn,peak_force
+robotiq,iaR_f0.35_e3e4,0,patch_6,leaf_2_3__4_5,approach timeout,False,0.35,30000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.35_e3e4,1,patch_9,leaf_1_3__4_0,approach timeout,False,0.35,30000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.35_e3e4,2,patch_1,leaf_4_3__4_9,complete,True,0.35,30000.0,4.0,0.0,0.0,2.3,2.3,False,,,4.565
+robotiq,iaR_f0.35_e3e5,0,patch_7,leaf_4_3__4_9,approach timeout,False,0.35,300000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.35_e3e5,1,patch_10,leaf_1_3__4_0,complete,True,0.35,300000.0,4.0,0.0,0.0,159.4,20.599999999999994,False,,,4.557
+robotiq,iaR_f0.35_e3e5,2,patch_6,leaf_2_3__4_5,complete,True,0.35,300000.0,4.0,0.0,0.0,0.0,0.0,False,,,5.623
+robotiq,iaR_f0.35_e3e6,0,patch_6,leaf_4_3__4_9,approach timeout,False,0.35,3000000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.35_e3e6,1,patch_7,leaf_2_3__4_5,approach timeout,False,0.35,3000000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.35_e3e6,2,patch_2,leaf_4_3__4_9,complete,True,0.35,3000000.0,4.0,0.0,0.0,0.4,0.4,False,,,5.164
+robotiq,iaR_f0.55_e3e4,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,0.0,0.0,2.7,2.7,False,,,4.728
+robotiq,iaR_f0.55_e3e4,1,patch_8,leaf_1_3__4_0,complete,True,0.55,30000.0,4.0,0.0,0.0,28.9,28.9,False,,,5.697
+robotiq,iaR_f0.55_e3e4,2,patch_6,leaf_2_3__4_5,"probe timeout (contact 46.7 s, frames 45)",False,0.55,30000.0,4.0,0.0,0.0,0.0,0.0,False,,,5.91
+robotiq,iaR_f0.55_e3e5,0,patch_1,leaf_4_3__4_9,complete,True,0.55,300000.0,4.0,0.0,0.0,19.9,19.9,False,,,4.587
+robotiq,iaR_f0.55_e3e6,0,patch_1,leaf_4_3__4_9,complete,True,0.55,3000000.0,4.0,0.0,0.0,0.4,0.4,False,,,4.957
+robotiq,iaR_f0.55_e3e6,1,patch_3,leaf_2_3__4_5,complete,True,0.55,3000000.0,4.0,0.0,0.0,2.2,2.2,False,,,4.887
+robotiq,iaR_f0.55_e3e6,2,patch_7,leaf_2_3__4_5,approach timeout,False,0.55,3000000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.75_e3e4,0,patch_3,leaf_2_3__4_5,complete,True,0.75,30000.0,4.0,0.0,0.0,2.5,2.5,False,,,5.361
+robotiq,iaR_f0.75_e3e4,1,patch_8,leaf_1_3__4_0,"probe timeout (contact 0.0 s, frames 0)",False,0.75,30000.0,4.0,0.0,0.0,25.9,25.9,False,,,5.642
+robotiq,iaR_f0.75_e3e4,2,patch_1,leaf_4_3__4_9,complete,True,0.75,30000.0,4.0,0.0,0.0,4.1,4.1,False,,,4.839
+robotiq,iaR_f0.75_e3e5,0,patch_3,leaf_2_3__4_5,complete,True,0.75,300000.0,4.0,0.0,0.0,1.1,1.1,False,,,5.008
+robotiq,iaR_f0.75_e3e5,1,patch_11,leaf_1_3__4_0,complete,True,0.75,300000.0,4.0,0.0,0.0,161.2,18.80000000000001,False,,,4.551
+robotiq,iaR_f0.75_e3e5,2,patch_1,leaf_4_3__4_9,approach timeout,False,0.75,300000.0,4.0,0.0,0.0,,,False,,,0.0
+robotiq,iaR_f0.75_e3e6,0,patch_3,leaf_2_3__4_5,complete,True,0.75,3000000.0,4.0,0.0,0.0,2.8,2.8,False,,,4.649
+robotiq,iaR_force2,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,0.0,0.0,1.8,1.8,False,,,2.543
+robotiq,iaR_force2,1,patch_8,leaf_1_3__4_0,complete,True,0.55,30000.0,2.0,0.0,0.0,7.2,7.2,False,,,2.479
+robotiq,iaR_force2,2,patch_6,leaf_2_3__4_5,complete,True,0.55,30000.0,2.0,0.0,0.0,0.1,0.1,False,,,2.923
+robotiq,iaR_force6,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,6.0,0.0,0.0,3.0,3.0,False,,,6.879
+robotiq,iaR_force6,1,patch_9,leaf_1_3__4_0,complete,True,0.55,30000.0,6.0,0.0,0.0,22.6,22.6,False,,,7.019
+robotiq,iaR_force6,2,patch_6,leaf_2_3__4_5,complete,True,0.55,30000.0,6.0,0.0,0.0,0.0,0.0,False,,,7.186
+robotiq,iaR_off_n-0.015,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,-0.015,0.0,4.5,4.5,False,,,4.715
+robotiq,iaR_off_n-0.015,1,patch_9,leaf_1_3__4_0,complete,True,0.55,30000.0,4.0,-0.015,0.0,10.4,10.4,False,,,4.414
+robotiq,iaR_off_n-0.015,2,patch_6,leaf_2_3__4_5,complete,True,0.55,30000.0,4.0,-0.015,0.0,0.0,0.0,False,,,5.795
+robotiq,iaR_off_n-0.03,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,-0.03,0.0,153.3,26.69999999999999,False,,,5.216
+robotiq,iaR_off_n-0.03,1,patch_8,leaf_1_3__4_0,"probe timeout (contact 53.2 s, frames 0)",False,0.55,30000.0,4.0,-0.03,0.0,69.0,69.0,True,,,5.818
+robotiq,iaR_off_n-0.03,2,patch_6,leaf_2_3__4_5,complete,True,0.55,30000.0,4.0,-0.03,0.0,0.0,0.0,False,,,5.872
+robotiq,iaR_off_n0.015,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,0.015,0.0,2.8,2.8,False,,,4.69
+robotiq,iaR_off_n0.015,1,patch_8,leaf_1_3__4_0,complete,True,0.55,30000.0,4.0,0.015,0.0,37.6,37.6,False,,,4.747
+robotiq,iaR_off_n0.015,2,patch_6,leaf_2_3__4_5,approach timeout,False,0.55,30000.0,4.0,0.015,0.0,,,False,,,0.0
+robotiq,iaR_off_n0.03,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,0.03,0.0,12.9,12.9,False,,,5.14
+robotiq,iaR_off_n0.03,1,patch_8,leaf_1_3__4_0,complete,True,0.55,30000.0,4.0,0.03,0.0,30.3,30.3,False,,,4.98
+robotiq,iaR_off_n0.03,2,patch_6,leaf_2_3__4_5,complete,True,0.55,30000.0,4.0,0.03,0.0,0.0,0.0,False,,,6.244
+robotiq,iaR_off_x-0.02,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,0.0,-0.02,12.8,12.8,False,,,4.65
+robotiq,iaR_off_x-0.02,1,patch_8,leaf_1_3__4_0,complete,True,0.55,30000.0,4.0,0.0,-0.02,55.9,55.9,False,,,4.491
+robotiq,iaR_off_x-0.02,2,patch_6,leaf_2_3__4_5,"probe timeout (contact 57.3 s, frames 56)",False,0.55,30000.0,4.0,0.0,-0.02,0.1,0.1,False,,,6.5
+robotiq,iaR_off_x0.02,0,patch_1,leaf_4_3__4_9,complete,True,0.55,30000.0,4.0,0.0,0.02,167.8,12.199999999999989,False,,,4.744
+robotiq,iaR_off_x0.02,1,patch_9,leaf_1_3__4_0,complete,True,0.55,30000.0,4.0,0.0,0.02,23.6,23.6,False,,,4.903
+robotiq,iaR_off_x0.02,2,patch_6,leaf_2_3__4_5,"probe timeout (contact 48.1 s, frames 46)",False,0.55,30000.0,4.0,0.0,0.02,0.0,0.0,False,,,5.72
+shadow,iaS_f0.35_e3e4,0,patch_7,leaf_4_9__3_9,complete,True,0.35,30000.0,2.0,0.0,0.0,1.0,1.0,False,,,2.19
+shadow,iaS_f0.35_e3e5,0,patch_6,leaf_4_9__3_9,complete,True,0.35,300000.0,2.0,0.0,0.0,0.9,0.9,False,,,3.081
+shadow,iaS_f0.35_e3e5,1,patch_5,leaf_1_6__3_9,complete,True,0.35,300000.0,2.0,0.0,0.0,0.0,0.0,False,,,2.78
+shadow,iaS_f0.35_e3e5,2,patch_7,leaf_4_3__4_9,complete,True,0.35,300000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.785
+shadow,iaS_f0.35_e3e6,0,patch_5,leaf_1_6__3_9,complete,True,0.35,3000000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.088
+shadow,iaS_f0.35_e3e6,1,patch_7,leaf_4_9__3_9,no pinch (gripper closed without loading the pads),False,0.35,3000000.0,2.0,0.0,0.0,0.1,0.1,False,,,0.007
+shadow,iaS_f0.55_e3e4,0,patch_11,leaf_2_9__3_7,no pinch (gripper closed without loading the pads),False,0.55,30000.0,2.0,0.0,0.0,0.0,0.0,False,,,0.002
+shadow,iaS_f0.55_e3e4,1,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,0.0,0.0,7.3,7.3,False,,,2.907
+shadow,iaS_f0.55_e3e4,2,patch_9,leaf_3_9__4_9,complete,True,0.55,30000.0,2.0,0.0,0.0,38.8,38.8,False,,,3.64
+shadow,iaS_f0.55_e3e5,0,patch_7,leaf_4_3__4_9,complete,True,0.55,300000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.536
+shadow,iaS_f0.55_e3e5,1,patch_1,leaf_4_9__3_9,complete,True,0.55,300000.0,2.0,0.0,0.0,0.3,0.3,False,,,3.866
+shadow,iaS_f0.55_e3e5,2,patch_5,leaf_1_6__3_9,complete,True,0.55,300000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.463
+shadow,iaS_f0.55_e3e6,0,patch_7,leaf_4_3__4_9,complete,True,0.55,3000000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.704
+shadow,iaS_f0.55_e3e6,1,patch_1,leaf_4_9__3_9,complete,True,0.55,3000000.0,2.0,0.0,0.0,1.8,1.8,False,,,3.582
+shadow,iaS_f0.55_e3e6,2,patch_5,leaf_1_6__3_9,complete,True,0.55,3000000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.132
+shadow,iaS_f0.75_e3e4,0,patch_1,leaf_4_9__3_9,"probe timeout (contact 0.0 s, frames 0)",False,0.75,30000.0,2.0,0.0,0.0,3.0,3.0,False,,,2.033
+shadow,iaS_f0.75_e3e4,1,patch_4,leaf_4_3__4_9,complete,True,0.75,30000.0,2.0,0.0,0.0,8.6,8.6,False,,,2.934
+shadow,iaS_f0.75_e3e4,2,patch_10,leaf_3_9__4_9,complete,True,0.75,30000.0,2.0,0.0,0.0,39.1,39.1,False,,,3.659
+shadow,iaS_f0.75_e3e5,0,patch_1,leaf_4_9__3_9,complete,True,0.75,300000.0,2.0,0.0,0.0,0.2,0.2,False,,,3.877
+shadow,iaS_f0.75_e3e5,1,patch_3,leaf_4_3__4_9,complete,True,0.75,300000.0,2.0,0.0,0.0,1.5,1.5,False,,,3.479
+shadow,iaS_f0.75_e3e5,2,patch_5,leaf_1_6__3_9,complete,True,0.75,300000.0,2.0,0.0,0.0,0.1,0.1,False,,,3.321
+shadow,iaS_f0.75_e3e6,0,patch_10,leaf_4_9__3_9,no pinch (gripper closed without loading the pads),False,0.75,3000000.0,2.0,0.0,0.0,0.0,0.0,False,,,0.003
+shadow,iaS_f0.75_e3e6,1,patch_1,leaf_4_9__3_9,complete,True,0.75,3000000.0,2.0,0.0,0.0,0.6,0.6,False,,,3.893
+shadow,iaS_f0.75_e3e6,2,patch_5,leaf_1_6__3_9,complete,True,0.75,3000000.0,2.0,0.0,0.0,0.0,0.0,False,,,3.129
+shadow,iaS_off_n-0.015,0,patch_11,leaf_2_9__3_7,no pinch (gripper closed without loading the pads),False,0.55,30000.0,2.0,-0.015,0.0,0.0,0.0,False,,,0.002
+shadow,iaS_off_n-0.015,1,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,-0.015,0.0,35.9,35.9,False,,,3.821
+shadow,iaS_off_n-0.015,2,patch_10,leaf_3_9__4_9,complete,True,0.55,30000.0,2.0,-0.015,0.0,49.6,49.6,False,,,5.455
+shadow,iaS_off_n-0.03,0,patch_11,leaf_3_9__4_9,complete,True,0.55,30000.0,2.0,-0.03,0.0,111.6,68.4,True,,,5.447
+shadow,iaS_off_n-0.03,1,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,-0.03,0.0,39.9,39.9,False,,,4.299
+shadow,iaS_off_n-0.03,2,patch_1,leaf_4_9__3_9,"probe timeout (contact 0.0 s, frames 0)",False,0.55,30000.0,2.0,-0.03,0.0,0.1,0.1,False,,,0.823
+shadow,iaS_off_n0.015,0,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,0.015,0.0,161.3,18.69999999999999,False,,,3.279
+shadow,iaS_off_n0.015,1,patch_10,leaf_3_9__4_9,complete,True,0.55,30000.0,2.0,0.015,0.0,33.1,33.1,False,,,3.158
+shadow,iaS_off_n0.015,2,patch_1,leaf_4_9__3_9,"probe timeout (contact 0.0 s, frames 0)",False,0.55,30000.0,2.0,0.015,0.0,2.8,2.8,False,,,2.038
+shadow,iaS_off_n0.03,0,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,0.03,0.0,144.2,35.80000000000001,False,,,3.429
+shadow,iaS_off_n0.03,1,patch_10,leaf_3_9__4_9,complete,True,0.55,30000.0,2.0,0.03,0.0,13.2,13.2,False,,,3.266
+shadow,iaS_off_n0.03,2,patch_1,leaf_4_9__3_9,"probe timeout (contact 0.0 s, frames 0)",False,0.55,30000.0,2.0,0.03,0.0,0.1,0.1,False,,,2.049
+shadow,iaS_off_x-0.02,0,patch_11,leaf_2_9__3_7,no pinch (gripper closed without loading the pads),False,0.55,30000.0,2.0,0.0,-0.02,0.0,0.0,False,,,0.002
+shadow,iaS_off_x-0.02,1,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,0.0,-0.02,170.8,9.199999999999989,False,,,3.399
+shadow,iaS_off_x-0.02,2,patch_10,leaf_3_9__4_9,"probe timeout (contact 0.0 s, frames 0)",False,0.55,30000.0,2.0,0.0,-0.02,128.2,51.80000000000001,False,,,2.706
+shadow,iaS_off_x0.02,0,patch_11,leaf_2_9__3_7,no pinch (gripper closed without loading the pads),False,0.55,30000.0,2.0,0.0,0.02,0.0,0.0,False,,,0.002
+shadow,iaS_off_x0.02,1,patch_4,leaf_4_3__4_9,complete,True,0.55,30000.0,2.0,0.0,0.02,126.1,53.900000000000006,False,,,3.127
+shadow,iaS_off_x0.02,2,patch_10,leaf_3_9__4_9,complete,True,0.55,30000.0,2.0,0.0,0.02,28.6,28.6,False,,,3.758
