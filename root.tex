@@ -476,14 +476,15 @@ fixed at the pinch reference (edge bands frozen at the reference, blade identifi
 label). It samples the free blade rather than the clamped nodes and is recorded at $+35$,
 $-35$ and $0^\circ$, so it is a swing, not a terminal state.
 
-Table~\ref{tab:replicated} gives the 2F-85 cells. Over 89 completed holds the median
-terminal change is $0.1^\circ$ per $35^\circ$ of roll and the 90th percentile $4.5^\circ$;
-six holds exceed $10^\circ$ and all belong to one leaf, which does so at every stiffness and
-pinch location. The camera swing agrees: 2--4$^\circ$ half-swing per cell, 5--17$^\circ$ at
-most. Leaf modulus over two decades, pinch fraction from sheath to tip and force from 2 to
-6\,N move the median by nothing and the mean by a few degrees, while peak pad load follows
-the force target (2.0, 3.5, 4.3\,N). On this plant, at these forces, the blade does not
-follow the roll; the $7$--$17^\circ$ of the exploratory set were properties of the leaves
+Table~\ref{tab:replicated} gives the 2F-85 cells. The during-sweep measurement is the
+camera chord swing between the $+35^\circ$ and $-35^\circ$ dwells: 2--4$^\circ$ half-swing
+per cell on average and 5--17$^\circ$ at most, against $35^\circ$ of tool roll. The
+simulator number is the terminal residual after the roll returns to zero: median
+$0.1^\circ$ over 89 completed holds, 90th percentile $4.5^\circ$, six holds above
+$10^\circ$ all on one leaf, which is retained for comparison with the audit and does not by
+itself distinguish an elastic blade from one that never moved. Leaf modulus over two decades, pinch fraction from sheath to tip and force from 2 to
+6\,N move the swing by a few degrees at most, while peak pad load follows the force target
+(2.0, 3.5, 4.3\,N). On this plant, at these forces, the blade does not follow the roll; the $7$--$17^\circ$ of the exploratory set were properties of the leaves
 it happened to select. Lifting is reliable: every completed hold carried the blade the
 commanded 30\,mm at every stiffness with 2--4\,mm of residual deflection at the pinch.
 
@@ -499,14 +500,14 @@ is rarely met; 6\,N gives 0.55.
 
 \begin{table}[t]
 \caption{Replicated interaction study, Robotiq 2F-85: distinct leaf-geometry pairs per
-cell, completion, median / mean terminal turn (camera half-swing in parentheses), peak
-summed pad load. Modulus columns $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
+cell, completion, median / mean terminal residual after the sweep (camera half-swing during
+the sweep in parentheses), peak summed pad load. Modulus columns $3{\times}10^4$ / $3{\times}10^5$ / $3{\times}10^6$\,Pa.}
 \label{tab:replicated}
 \centering\scriptsize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}llcccc@{}}
 \toprule
-condition & & leaves & complete & turn med. / mean ($^\circ$) & peak (N) \\
+condition & & leaves & complete & residual med. / mean (swing) ($^\circ$) & peak (N) \\
 \midrule
 fraction 0.35 & $E$ columns & 15 / 16 / 13 & .44 / .72 / .56 & 0.1 / 0.4, 3.3, 0.5 (4.3, 2.3, 3.4) & 2.9, 4.2, 3.8 \\
 fraction 0.55 & & 14 / 13 / 14 & .53 / .69 / .56 & 0.1 / 2.1, 2.8, 0.5 (2.6, 2.9, 3.3) & 3.5, 3.7, 3.4 \\
