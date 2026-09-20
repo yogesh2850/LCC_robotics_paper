@@ -46,12 +46,13 @@ not as causal design rules. A supporting illumination study finds that calibrati
 remote platform reference can worsen colour estimation, while a nearby reference can
 reduce variation when visible. These observations motivate response-aware presentation:
 estimate the local action-to-leaf response before choosing to continue, regrasp, or release.
-A replicated interaction matrix run after the audit (63 runs, 13--16 distinct leaf-geometry
-pairs per condition, camera-measured swing at every dwell) finds that the pinched blade does
-not follow the roll on this plant at any tested stiffness, pinch location or force (median
-$0.1^\circ$ per $35^\circ$), that lifting is reliable, and that completion is governed by
-whether the blade faces the arm. The adaptive extension is specified separately and has
-not yet been evaluated. All
+A later Robotiq matrix contains 63 runs, 214 attempted leaves and 124 controller
+completions. Camera swing is available for 78 completed attempts, with median half-swing
+$2.25^\circ$ under a nominal $\pm35^\circ$ tool sweep; this is distinct from terminal
+residual deformation. These observations motivate comparing response-aware decisions with
+fixed sweeps and visual feedback. A scalar response-policy prototype now exists, but no
+matched performance result for it is established here. The full proposed extension remains
+unevaluated. All
 reported results are simulation-only; no tissue-safety or field-performance claim is made.
 \end{abstract}
 
@@ -363,14 +364,13 @@ turned by $120^\circ$ and $240^\circ$ exposed the targeting rather than the mani
 three runs found no patch that passed the reach and clearance filters, five targets were
 \emph{ghost} patches on visual-only neighbour leaves (the jaw closed on nothing), two holds
 never had a visible sample point, one approach stalled. Of the 19 leaves that were real and
-reachable, 16 were pinched and presented. Leaf stiffness ($3{\times}10^4$ vs
-$3{\times}10^5$\,Pa) did not change the completion rate (8 vs 8) but did change the turn: the
-blade followed the $\pm35^\circ$ roll by up to $7^\circ$ at the softer modulus and by
-$0$--$2^\circ$ at the stiffer one, consistent with the torque budget of Sec.~\ref{sec:turn}.
+reachable, 16 reached controller completion. The two historical stiffness settings
+($3{\times}10^4$ vs $3{\times}10^5$\,Pa) each produced eight completions. Their terminal
+normal changes do not establish motion transfer through the sweep (Sec.~\ref{sec:interaction}).
 The 2F-85 shows the same structure at a higher pinch force (4\,N): 8/10 leaves at the tuned
 orientation, none at $120^\circ$ (four runs without a usable patch), 2 of 9 at $240^\circ$
-(six ghost targets), i.e.\ the generalisation limit is the targeting stage, common to both
-end-effectors, not the hand.
+(six ghost targets). Targeting is a prominent failure source for both tools, but this
+does not rule out hand-dependent limitations conditional on a valid target.
 
 Two further iterations on the eight turned instances (Shadow Hand) locate the limit more
 precisely. Dropping the ``blade points away from the arm'' filter (obsolete once the heading
@@ -462,31 +462,40 @@ offset across $-2/+2$\,cm & 2/3, 2/3 & 23, 12 & 1/3, 2/3 & 20, 28 \\
 \end{table}
 
 \subsection{Replicated interaction study}\label{sec:replicated}
-The audit above asks for independent replicates and a stored, sensor-based response
-measurement. Both are provided by a prospective matrix run after the audit
-(\texttt{icR\_*}, 63 runs, 214 attempted leaves; Shadow Hand set in progress\todo{fill}).
-Replication is geometric: the plant is turned by $0$, $\pm15^\circ$ and $\pm30^\circ$ so
+The audit above motivates better geometric coverage and stored response measurements.
+A subsequent matrix provides additional within-asset configurations and camera observations
+(\texttt{icR\_*}, 63 runs, 214 attempted leaves with the 2F-85; \texttt{icS\_*}, 57 runs,
+154 attempted leaves with the Shadow Hand).
+Variation is geometric, not independent biological replication: the plant is turned by $0$, $\pm15^\circ$ and $\pm30^\circ$ so
 that different leaves at different heights and angles face the arm; each cell then holds
 13--16 distinct leaf-geometry pairs. (A first attempt at replication by re-running with
 different leaf colour assignments replayed the same three leaves in a deterministic
-simulator and was discarded.) The response is measured twice: the terminal patch-normal
+simulator and was discarded.) Of 214 attempts, 124 reach controller completion; 84
+attempts have stored camera swing, including 78 completions. Missing values are not zero
+response and must remain visible in coverage reporting. The response has two diagnostics: the terminal patch-normal
 change of the audit, and a new camera estimate stored at every dwell of the sweep, the tilt
 of the chord between the two edges of the target blade 2--9\,cm beyond the pads in a frame
 fixed at the pinch reference (edge bands frozen at the reference, blade identified by its
-label). It samples the free blade rather than the clamped nodes and is recorded at $+35$,
+simulator-provided label). This is an identity-assisted camera measurement, not yet a
+sensor-only tracker. Its sampling origin also follows commanded lift, which must be
+validated against the actual region motion. It samples the free blade rather than the
+clamped nodes and is queried at $+35$,
 $-35$ and $0^\circ$, so it is a swing, not a terminal state.
 
 Table~\ref{tab:replicated} gives the 2F-85 cells. The during-sweep measurement is the
 camera chord swing between the $+35^\circ$ and $-35^\circ$ dwells: 2--4$^\circ$ half-swing
 per cell on average and 5--17$^\circ$ at most, against $35^\circ$ of tool roll. The
-simulator number is the terminal residual after the roll returns to zero: median
-$0.1^\circ$ over 89 completed holds, 90th percentile $4.5^\circ$, six holds above
-$10^\circ$ all on one leaf, which is retained for comparison with the audit and does not by
-itself distinguish an elastic blade from one that never moved. Leaf modulus over two decades, pinch fraction from sheath to tip and force from 2 to
+simulator number is the terminal residual after the roll returns to zero, retained for
+comparison with the earlier audit. It does not distinguish an elastic blade that returned
+from one that never moved. Across the 78 completions with available camera swing, median
+half-swing is $2.25^\circ$, mean $3.43^\circ$ and maximum $17.15^\circ$. These are
+availability-conditioned summaries; nominal tool amplitude is not a synchronized transfer gain. Leaf modulus over two decades, pinch fraction from sheath to tip and force from 2 to
 6\,N move the swing by a few degrees at most, while peak pad load follows the force target
-(2.0, 3.5, 4.3\,N). On this plant, at these forces, the blade does not follow the roll; the $7$--$17^\circ$ of the exploratory set were properties of the leaves
-it happened to select. Lifting is reliable: every completed hold carried the blade the
-commanded 30\,mm at every stiffness with 2--4\,mm of residual deflection at the pinch.
+(2.0, 3.5, 4.3\,N). The observed region generally moves less than the nominal tool sweep, but missing
+observations and selected targets limit generalization. The archived lift offset is a
+controller quantity: among completed attempts it ranges from 22.7 to 30.0\,mm. It does not
+by itself establish that the leaf was carried the commanded distance; actual regional
+translation must be measured independently.
 
 Completion depends on where the leaf is more than on how it is pinched: 0.67--0.81 at
 $0$ to $+30^\circ$ of plant yaw and 0.30--0.38 at $-15$ and $-30^\circ$, where the selected
@@ -497,6 +506,16 @@ error of $+3$\,cm along the blade normal is absorbed by the centring admittance 
 $-3$\,cm is not (0.40: the lower pad drives into the blade); $\pm2$\,cm across the blade
 costs little (0.50--0.64). A 2\,N target halves completion (0.33) because the hold window
 is rarely met; 6\,N gives 0.55.
+
+The Shadow Hand reproduces the response result and inverts the completion result. Its
+completion is 0.71--0.94 per cell (135 of 154 leaves) at every plant yaw, because its
+per-leaf approach heading and global inverse kinematics reach the away-facing blades on
+which the 2F-85 pipeline times out; the hand is not the limit, the 2F-85 planner is. Its
+terminal residual has median $0.2^\circ$ (14 of 135 above $10^\circ$) and its camera
+half-swing median $0.7^\circ$ with a 90th percentile of $19^\circ$: again leaf-specific
+(one leaf averages $9.5^\circ$ at every stiffness, another $0.0^\circ$), with no consistent
+effect of stiffness or pinch location. Placement error costs the 61\,mm jaw more than the
+85\,mm one: 0.50 complete at $-3$\,cm along the normal, 0.64--0.92 for the other offsets.
 
 \begin{table}[t]
 \caption{Replicated interaction study, Robotiq 2F-85: distinct leaf-geometry pairs per
@@ -515,6 +534,12 @@ fraction 0.75 & & 13 / 13 / 14 & .59 / .87 / .57 & 0.1 / 1.4, 5.5, 0.6 (4.0, 4.4
 force 2 / 6\,N & 0.55, soft & 8 / 8 & .33 / .55 & 3.1, 5.1 (2.1, 2.0) & 2.0, 4.3 \\
 offset normal $-3$ / $+3$\,cm & & 8 / 9 & .40 / .67 & 13.2, 5.0 & 4.4, 3.7 \\
 offset across $-2$ / $+2$\,cm & & 7 / 8 & .64 / .50 & 6.2, 6.0 & 3.3, 3.4 \\
+\midrule
+Shadow, fraction 0.35 & $E$ columns & 15 / 14 / 16 & .94 / .87 / .94 & 0.2 / 1.1, 3.5, 1.2 (4.4, 0.9, 0.7) & 3.1, 3.0, 3.6 \\
+Shadow, fraction 0.55 & & 16 / 14 / 15 & .89 / .88 / .89 & 0.2 / 5.1, 3.3, 1.3 (4.4, 5.0, 7.8) & 2.9, 3.3, 3.5 \\
+Shadow, fraction 0.75 & & 14 / 17 / 16 & .71 / .89 / .84 & 0.2 / 6.3, 3.2, 0.9 (6.6, 4.7, 4.7) & 2.5, 3.1, 3.4 \\
+Shadow, offset normal $-3$ / $+3$\,cm & & 10 / 11 & .50 / .92 & 11.1, 9.5 & 2.8, 3.1 \\
+Shadow, offset across $-2$ / $+2$\,cm & & 9 / 10 & .64 / .82 & 4.6, 12.6 & 2.1, 3.1 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -544,11 +569,11 @@ whose chips face the camera at every roll, the chip flip rate falls to 13--44\,\
 at the active stages against 64--90\,\% raw and 64--75\,\% board, with the smallest spread
 (0.014--0.023 vs 0.021--0.027 raw and 0.027--0.037 board).
 
-\emph{Presentation buys identity and access, not chromaticity.} For the same leaf and
+\emph{Presentation did not establish a chromaticity advantage.} For the same leaf and
 condition the chromaticity error after pinching, lifting or rolling differs from the
 close-up passive view by less than 0.005. The higher accuracy of the active stages in
-Table~\ref{tab:colour} (0.65--0.68 vs 0.57) is selection: the leaves that could be pinched
-are the ones that were well exposed. Depth validation and evaluation-time semantic lookup establish what was sampled, not
+Table~\ref{tab:colour} (0.65--0.68 vs 0.57) is consistent with selection: the subset
+that could be pinched differs from the passive-view set. Depth validation and evaluation-time semantic lookup establish what was sampled, not
 that it belongs to the intended target; the study can grade the material under a different
 leaf pixel. Nor does unsigned normal change establish that both faces were seen.
 These require separate identity and face-visibility checks. A proxy view selection over
@@ -577,7 +602,7 @@ samples: leaf, and the white and grey chips on the thumb.}
 \begin{table}[t]
 \caption{Colour study, Shadow matrix: mean chromaticity error / four-swatch accuracy of the
 raw, board- and chip-calibrated estimates per stage; ``sens.'' is the std of the error over
-the 18 illumination conditions of one leaf (mean over leaves); ``flip'' the fraction of
+the available recorded illumination conditions of one leaf (mean over leaves); ``flip'' the fraction of
 leaves whose class changes with the light (raw / board / chip).}
 \label{tab:colour}
 \centering\scriptsize

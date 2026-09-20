@@ -1,68 +1,224 @@
-            run     leaf                      outcome  pinch_N  max_N  hold_s  turn_deg  turn_ratio  defl_mm
- iaS_f0.35_e3e4  patch_7                     complete     1.38   2.19   20.40      1.00        0.03    18.04
- iaS_f0.35_e3e5  patch_6                     complete     2.08   3.08    6.03      0.90        0.03    16.60
- iaS_f0.35_e3e5  patch_5                     complete     2.02   2.78   20.10      0.00        0.00     0.21
- iaS_f0.35_e3e5  patch_7                     complete     3.21   3.79   11.73      0.00        0.00     0.27
- iaS_f0.35_e3e6  patch_5                     complete     2.10   3.09    9.77      0.00        0.00     0.22
- iaS_f0.35_e3e6  patch_7 no pinch (gripper closed wit     0.00   0.01    0.00      0.10         NaN     0.31
- iaS_f0.55_e3e4 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.51
- iaS_f0.55_e3e4  patch_4                     complete     2.08   2.91   20.37      7.30        0.21     5.36
- iaS_f0.55_e3e4  patch_9                     complete     2.14   3.64   20.83     38.80        1.11     8.83
- iaS_f0.55_e3e5  patch_7                     complete     3.20   3.54   11.73      0.00        0.00     0.25
- iaS_f0.55_e3e5  patch_1                     complete     2.48   3.87   20.50      0.30        0.01     1.15
- iaS_f0.55_e3e5  patch_5                     complete     2.03   3.46   19.57      0.00        0.00     0.18
- iaS_f0.55_e3e6  patch_7                     complete     3.11   3.70   11.93      0.00        0.00     0.38
- iaS_f0.55_e3e6  patch_1                     complete     2.52   3.58   16.63      1.80        0.05     0.95
- iaS_f0.55_e3e6  patch_5                     complete     2.10   3.13    9.80      0.00        0.00     0.27
- iaS_f0.75_e3e4  patch_1 probe timeout (contact 0.0 s     1.25   2.03    0.00      3.00        0.09     2.09
- iaS_f0.75_e3e4  patch_4                     complete     2.08   2.93   20.40      8.60        0.25     5.31
- iaS_f0.75_e3e4 patch_10                     complete     2.14   3.66   20.90     39.10        1.12     8.74
- iaS_f0.75_e3e5  patch_1                     complete     2.47   3.88   20.13      0.20        0.01     0.94
- iaS_f0.75_e3e5  patch_3                     complete     2.25   3.48   20.40      1.50        0.04     6.01
- iaS_f0.75_e3e5  patch_5                     complete     2.03   3.32   19.27      0.10        0.00     0.23
- iaS_f0.75_e3e6 patch_10 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.54
- iaS_f0.75_e3e6  patch_1                     complete     2.56   3.89   19.10      0.60        0.02     1.15
- iaS_f0.75_e3e6  patch_5                     complete     2.11   3.13    9.77      0.00        0.00     0.34
-iaS_off_n-0.015 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.56
-iaS_off_n-0.015  patch_4                     complete     2.08   3.82   19.63     35.90        1.03     7.45
-iaS_off_n-0.015 patch_10                     complete     2.16   5.46   20.93     49.60        1.42    12.57
- iaS_off_n0.015  patch_4                     complete     2.07   3.28   20.40     18.70        0.53     4.13
- iaS_off_n0.015 patch_10                     complete     2.09   3.16   20.33     33.10        0.95     5.25
- iaS_off_n0.015  patch_1 probe timeout (contact 0.0 s     1.28   2.04    0.00      2.80        0.08     2.25
- iaS_off_n-0.03 patch_11                     complete     2.05   5.45   20.40       NaN         NaN    15.13
- iaS_off_n-0.03  patch_4                     complete     2.07   4.30   19.73     39.90        1.14     9.11
- iaS_off_n-0.03  patch_1 probe timeout (contact 0.0 s     0.00   0.82    0.00      0.10         NaN     0.86
-  iaS_off_n0.03  patch_4                     complete     2.07   3.43   20.40     35.80        1.02     7.32
-  iaS_off_n0.03 patch_10                     complete     2.11   3.27   20.33     13.20        0.38     7.30
-  iaS_off_n0.03  patch_1 probe timeout (contact 0.0 s     1.39   2.05    0.00      0.10        0.00     1.18
- iaS_off_x-0.02 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.73
- iaS_off_x-0.02  patch_4                     complete     2.00   3.40   20.40      9.20        0.26     7.46
- iaS_off_x-0.02 patch_10 probe timeout (contact 0.0 s     1.18   2.71    0.00     51.80        1.48    14.98
-  iaS_off_x0.02 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.56
-  iaS_off_x0.02  patch_4                     complete     2.13   3.13   20.40     53.90        1.54     6.08
-  iaS_off_x0.02 patch_10                     complete     2.22   3.76   20.40     28.60        0.82    12.34
+                run     leaf                      outcome  pinch_N  max_N  hold_s  turn_deg  turn_ratio  defl_mm
+  icS_f0.35_e3e4_y0  patch_9                     complete     1.43   3.15   20.40      0.90        0.03    17.15
+icS_f0.35_e3e4_y-15 patch_10                     complete     3.28   3.51   10.40      0.00        0.00     0.18
+icS_f0.35_e3e4_y-15  patch_6                     complete     1.72   2.46   20.40      1.30        0.04     5.02
+icS_f0.35_e3e4_y-15  patch_7                     complete     3.26   3.96   10.80      0.10        0.01     0.13
+icS_f0.35_e3e4_y-15  patch_3                     complete     1.99   3.53   20.47      4.20        0.12     5.21
+ icS_f0.35_e3e4_y15  patch_8                     complete     2.22   3.26   20.13      0.00        0.00     0.16
+ icS_f0.35_e3e4_y15  patch_9                     complete     1.99   2.72   20.17      0.00        0.00     0.07
+ icS_f0.35_e3e4_y15  patch_1                     complete     1.15   2.18    6.03      0.70        0.02     1.14
+ icS_f0.35_e3e4_y15  patch_7                     complete     2.30   3.41   20.20      0.00        0.00     0.14
+icS_f0.35_e3e4_y-30  patch_7                     complete     2.10   3.96   20.70      3.90        0.11     1.24
+icS_f0.35_e3e4_y-30  patch_2 approach stalled (unreachabl     0.00   0.00    0.00       NaN         NaN    92.67
+icS_f0.35_e3e4_y-30  patch_1                     complete     1.98   3.23   20.07      4.90        0.14     1.96
+ icS_f0.35_e3e4_y30  patch_3                     complete     1.74   2.95   10.00      0.10        0.00     0.59
+ icS_f0.35_e3e4_y30  patch_4                     complete     2.42   3.67   22.07      0.00        0.00     0.13
+ icS_f0.35_e3e4_y30  patch_1                     complete     2.12   4.09    6.03      0.00        0.00     0.46
+ icS_f0.35_e3e4_y30  patch_2                     complete     2.04   3.01   19.40      0.00        0.00     0.10
+  icS_f0.35_e3e5_y0  patch_6 no pinch (gripper closed wit     0.00   0.01    0.00      0.00         NaN     0.36
+icS_f0.35_e3e5_y-15 patch_10                     complete     2.28   3.78   19.80      0.00        0.00     0.28
+icS_f0.35_e3e5_y-15  patch_6                     complete     2.05   2.98    6.03      0.80        0.02    13.32
+icS_f0.35_e3e5_y-15  patch_7                     complete     2.38   3.84    6.03     15.70        0.45     8.21
+icS_f0.35_e3e5_y-15  patch_5                     complete     2.88   3.68   21.10     13.90        0.45     2.98
+ icS_f0.35_e3e5_y15  patch_7                     complete     1.89   2.72   20.03      0.00        0.00     0.15
+ icS_f0.35_e3e5_y15  patch_8                     complete     2.26   3.41   19.80      0.00        0.00     0.18
+ icS_f0.35_e3e5_y15  patch_5                     complete     1.68   2.91   10.10      0.40        0.01     2.33
+icS_f0.35_e3e5_y-30  patch_7                     complete     2.30   3.60   20.73      2.80        0.08     4.97
+icS_f0.35_e3e5_y-30  patch_2                     complete     3.03   4.09   19.67     14.80        0.60     8.78
+icS_f0.35_e3e5_y-30  patch_1 approach stalled (unreachabl     0.00   0.00    0.00       NaN         NaN    21.15
+ icS_f0.35_e3e5_y30  patch_4                     complete     2.08   3.67   19.97      0.00        0.00     0.37
+ icS_f0.35_e3e5_y30  patch_6                     complete     2.37   3.68   22.20      0.00        0.00     0.18
+ icS_f0.35_e3e5_y30  patch_3                     complete     2.09   3.47   20.40      0.20        0.01     0.09
+ icS_f0.35_e3e5_y30  patch_2                     complete     2.12   3.79    6.03      0.00        0.00     0.96
+  icS_f0.35_e3e6_y0  patch_5                     complete     2.12   3.28    9.77      0.10        0.00     0.23
+  icS_f0.35_e3e6_y0  patch_7 no pinch (gripper closed wit     0.00   0.01    0.00      0.10         NaN     0.35
+icS_f0.35_e3e6_y-15  patch_9                     complete     2.31   3.88   20.03      0.00        0.00     0.31
+icS_f0.35_e3e6_y-15  patch_6                     complete     2.11   3.11   20.40      0.10        0.00     6.72
+icS_f0.35_e3e6_y-15  patch_8                     complete     3.46   4.44    7.47      0.30        0.09     0.20
+icS_f0.35_e3e6_y-15  patch_5                     complete     3.26   4.01   17.63      5.90        0.17     1.76
+ icS_f0.35_e3e6_y15  patch_8                     complete     2.46   3.68   21.87      0.00        0.00     0.14
+ icS_f0.35_e3e6_y15  patch_5                     complete     2.02   3.19   20.27      0.00        0.00     0.17
+ icS_f0.35_e3e6_y15  patch_4                     complete     1.88   3.53   19.83      0.30        0.01     0.44
+ icS_f0.35_e3e6_y15  patch_7                     complete     2.37   3.83   22.17      0.00        0.00     0.09
+icS_f0.35_e3e6_y-30  patch_7                     complete     3.25   5.32   15.77      2.30        0.07     1.61
+icS_f0.35_e3e6_y-30  patch_2                     complete     2.81   4.82   19.40      9.40        0.27     4.89
+icS_f0.35_e3e6_y-30  patch_1                     complete     2.04   3.01   20.40      2.30        0.07     0.48
+ icS_f0.35_e3e6_y30  patch_5                     complete     2.33   3.93   19.90      0.10        0.00     0.65
+ icS_f0.35_e3e6_y30  patch_6                     complete     2.67   3.62   19.37      0.00        0.00     0.18
+ icS_f0.35_e3e6_y30  patch_4                     complete     2.12   3.26   20.40      0.00        0.00     0.08
+ icS_f0.35_e3e6_y30  patch_2                     complete     2.12   3.87   19.77      0.00        0.00     0.55
+  icS_f0.55_e3e4_y0 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.57
+  icS_f0.55_e3e4_y0  patch_4                     complete     2.09   2.94   19.97     10.40        0.30     5.61
+  icS_f0.55_e3e4_y0 patch_10                     complete     2.12   3.82   20.40     38.90        1.11     8.46
+  icS_f0.55_e3e4_y0  patch_9                     complete     2.00   3.17   20.40      0.00        0.00     0.22
+icS_f0.55_e3e4_y-15  patch_5                     complete     1.31   1.87   20.33      3.50        0.10     5.90
+icS_f0.55_e3e4_y-15  patch_4                     complete     2.00   3.31   20.40      6.40        0.18     4.74
+icS_f0.55_e3e4_y-15  patch_7                     complete     3.22   3.86   10.67      0.10        0.01     0.13
+icS_f0.55_e3e4_y-15 patch_10                     complete     3.14   3.50   12.30      0.00        0.00     0.28
+ icS_f0.55_e3e4_y15  patch_2                     complete     3.21   3.63   11.40      0.80        0.05     0.38
+ icS_f0.55_e3e4_y15 patch_11                     complete     2.68   3.75   25.10      3.10        0.09     0.79
+ icS_f0.55_e3e4_y15 patch_10                     complete     1.37   2.32   19.83      0.00        0.00     0.42
+icS_f0.55_e3e4_y-30  patch_7                     complete     2.13   4.16   20.77      5.40        0.15     1.11
+icS_f0.55_e3e4_y-30  patch_2                     complete     2.19   3.72   22.17     13.60        0.39    23.85
+icS_f0.55_e3e4_y-30  patch_1                     complete     1.99   3.21   20.03      8.70        0.25     1.49
+ icS_f0.55_e3e4_y30  patch_8 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.20
+ icS_f0.55_e3e4_y30  patch_3                     complete     1.76   2.83   10.10      0.10        0.00     0.49
+ icS_f0.55_e3e4_y30  patch_2                     complete     1.96   2.88   20.40      0.00        0.00     0.11
+ icS_f0.55_e3e4_y30  patch_1                     complete     2.10   3.74    6.03      0.10        0.00     0.47
+  icS_f0.55_e3e5_y0  patch_8                     complete     3.28   3.55   11.43      0.00        0.00     0.20
+  icS_f0.55_e3e5_y0  patch_5                     complete     2.03   3.35   19.53      0.00        0.00     0.20
+  icS_f0.55_e3e5_y0  patch_1                     complete     2.48   3.79   20.23      0.20        0.01     1.00
+  icS_f0.55_e3e5_y0  patch_3                     complete     2.30   3.53   21.40      1.40        0.04     5.97
+icS_f0.55_e3e5_y-15  patch_6                     complete     2.07   3.01    6.03      0.90        0.03    13.74
+icS_f0.55_e3e5_y-15  patch_4                     complete     3.14   3.63   18.07     20.70        0.67     2.57
+icS_f0.55_e3e5_y-15  patch_7                     complete     2.22   3.48    6.03     11.60        0.33     8.26
+icS_f0.55_e3e5_y-15  patch_2                     complete     2.11   3.45   20.40      0.20        0.01     0.71
+ icS_f0.55_e3e5_y15 patch_11                     complete     2.74   4.07   23.60      1.60        0.05     1.01
+ icS_f0.55_e3e5_y15  patch_4 no pinch (gripper closed wit     0.00   0.03    0.00      0.10         NaN     0.18
+icS_f0.55_e3e5_y-30  patch_7                     complete     2.32   3.75   20.83      3.00        0.09     5.06
+icS_f0.55_e3e5_y-30  patch_2                     complete     2.74   4.85    6.03     14.60        0.42    16.15
+icS_f0.55_e3e5_y-30  patch_1                     complete     1.97   3.37    6.03      1.30        0.04     0.47
+ icS_f0.55_e3e5_y30 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.29
+ icS_f0.55_e3e5_y30  patch_5                     complete     2.35   3.81   21.80      0.00        0.00     0.20
+ icS_f0.55_e3e5_y30  patch_4                     complete     2.22   3.80   19.87      0.00        0.00     0.48
+ icS_f0.55_e3e5_y30  patch_2                     complete     2.11   3.89   17.83      0.00        0.00     0.47
+  icS_f0.55_e3e6_y0  patch_7                     complete     2.60   3.71   25.93      0.00        0.00     0.31
+  icS_f0.55_e3e6_y0  patch_1                     complete     2.56   3.80   19.23      5.20        0.15     0.81
+  icS_f0.55_e3e6_y0  patch_5                     complete     2.11   3.09    9.80      0.10        0.00     0.23
+  icS_f0.55_e3e6_y0  patch_4                     complete     2.45   4.34   22.27      1.90        0.05     6.29
+icS_f0.55_e3e6_y-15  patch_5                     complete     2.63   3.98   26.33      2.20        0.06     6.13
+icS_f0.55_e3e6_y-15  patch_2                     complete     2.00   3.64   20.27      0.10        0.00     0.47
+icS_f0.55_e3e6_y-15  patch_6                     complete     2.65   4.65   15.23      1.20        0.03     1.05
+icS_f0.55_e3e6_y-15  patch_7                     complete     2.10   3.06   20.40      0.20        0.01     6.50
+ icS_f0.55_e3e6_y15  patch_4                     complete     2.04   2.99   19.63      0.20        0.01     6.86
+ icS_f0.55_e3e6_y15  patch_2                     complete     2.78   4.50   25.17      6.60        0.19     5.10
+ icS_f0.55_e3e6_y15 patch_10                     complete     3.72   4.86    9.70      0.80        0.25     0.33
+ icS_f0.55_e3e6_y15 patch_12 no pinch (gripper closed wit     0.00   0.01    0.00      0.00         NaN     0.23
+icS_f0.55_e3e6_y-30  patch_7                     complete     2.61   5.17   25.70      2.10        0.06     5.91
+icS_f0.55_e3e6_y-30  patch_2                     complete     2.90   4.61   20.73      2.90        0.08     4.31
+icS_f0.55_e3e6_y-30  patch_1                     complete     2.08   3.29   20.10      1.30        0.04     0.45
+ icS_f0.55_e3e6_y30 patch_10 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.19
+ icS_f0.55_e3e6_y30  patch_6                     complete     2.63   3.59   19.33      0.00        0.00     0.15
+ icS_f0.55_e3e6_y30  patch_5                     complete     2.33   4.01   20.20      0.00        0.00     0.49
+ icS_f0.55_e3e6_y30  patch_2                     complete     2.13   3.82   19.63      0.00        0.00     0.45
+  icS_f0.75_e3e4_y0  patch_1 probe timeout (contact 0.0 s     1.39   2.08    0.00      0.00        0.00     1.03
+  icS_f0.75_e3e4_y0  patch_4                     complete     2.08   2.92   20.40      7.90        0.23     5.30
+  icS_f0.75_e3e4_y0 patch_10                     complete     2.07   3.04   20.40     47.70        1.36     9.19
+  icS_f0.75_e3e4_y0  patch_3                     complete     1.99   2.82   20.23      0.00        0.00     0.11
+icS_f0.75_e3e4_y-15  patch_7                     complete     3.27   3.89   10.97      0.10        0.01     0.11
+icS_f0.75_e3e4_y-15  patch_1                     complete     1.35   2.27    6.03      4.20        0.12     2.13
+ icS_f0.75_e3e4_y15  patch_1                     complete     1.21   2.77    6.03      1.80        0.05     0.70
+icS_f0.75_e3e4_y-30  patch_2                     complete     2.23   3.85   20.87     13.90        0.40    24.16
+icS_f0.75_e3e4_y-30  patch_1 approach stalled (unreachabl     0.00   0.00    0.00       NaN         NaN    24.16
+icS_f0.75_e3e4_y-30  patch_7                     complete     2.15   4.17   20.73      6.60        0.19     1.10
+ icS_f0.75_e3e4_y30  patch_6 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.29
+ icS_f0.75_e3e4_y30 patch_10 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.16
+ icS_f0.75_e3e4_y30  patch_5                     complete     2.42   3.64   22.17      0.00        0.00     0.15
+ icS_f0.75_e3e4_y30  patch_1                     complete     2.09   3.91    6.03      0.00        0.00     0.58
+  icS_f0.75_e3e5_y0  patch_1                     complete     2.47   3.86   20.43      0.20        0.01     1.08
+  icS_f0.75_e3e5_y0  patch_3                     complete     2.24   3.97   20.23      5.10        0.15     6.74
+  icS_f0.75_e3e5_y0  patch_5                     complete     2.03   3.39   19.50      0.00        0.00     0.32
+  icS_f0.75_e3e5_y0  patch_7                     complete     3.22   3.73   11.87      0.00        0.00     0.26
+icS_f0.75_e3e5_y-15  patch_7                     complete     2.21   3.46    6.03     11.60        0.33     8.37
+icS_f0.75_e3e5_y-15  patch_2                     complete     2.10   3.45   20.40      0.20        0.01     0.67
+icS_f0.75_e3e5_y-15  patch_5                     complete     3.12   3.66   18.07     19.70        0.64     2.57
+icS_f0.75_e3e5_y-15  patch_6                     complete     1.98   2.85    6.03      0.70        0.02     9.25
+ icS_f0.75_e3e5_y15 patch_11                     complete     2.72   3.87   23.77      1.80        0.05     0.83
+ icS_f0.75_e3e5_y15  patch_2                     complete     3.29   3.77   11.90      1.80        0.21     0.35
+ icS_f0.75_e3e5_y15  patch_4                     complete     1.31   2.40    6.03      0.10        0.00    10.96
+ icS_f0.75_e3e5_y15  patch_5                     complete     2.03   2.83   20.30      0.00        0.00     0.09
+icS_f0.75_e3e5_y-30  patch_1                     complete     1.99   3.38   18.70      0.50        0.01     0.33
+icS_f0.75_e3e5_y-30  patch_2                     complete     2.58   4.42    6.03     14.40        0.41    15.12
+icS_f0.75_e3e5_y-30  patch_7                     complete     2.33   3.90   21.27      1.80        0.05     4.83
+ icS_f0.75_e3e5_y30  patch_7 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.25
+ icS_f0.75_e3e5_y30 patch_11 approach stalled (unreachabl     0.00   0.00    0.00       NaN         NaN     0.55
+ icS_f0.75_e3e5_y30  patch_4                     complete     2.06   2.95   20.40      0.00        0.00     0.10
+ icS_f0.75_e3e5_y30  patch_6                     complete     2.37   3.83   22.20      0.00        0.00     0.23
+  icS_f0.75_e3e6_y0  patch_1                     complete     2.57   3.90   19.23      0.50        0.01     1.26
+  icS_f0.75_e3e6_y0  patch_4                     complete     2.52   3.72   22.57      2.20        0.06     6.70
+  icS_f0.75_e3e6_y0  patch_5                     complete     2.08   3.65    9.67      0.00        0.00     0.21
+  icS_f0.75_e3e6_y0 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.43
+icS_f0.75_e3e6_y-15  patch_6                     complete     2.75   4.87   17.60      0.20        0.01     0.97
+icS_f0.75_e3e6_y-15  patch_2                     complete     2.01   3.56   20.30      0.10        0.00     0.43
+icS_f0.75_e3e6_y-15  patch_5                     complete     2.60   3.98   24.97      2.50        0.07     6.02
+icS_f0.75_e3e6_y-15  patch_8                     complete     2.21   3.62   15.60      0.40        0.01    17.17
+ icS_f0.75_e3e6_y15 patch_10                     complete     3.70   4.84    9.60      0.70        0.54     0.35
+ icS_f0.75_e3e6_y15  patch_2                     complete     2.77   3.92   24.93      4.50        0.13     5.10
+ icS_f0.75_e3e6_y15  patch_4                     complete     1.83   3.06   19.20      0.00        0.00     0.48
+ icS_f0.75_e3e6_y15  patch_8                     complete     2.37   3.49   19.77      0.00        0.00     0.22
+icS_f0.75_e3e6_y-30  patch_1 approach stalled (unreachabl     0.00   0.00    0.00       NaN         NaN    20.90
+icS_f0.75_e3e6_y-30  patch_2                     complete     2.85   4.82   19.70      3.50        0.10     4.55
+icS_f0.75_e3e6_y-30  patch_7                     complete     3.26   5.20   15.77      1.00        0.03     1.70
+ icS_f0.75_e3e6_y30 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.20
+ icS_f0.75_e3e6_y30  patch_6                     complete     2.66   3.56   19.33      0.00        0.00     0.17
+ icS_f0.75_e3e6_y30  patch_5                     complete     2.32   3.94   19.73      0.00        0.00     0.52
+ icS_f0.75_e3e6_y30  patch_2                     complete     2.12   3.88   19.70      0.00        0.00     0.54
+  icS_off_n-0.03_y0 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.76
+  icS_off_n-0.03_y0  patch_4                     complete     2.07   4.33   19.87     40.40        1.15     9.08
+  icS_off_n-0.03_y0 patch_10                     complete     2.08   5.39   20.37     59.90        1.71    14.37
+  icS_off_n-0.03_y0  patch_7 probe timeout (contact 0.0 s     1.58   2.25    0.00      0.00        0.00     0.35
+   icS_off_n0.03_y0 patch_11 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.41
+   icS_off_n0.03_y0 patch_10                     complete     2.05   2.82   20.40     18.90        0.54     7.70
+   icS_off_n0.03_y0  patch_4                     complete     2.07   3.44   20.40     35.90        1.03     7.31
+   icS_off_n0.03_y0  patch_8                     complete     1.99   3.18   20.40      0.00        0.00     0.26
+icS_off_n-0.03_y-15  patch_6 no pinch (gripper closed wit     0.00   0.01    0.00      0.80         NaN     0.22
+icS_off_n-0.03_y-15  patch_5                     complete     2.02   4.36   20.10       NaN         NaN     9.91
+icS_off_n-0.03_y-15  patch_7 probe timeout (contact 0.0 s     0.00   1.68    0.00      0.00         NaN     0.16
+icS_off_n-0.03_y-15 patch_10                     complete     3.17   4.29   13.07      0.00        0.00     0.20
+ icS_off_n-0.03_y15  patch_2                     complete     3.31   3.91   12.40      4.40        0.24     1.02
+ icS_off_n-0.03_y15 patch_11 probe timeout (contact 0.0 s     0.00   2.21    0.00     16.10         NaN     0.97
+ icS_off_n-0.03_y15 patch_10 probe timeout (contact 0.0 s     0.00   1.73    0.00      0.00         NaN     0.52
+ icS_off_n-0.03_y15  patch_7                     complete     1.31   3.53   20.67      0.00        0.00     0.19
+ icS_off_n0.03_y-15  patch_6                     complete     1.78   3.38    6.03      1.50        0.04    14.56
+ icS_off_n0.03_y-15  patch_3                     complete     1.97   5.25   20.40     26.60        0.76    14.14
+ icS_off_n0.03_y-15  patch_7                     complete     3.22   3.59   10.63      0.10        0.01     0.15
+ icS_off_n0.03_y-15  patch_1                     complete     1.33   1.81    6.03      4.10        0.12     2.28
+  icS_off_n0.03_y15 patch_11                     complete     2.67   3.85   25.00     13.60        0.39     0.88
+  icS_off_n0.03_y15  patch_2                     complete     3.23   3.62   11.90     12.70        0.55     1.48
+  icS_off_n0.03_y15 patch_10                     complete     1.42   3.12   11.27      0.00        0.00     0.42
+  icS_off_n0.03_y15  patch_7                     complete     2.20   3.27   20.13      0.00        0.00     0.14
+  icS_off_x-0.02_y0 patch_12 no pinch (gripper closed wit     0.00   0.00    0.00      0.00         NaN     0.51
+  icS_off_x-0.02_y0  patch_4                     complete     2.01   3.29   19.97      9.20        0.26     7.56
+  icS_off_x-0.02_y0 patch_11 probe timeout (contact 0.0 s     1.15   2.78    0.00      8.60        0.25    13.70
+  icS_off_x-0.02_y0  patch_8                     complete     1.29   2.27    6.03      0.00        0.00     0.43
+   icS_off_x0.02_y0  patch_4                     complete     2.13   3.13   20.40     52.40        1.50     6.21
+   icS_off_x0.02_y0 patch_10                     complete     2.63   4.05   21.87     58.20        1.66    12.16
+   icS_off_x0.02_y0  patch_1 probe timeout (contact 0.0 s     1.63   2.74    0.00      0.00        0.00     0.65
+icS_off_x-0.02_y-15  patch_6                     complete     1.76   2.82   20.10      1.60        0.05    18.65
+icS_off_x-0.02_y-15  patch_3                     complete     1.99   2.96   20.40     10.90        0.31     7.84
+icS_off_x-0.02_y-15  patch_7                     complete     1.73   2.90   20.40      0.10        0.00     0.15
+icS_off_x-0.02_y-15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     0.90
+ icS_off_x-0.02_y15  patch_3                     complete     3.04   3.60   11.57      1.10        0.03     0.39
+ icS_off_x-0.02_y15 patch_11                     complete     1.86   2.51   20.40      9.90        0.28     1.10
+ icS_off_x-0.02_y15  patch_1             approach timeout     0.00   0.00    0.00       NaN         NaN     8.97
+ icS_off_x0.02_y-15  patch_6 probe timeout (contact 0.0 s     1.80   2.51    0.00      0.40        0.01     3.80
+ icS_off_x0.02_y-15  patch_5                     complete     2.20   4.05   21.53     14.30        0.41    11.47
+ icS_off_x0.02_y-15  patch_7                     complete     3.30   3.88   11.77      0.10        0.01     0.15
+ icS_off_x0.02_y-15 patch_10                     complete     1.03   1.98   17.80      0.00        0.00     0.34
+  icS_off_x0.02_y15  patch_4                     complete     1.67   3.15   20.30      0.00        0.00     0.10
+  icS_off_x0.02_y15 patch_10                     complete     2.54   3.87   19.10      3.90        0.11     0.75
+  icS_off_x0.02_y15  patch_9                     complete     1.38   2.58   20.17      0.00        0.00     0.56
+  icS_off_x0.02_y15  patch_2                     complete     1.58   2.62   20.40      9.00        0.26     2.36
 
-## E1 pinch fraction x stiffness (complete rate, mean turn deg, mean turn ratio, n)
-                         n  complete  pinched  turn  ratio  maxN
-gripper frac E                                                  
-shadow  0.35 30000.00    1      1.00     1.00  1.00   0.03  2.19
-             300000.00   3      1.00     1.00  0.30   0.01  3.22
-             3000000.00  2      0.50     0.50  0.05   0.00  1.55
-        0.55 30000.00    3      0.67     0.67 15.37   0.66  2.18
-             300000.00   3      1.00     1.00  0.10   0.00  3.62
-             3000000.00  3      1.00     1.00  0.60   0.02  3.47
-        0.75 30000.00    3      0.67     1.00 16.90   0.48  2.88
-             300000.00   3      1.00     1.00  0.60   0.02  3.56
-             3000000.00  3      0.67     0.67  0.20   0.01  2.34
+## E1 pinch fraction x stiffness (turn = FEM patch normal; s_turn = wrist-camera blade normal, half swing)
+                          n  n_leaves  complete  pinched  turn  turn_sd  s_turn  s_sd  s_n  s_max  maxN
+gripper frac E                                                                                         
+shadow  0.35 30000.00    16        15      0.94     0.94  1.07     1.74    4.36  9.81   10  31.40  3.07
+             300000.00   15        14      0.87     0.87  3.47     6.19    0.92  1.14    9   3.35  3.04
+             3000000.00  17        16      0.94     0.94  1.23     2.60    0.65  0.78   13   2.15  3.58
+        0.55 30000.00    18        16      0.89     0.89  5.06     9.44    4.43  9.25   11  31.10  2.93
+             300000.00   17        14      0.88     0.88  3.27     6.18    4.97  9.80    9  28.95  3.26
+             3000000.00  19        15      0.89     0.89  1.31     1.88    7.82 11.71   13  29.80  3.53
+        0.75 30000.00    14        14      0.71     0.79  6.32    13.15    6.57 12.15    6  31.00  2.53
+             300000.00   19        17      0.89     0.89  3.22     5.84    4.73  7.82   12  26.95  3.14
+             3000000.00  19        16      0.84     0.84  0.87     1.37    4.67 10.19   13  28.35  3.37
 
 ## E3 placement offsets (frac 0.55, E 3e4)
-                     n  complete  pinched  turn
-gripper off_n off_x                            
-shadow  -0.03 0.00   3      0.67     0.67 20.00
-        -0.01 0.00   3      0.67     0.67 28.50
-        0.00  -0.02  3      0.33     0.67 20.33
-              0.02   3      0.67     0.67 27.50
-        0.01  0.00   3      0.67     1.00 18.20
-        0.03  0.00   3      0.67     1.00 16.37
+                      n  n_leaves  complete  pinched  turn  turn_sd  s_turn  s_sd  s_n  s_max  maxN
+gripper off_n off_x                                                                                
+shadow  -0.03 0.00   12        10      0.50     0.58 11.05    20.38    0.00  0.00    2   0.00  2.81
+        0.00  -0.02  11         9      0.64     0.73  4.60     4.86    8.02  9.73    7  23.15  2.10
+              0.02   11        10      0.82     1.00 12.57    21.67    5.99  9.87    9  26.95  3.14
+        0.03  0.00   12        11      0.92     0.92  9.45    12.24    7.05 11.76    9  28.45  3.11
 
 ## E2 force (Robotiq)

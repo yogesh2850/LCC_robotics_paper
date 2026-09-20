@@ -1,0 +1,11 @@
+{
+  "runs": 63,
+  "attempted": 214,
+  "completed": 124,
+  "measured_attempts": 84,
+  "measured_completions": 78,
+  "completed_half_swing_median": 2.25,
+  "completed_half_swing_mean": 3.4275641025641024,
+  "completed_half_swing_max": 17.15,
+  "notes": "Within one plant asset; conditional on measurement availability. Identity-assisted camera estimator. Lift is a controller quantity, not measured leaf translation."
+}
