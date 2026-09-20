@@ -1,0 +1,14 @@
+    run    yaw     leaf       gt_leaf              outcome  rows  coverage  rmse  corr  gain_cam  gain_fem  roll_span  swing_cam  swing_fem  pred_cam  pred_fem  normal_max
+  s1_y0   0.00 patch_10 leaf_3_9__4_9             complete   261      0.42  5.58  0.81     -2.48      0.58      69.89        NaN     -25.86   -173.26     40.37       83.79
+  s1_y0   0.00  patch_4 leaf_4_3__4_9             complete   260      0.96 10.06  0.95     -0.44     -0.80      69.88     -59.23     -37.05    -31.09    -56.11       36.75
+  s1_y0   0.00  patch_1 leaf_4_9__3_9 probe timeout (conta   582      0.08  7.03  0.92      0.23      0.16      69.94        NaN      -1.14     15.88     11.34        0.08
+  s1_y0   0.00  patch_9 leaf_1_6__3_9             complete   260      1.00  4.52 -0.04      0.00      0.08      69.99      -0.31      -0.22      0.02      5.59        0.20
+s1_y-15 -15.00  patch_6 leaf_4_9__3_9 probe timeout (conta   579      0.85  8.97  0.74     -0.12     -0.02      70.15      -9.09      -2.91     -8.67     -1.08        3.17
+ s1_y15  15.00  patch_2 leaf_4_3__4_9             complete   169      1.00  4.73  0.96     -0.85     -1.04       0.00       0.14       0.07     -0.00     -0.00        2.72
+ s1_y15  15.00 patch_10 leaf_3_9__4_9             complete   319      0.72  5.57  0.93     -1.22     -0.71      -0.01        NaN      -0.00      0.02      0.01        3.33
+ s1_y15  15.00 patch_11 leaf_4_9__3_9             complete   260      1.00  6.62 -0.15     -0.01     -0.00      69.99      -0.21      -0.02     -0.50     -0.03        0.06
+
+## Camera vs FEM chord: coverage mean 0.75, RMSE median 6.1 deg, corr median 0.86 (leaves 8)
+## Swing per 70 deg of roll: FEM median 0.7 deg (p90 29.2), camera median 0.3 deg
+## Probe-predicts-swing (FEM): |pred - swing| median 3.8 deg vs zero model 0.7 deg; probe better in 3/8 leaves
+## Probe-predicts-swing (camera): |pred - swing| median 0.3 deg vs zero model 0.3 deg; probe better in 2/5 leaves

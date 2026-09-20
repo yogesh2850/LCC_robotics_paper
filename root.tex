@@ -544,6 +544,33 @@ Shadow, offset across $-2$ / $+2$\,cm & & 9 / 10 & .64 / .82 & 4.6, 12.6 & 2.1, 
 \end{tabular}
 \end{table}
 
+\subsection{Stage 1: can a probe predict the response?}\label{sec:stage1}
+The response-aware proposal rests on two premises: that the free-blade orientation can be
+measured from the wrist camera during the sweep, and that a short bounded probe predicts the
+later motion of the same grasp. Both were tested prospectively on three plant orientations
+per hand with a $+15^\circ$ probe roll (and return) inserted before the $\pm35^\circ$ sweep,
+logging at 10\,Hz the commanded and actual roll, the camera chord tilt of the target blade
+and the same chord on the FEM nodes, computed by an evaluator that the controller never
+sees (\texttt{response\_log.csv}; 8 leaves per hand).
+
+\emph{Measurement.} On the Shadow Hand the camera chord tracks the FEM chord (median
+correlation 0.86, RMSE $6^\circ$, coverage 0.75 of samples). On the 2F-85 it does not
+(correlation 0.16, RMSE $10^\circ$): the finger and rubber pads occupy the slab the chord
+is fitted in, and the estimate is contaminated. A sensor-only claim therefore holds for the
+hand geometry that keeps the camera's view of the blade clear, not in general.
+
+\emph{Prediction.} The linear gain fitted on the probe segment does not predict the
+half-swing measured later between the $+35$ and $-35^\circ$ dwells better than a zero
+model. On FEM ground truth the median $|\hat g\,\Delta\phi - \text{swing}|$ is $11.6^\circ$
+against $4.0^\circ$ for predicting no response (2F-85) and $3.8^\circ$ against $0.7^\circ$
+(Shadow); the probe is the better predictor on 1 of 8 and 3 of 8 leaves. The blade that
+responds does so strongly and inconsistently (FEM swings of $-37$ and $-26^\circ$ at one
+plant orientation, $0.1^\circ$ at another for the same leaf), and the rest respond
+within the measurement noise. By the falsification rule we set in advance
+(the tests that can disprove our story, listed in the accompanying method specification), the learned local response is not a usable decision variable on
+this plant, and we do not claim a response-aware controller. The matched four-policy
+comparison of Stage 2 (in progress) is reported as the test that would have shown one.
+
 \subsection{Supporting study: colour under illumination}\label{sec:colour}
 Fig.~\ref{fig:strip} shows the six measurement stages of one leaf, Fig.~\ref{fig:methods}
 and Table~\ref{tab:colour} the study over the Shadow matrix (225--433 valid samples per stage,
