@@ -1,0 +1,82 @@
+            run   yaw  policy      block  grasps  fem_success  believed  t_goal_s  exposure_Ns  peak_N                    outcomes
+    s2_y0_aware   0.0   aware  patch_1@0       1        False     False       NaN        100.0    4.61          policy fail (no al
+    s2_y0_aware   0.0   aware  patch_9@1       1        False     False       NaN         14.7    4.42          policy regrasp (no
+    s2_y0_aware   0.0   aware  patch_7@2       1        False     False       NaN         14.3    4.71          policy regrasp (no
+  s2_y0_regrasp   0.0 regrasp  patch_1@0       1        False     False       NaN        100.0    4.66          policy fail (no al
+  s2_y0_regrasp   0.0 regrasp  patch_8@1       1        False     False       NaN         14.3    4.62          policy regrasp (no
+  s2_y0_regrasp   0.0 regrasp  patch_6@2       1        False     False       NaN         13.8    4.68          policy regrasp (no
+    s2_y0_servo   0.0   servo  patch_1@0       1        False     False       NaN        100.0    4.61          policy fail (no al
+    s2_y0_servo   0.0   servo  patch_8@1       1        False      True       NaN         36.6    4.45                    complete
+    s2_y0_servo   0.0   servo  patch_6@2       1        False      True       NaN         51.4    5.92                    complete
+    s2_y0_sweep   0.0   sweep  patch_1@0       1        False     False       NaN         81.5    4.63          policy fail (no al
+    s2_y0_sweep   0.0   sweep  patch_8@1       1        False      True       NaN         60.8    5.43                    complete
+    s2_y0_sweep   0.0   sweep  patch_6@2       1        False     False       NaN         53.2    5.81          policy fail (no al
+  s2_y-15_aware -15.0   aware  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_aware -15.0   aware  patch_1@1       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_aware -15.0   aware  patch_5@2       1        False     False       NaN          0.0    0.00            approach timeout
+   s2_y15_aware  15.0   aware  patch_1@0       2        False     False       NaN         28.7    4.87 regrasp; policy regrasp (no
+   s2_y15_aware  15.0   aware patch_10@2       1        False     False       NaN         14.3    4.64          policy regrasp (no
+   s2_y15_aware  15.0   aware  patch_4@3       1        False     False       NaN          0.0    0.00            approach timeout
+s2_y-15_regrasp -15.0 regrasp  patch_6@0       1        False     False       NaN          0.0    0.00            approach timeout
+s2_y-15_regrasp -15.0 regrasp  patch_1@1       1        False     False       NaN          0.0    0.00            approach timeout
+s2_y-15_regrasp -15.0 regrasp  patch_4@2       1        False     False       NaN          0.0    0.00            approach timeout
+ s2_y15_regrasp  15.0 regrasp  patch_1@0       2        False     False       NaN         28.8    4.74 regrasp; policy regrasp (no
+ s2_y15_regrasp  15.0 regrasp patch_10@2       1        False     False       NaN         14.3    4.64          policy regrasp (no
+ s2_y15_regrasp  15.0 regrasp  patch_4@3       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_servo -15.0   servo  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_servo -15.0   servo  patch_1@1       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_servo -15.0   servo  patch_4@2       1        False     False       NaN          0.0    0.00            approach timeout
+   s2_y15_servo  15.0   servo  patch_1@0       1        False      True       NaN         22.7    4.62                    complete
+   s2_y15_servo  15.0   servo patch_10@1       1        False     False       NaN        102.5    5.34          policy fail (no al
+   s2_y15_servo  15.0   servo  patch_8@2       1         True     False      11.5        100.7    5.43          policy fail (no al
+  s2_y-15_sweep -15.0   sweep  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_sweep -15.0   sweep  patch_1@1       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-15_sweep -15.0   sweep  patch_4@2       1        False     False       NaN          0.0    0.00            approach timeout
+   s2_y15_sweep  15.0   sweep  patch_1@0       1        False      True       NaN         23.2    4.62                    complete
+   s2_y15_sweep  15.0   sweep patch_10@1       1        False     False       NaN         68.0    5.47          policy fail (no al
+   s2_y15_sweep  15.0   sweep  patch_4@2       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-30_aware -30.0   aware  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-30_aware -30.0   aware  patch_2@1       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-30_aware -30.0   aware  patch_1@2       1        False     False       NaN          0.0    0.00            approach timeout
+   s2_y30_aware  30.0   aware  patch_8@0       1        False     False       NaN         14.4    4.68          policy regrasp (no
+   s2_y30_aware  30.0   aware  patch_5@1       1        False      True       NaN         22.7    4.94                    complete
+   s2_y30_aware  30.0   aware  patch_2@2       1        False     False       NaN         13.8    4.91          policy regrasp (no
+s2_y-30_regrasp -30.0 regrasp  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+ s2_y30_regrasp  30.0 regrasp  patch_8@0       1        False     False       NaN         14.3    4.62          policy regrasp (no
+ s2_y30_regrasp  30.0 regrasp  patch_2@1       1        False     False       NaN         12.2    5.23          policy regrasp (no
+ s2_y30_regrasp  30.0 regrasp  patch_5@2       1        False      True       NaN         23.1    4.70                    complete
+  s2_y-30_servo -30.0   servo  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-30_servo -30.0   servo  patch_2@1       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-30_servo -30.0   servo  patch_1@2       1        False     False       NaN          0.0    0.00            approach timeout
+   s2_y30_servo  30.0   servo  patch_6@0       1        False     False       NaN        102.0    4.94          policy fail (no al
+   s2_y30_servo  30.0   servo  patch_8@1       1        False     False       NaN        102.7    5.60          policy fail (no al
+   s2_y30_servo  30.0   servo  patch_5@2       1        False      True       NaN         15.2    5.02                    complete
+  s2_y-30_sweep -30.0   sweep  patch_7@0       1        False     False       NaN          0.0    0.00            approach timeout
+  s2_y-30_sweep -30.0   sweep  patch_2@1       1        False     False       NaN          0.0    0.00            approach timeout
+   s2_y30_sweep  30.0   sweep  patch_6@0       1        False     False       NaN         75.1    4.96          policy fail (no al
+   s2_y30_sweep  30.0   sweep  patch_8@1       1        False     False       NaN         37.9    8.06          force safety trip 
+   s2_y30_sweep  30.0   sweep  patch_5@2       1        False      True       NaN         56.2    5.51                    complete
+
+## Per policy (all blocks)
+         blocks  fem_success  believed  t_goal  grasps  exposure  peak
+policy                                                                
+aware        15         0.00      0.07     NaN    1.07     14.86  2.52
+regrasp      13         0.00      0.08     NaN    1.08     16.98  2.91
+servo        15         0.07      0.27    11.5    1.00     42.25  3.06
+sweep        14         0.00      0.21     NaN    1.00     32.56  3.18
+
+## Matched blocks present for every policy: 4
+         fem_success  believed  t_goal  grasps  exposure
+policy                                                  
+aware            0.0      0.00     NaN    1.25     32.17
+regrasp          0.0      0.00     NaN    1.25     32.20
+servo            0.0      0.25     NaN    1.00     30.68
+sweep            0.0      0.25     NaN    1.00     26.18
+
+per-block FEM success:
+policy           aware  regrasp  servo  sweep
+bk                                           
+-15.0:patch_1@1      0        0      0      0
+-30.0:patch_7@0      0        0      0      0
+0.0:patch_1@0        0        0      0      0
+15.0:patch_1@0       0        0      0      0

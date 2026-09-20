@@ -50,9 +50,11 @@ A later Robotiq matrix contains 63 runs, 214 attempted leaves and 124 controller
 completions. Camera swing is available for 78 completed attempts, with median half-swing
 $2.25^\circ$ under a nominal $\pm35^\circ$ tool sweep; this is distinct from terminal
 residual deformation. These observations motivate comparing response-aware decisions with
-fixed sweeps and visual feedback. A scalar response-policy prototype now exists, but no
-matched performance result for it is established here. The full proposed extension remains
-unevaluated. All
+fixed sweeps and visual feedback. The proposed extension was then evaluated as specified: a bounded probe does not predict
+the later response of the same grasp better than a zero model, and in a matched comparison
+of a scripted sweep, a fixed-gain visual servo, a heuristic regrasp and the response-aware
+policy, none re-orients the blade region by $15^\circ$ on FEM ground truth (1 of 57 leaf
+blocks); the probing policies only reduce force exposure by giving up early. All
 reported results are simulation-only; no tissue-safety or field-performance claim is made.
 \end{abstract}
 
@@ -569,7 +571,37 @@ plant orientation, $0.1^\circ$ at another for the same leaf), and the rest respo
 within the measurement noise. By the falsification rule we set in advance
 (the tests that can disprove our story, listed in the accompanying method specification), the learned local response is not a usable decision variable on
 this plant, and we do not claim a response-aware controller. The matched four-policy
-comparison of Stage 2 (in progress) is reported as the test that would have shown one.
+comparison of Sec.~\ref{sec:stage2} is reported as the test that would have shown one.
+
+\subsection{Stage 2: matched comparison of presentation policies}\label{sec:stage2}
+Four policies were run on the 2F-85 with the same goal (re-orient the free-blade region by
+$15\pm5^\circ$ and hold it 2\,s with the pinch force in its window), the same roll bound
+($35^\circ$), rate, force back-off, time budget and grasp budget (two grasps per leaf block,
+the second on the most distal usable patch of the same blade): the scripted $\pm35^\circ$
+sweep; a fixed-gain regional visual servo on the camera chord; a low-response heuristic that
+probes $+15^\circ$, regrasps if the fitted gain is below 0.25, otherwise servos; and the
+response-aware policy of the method specification, which turns the probe gain and its
+uncertainty into a required roll and decides between servo, a second probe and regrasp.
+Five plant orientations, three leaves each, 57 leaf blocks in total, 4 of them reached by all
+four policies. Success is judged by the evaluator on the FEM chord, never by the controller.
+
+No policy succeeds. On FEM ground truth the sweep reaches the goal band and holds it in 0 of
+14 blocks, the servo in 1 of 15, the heuristic regrasp in 0 of 13 and the response-aware policy
+in 0 of 15; on the 4 matched blocks all four fail. The controllers \emph{believe} they
+succeed more often (sweep 21\,\%, servo 27\,\%, probing policies 7--8\,\%), which is the
+camera chord reporting a reorientation the evaluator does not confirm, on the hand whose
+chord estimate Stage 1 had already shown to be contaminated by the fingers. The probing
+policies differ from the others in one respect only: they give up early. Their force
+exposure is 15--17\,N\,s per block against 33--42\,N\,s for the sweep and the servo, with
+peak loads of 2.5--2.9\,N against 3.1--3.2\,N, because after one probe they declare the
+grasp unresponsive and release. That is the correct decision on this plant and it is also
+worthless, since no alternative grasp on the same blade does better.
+
+Taken together with Stage 1, the prospective evidence is unambiguous within the model: at
+pinch forces up to 6\,N on rubber pads, the attached maize blade of this FEM plant does not
+re-orient with the tool by a useful amount, whether the tool sweeps, servos or probes, and no
+sensor-driven decision recovers that. The contribution of this part of the paper is the
+protocol and the negative result, not a controller.
 
 \subsection{Supporting study: colour under illumination}\label{sec:colour}
 Fig.~\ref{fig:strip} shows the six measurement stages of one leaf, Fig.~\ref{fig:methods}
@@ -742,10 +774,12 @@ finds and pinches leaves from RGB-D data alone, presents them to a stationary wr
 under regulated force, and grades their colour against a reference board under the same
 light. The nominal loop completes useful inspection sequences, but broader matrices expose
 targeting, contact-observability and measurement failures. The archived rotation metric
-cannot establish how faithfully a blade follows its gripper. A stronger contribution is
-a response-aware presentation policy evaluated with synchronized leaf-pose feedback and
-matched baselines, rather than an unsupported universal design rule. That policy remains
-proposed; the existing plant is held fixed for its future evaluation.
+cannot establish how faithfully a blade follows its gripper. The response-aware presentation policy was then evaluated with synchronized leaf-pose
+feedback and matched baselines on the same fixed plant. It fails as specified: a bounded
+probe does not predict the later response, and no policy re-orients the blade region by
+$15^\circ$. What the paper establishes is the protocol that can decide the question and,
+within this model, its answer: at these forces the blade does not follow the tool, and the
+useful outputs of contact are a validated sample of the intended leaf and a reliable lift.
 
 %% ---------------------------------------------------------------------------
 \bibliographystyle{IEEEtran}
